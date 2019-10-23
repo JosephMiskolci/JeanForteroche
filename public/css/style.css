@@ -208,6 +208,10 @@ figure {
   font-size: 10px;
 }
 
+ hr {
+  width: 35%;
+}
+
 /* ------------------------------ Books -------------------------*/
 #MajorBooks {
   max-width: 1920px;

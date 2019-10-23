@@ -1,6 +1,3 @@
-<?php $title = htmlspecialchars($post['title']); ?>
-
-<?php ob_start(); ?>
 <!-- Slideshow Home -->
 <section id="slideshow-home">
     <span id="slideshow-link"></span>
@@ -18,7 +15,7 @@
 <section id="biography">
   <div class="BiographyName">
     <h1>
-      <?= htmlspecialchars($post['title']) ?>
+      <?= htmlspecialchars($datas["post"]['title']) ?>
     </h1>
   </div>
 </section>
@@ -27,9 +24,9 @@
 <section id="Publications">
   <div class="Articles">
     <p class="ArticleText">
-    <?= nl2br(htmlspecialchars($post['content'])) ?>
+    <?= nl2br(htmlspecialchars($datas["post"]['content'])) ?>
     </p>
-    <p class="ArticleDate">Publié le <?= $post['creation_date_fr'] ?></p>
+    <p class="ArticleDate">Publié le <?= $datas["post"]['creation_date_fr'] ?></p>
   </div>
 </section>
 
@@ -41,7 +38,7 @@
   </div>
 
   <?php
-  while ($comment = $comments->fetch())
+  while ($comment = $datas["comments"]->fetch())
 {
   ?>
   <div class="Comment">
@@ -57,14 +54,14 @@
 
   <?php
 }
-$comments->closeCursor();
+$datas["comments"]->closeCursor();
 ?>
 
   <div class="CommentsName CommentsPost">
     <h2>Postez votre commentaire !</h2>
   </div>
 
-  <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+  <form action="index.php?action=addComment&amp;id=<?= $datas["post"]['id'] ?>" method="post">
     <div class="name-form-and-email-form">
       <p>
         <div class="name-form">
@@ -90,6 +87,3 @@ $comments->closeCursor();
         <input type="submit" class="btn btn-secondary comment-sending" value="Publiez votre message !">
   </form>
 </section>
-<?php $content = ob_get_clean(); ?>
-
-<?php require('view/frontend/templates/templateArticle.php'); ?>
