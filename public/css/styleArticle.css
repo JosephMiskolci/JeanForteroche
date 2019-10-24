@@ -124,7 +124,7 @@ figure {
   color: #0984e3;
   text-align: center;
   font-family: 'Homemade Apple', cursive;
-  background: rgba(178, 190, 195, 0.87);
+  background: rgba(178, 190, 195, 0.5);
   padding: 40px 20px 30px;
   border-radius: 10px;
 }
@@ -142,7 +142,7 @@ figure {
   color: #0984e3;
   text-align: center;
   font-family: 'Homemade Apple', cursive;
-  background: rgba(178, 190, 195, 0.87);
+  background: rgba(178, 190, 195, 0.5);
   padding: 35px 20px 20px;
   border-radius: 10px;
 }
@@ -206,7 +206,7 @@ figure {
   font-size: 14px;
 }
 
-.Comment hr {
+hr {
   width: 35%;
   margin: 20px auto;
 }

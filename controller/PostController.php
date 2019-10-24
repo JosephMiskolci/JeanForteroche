@@ -21,7 +21,7 @@ class PostController {
 
     $htmlPostInTemplate = loadTemplate(
       $postView,
-      "Publication - mon super nom de publication",
+      $post['title'],
       ["public/css/styleArticle.css"]
     );
     return $htmlPostInTemplate;

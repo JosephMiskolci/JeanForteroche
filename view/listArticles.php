@@ -1,38 +1,33 @@
-<?php $title = 'Découvrez les ouvrages de Jean Forteroche'; ?>
-
-<?php ob_start(); ?>
-<!-- Slideshow Home -->
 <section id="slideshow-home">
-    <span id="slideshow-link"></span>
-    <div class="carousel-container">
-      <figure class="carousel-slides">
-        <div class="enabled">
-          <img src="public/images/img/Writer.jpg" alt="">
-        </div>
-      </figure>
+  <span id="slideshow-link"></span>
+  <div class="carousel-container">
+    <figure class="carousel-slides">
+      <ul>
+        <li class="enabled"><img src="public/images/img/Bookshelf.jpg" alt="Image01">
+      </ul>
+    </figure>
 </section>
-
-
-<!-- Author's Biography -->
 
 <section id="biography">
   <div class="BiographyName">
-    <h1>
-      <?= htmlspecialchars($post['title']) ?>
-    </h1>
+    <h2>Découvrez les dernières publications de Jean Forteroche :</h2>
   </div>
 </section>
 
-<!-- Publications -->
 <section id="Publications">
+  <?php
+while ($data = $datas["posts"]->fetch())
+{
+?>
   <div class="Articles">
-    <p class="ArticleText">
-    <?= nl2br(htmlspecialchars($post['content'])) ?>
-    </p>
-    <p class="ArticleDate">Publié le <?= $post['creation_date_fr'] ?></p>
+    <h3><a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></h3>
+    <p class="ArticleText"><?= nl2br(htmlspecialchars($data['content'])) ?></p>
+    <p class="ArticleDate">Publié le <?= $data['creation_date_fr'] ?></p>
   </div>
+  <hr>
+  </hr>
+  <?php
+}
+$datas["posts"]->closeCursor();
+?>
 </section>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('view/frontend/templates/templateArticle.php'); ?>

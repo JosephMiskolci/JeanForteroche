@@ -9,7 +9,7 @@
             <h2>Billet simple pour l'Alaska</h2>
             <div class="AccessButtons">
               <a class="btn btn-outline-secondary" href="#" role="button">Découvrez l'auteur</a>
-              <a class="btn btn-outline-secondary" href="#" role="button">Accédez aux chapitres</a>
+              <a class="btn btn-outline-secondary" href="http://localhost:8888/test1/index.php?action=AllArticles" role="button">Accédez aux chapitres</a>
             </div>
           </div>
       </ul>

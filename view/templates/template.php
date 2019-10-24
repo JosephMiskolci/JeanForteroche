@@ -47,7 +47,7 @@
               <a class="nav-link" href="#">Auteur</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://joseph-miskolci.com/pages/jeanforteroche/publications/">Publications</a>
+              <a class="nav-link" href="http://localhost:8888/test1/index.php?action=AllArticles">Publications</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Ouvrages</a>
