@@ -20,10 +20,13 @@ body {
   bottom: 35px;
 }
 
+h2 {
+  line-height: 1.5;
+}
+
 h3 {
   font-size: 1.60rem;
 }
-
 
 /* ----------------------------- Navigation Bar -------------------------*/
 .navbar {
@@ -60,7 +63,7 @@ figure {
 
 .enabled {
   background-image:
-    linear-gradient(to bottom, rgba(178,190,195,0) 50%, rgba(200,208,214,1) 87%, rgba(215,221,227,1) 91%, #F4F4F4 100%);
+    linear-gradient(to bottom, rgba(178, 190, 195, 0) 50%, rgba(200, 208, 214, 1) 87%, rgba(215, 221, 227, 1) 91%, #F4F4F4 100%);
   position: 10% 40%;
 }
 
@@ -115,7 +118,7 @@ figure {
 }
 
 /* ------------------------------ Author's Biography -------------------------*/
-.BiographyName {
+.BiographyTitle {
   display: table;
   margin: 0 auto;
   position: relative;
@@ -124,13 +127,17 @@ figure {
   color: #0984e3;
   text-align: center;
   font-family: 'Homemade Apple', cursive;
-  background: rgba(178, 190, 195, 0.5);
+  background: rgba(178, 190, 195, 0.7);
   padding: 40px 20px 30px;
   border-radius: 10px;
 }
 
+.BiographyTitle {
+  bottom: 100px;
+}
+
 #biography {
-  max-height: 135px;
+  max-height: 100px;
 }
 
 /* ------------------------------ Comments -------------------------*/
@@ -142,7 +149,7 @@ figure {
   color: #0984e3;
   text-align: center;
   font-family: 'Homemade Apple', cursive;
-  background: rgba(178, 190, 195, 0.5);
+  background: rgba(178, 190, 195, 0.85);
   padding: 35px 20px 20px;
   border-radius: 10px;
 }
@@ -274,7 +281,6 @@ textarea {
   margin: 0 auto 50px;
 }
 
-
 /* ------------------------------ Social Logos ------------------------------*/
 #social-medias {
   max-height: 350px;
@@ -332,6 +338,165 @@ footer {
   line-height: 200%;
   color: #2d3436;
   font-size: 10px;
+}
+
+/* ------------------------------ Admin ----------------------------------------------------*/
+#Admin-full-width {
+  height: 400px;
+  max-width: 1920px;
+  margin: 50px 5% 50px;
+  border-radius: 10px;
+}
+
+#Admin-half-width {
+  height: 400px;
+  width: 40%;
+  margin: 50px 5% 50px;
+  border-radius: 10px;
+}
+
+#Admin-full-width a:hover, #Admin-half-width a:hover {
+  text-decoration: none;
+}
+
+.AdminTitle, .AdminHalfTitle {
+  position: relative;
+  top: 100px;
+  width: 50%;
+  display: table;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  font-family: 'Homemade Apple', cursive;
+  background: rgba(178, 190, 195, 0.87);
+  padding: 50px 20px 40px;
+  border-radius: 10px;
+}
+
+.AdminHalfTitle {
+  bottom: 300px;
+}
+
+.AdminTitle h2 {
+  font-size: 40px;
+}
+
+.AdminHalfTitle h3 {
+  font-size: 30px;
+}
+
+.AdminText p {
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  min-height: 6em;
+  max-height: 6.2em;
+  line-height: 1.5rem;
+  font-size: 15px;
+}
+
+.linkAdmin {
+  height: 400px;
+  max-width: 1920px;
+  display:block;
+}
+
+.sectionAdminHalfWidth {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.WriteArticleAdmin {
+  background: linear-gradient(
+ rgba(0, 148, 50,0.1),
+ rgba(0, 148, 50,0.8)
+ ),url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/Writing.jpg");
+ background-size:cover;
+ background-repeat:no-repeat;
+}
+
+.EditArticleAdmin {
+  background: linear-gradient(
+ rgba(247, 159, 31,0.1),
+ rgba(247, 159, 31,0.8)
+ ),url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/EditArticle.jpg");
+ background-size:cover;
+ background-repeat:no-repeat;
+ background-position: bottom;
+}
+
+.DeleteArticleAdmin {
+  background: linear-gradient(
+ rgba(234, 32, 39,0.1),
+ rgba(234, 32, 39,0.8)
+ ),url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/DeleteArticle.jpg");
+ background-size:cover;
+ background-repeat:no-repeat;
+ background-position: bottom;
+}
+
+.EditCommWaitingAdmin {
+  background: linear-gradient(
+ rgba(18, 137, 167,0.1),
+ rgba(18, 137, 167,0.8)
+ ),url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/EditArticle.jpg");
+ background-size:cover;
+ background-repeat:no-repeat;
+ background-position: bottom;
+}
+
+.EditCommPostedAdmin {
+  background: linear-gradient(
+ rgba(27, 20, 100,0.1),
+ rgba(27, 20, 100,0.8)
+ ),url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/EditArticle.jpg");
+ background-size:cover;
+ background-repeat:no-repeat;
+ background-position: bottom;
+}
+
+.publishArticle h1 {
+  display: table;
+  margin: 0 auto 50px;
+  position: relative;
+  width: 65%;
+  color: #0984e3;
+  text-align: center;
+  font-family: 'Homemade Apple', cursive;
+  background: rgba(178, 190, 195, 0.85);
+  padding: 45px 20px 40px;
+  border-radius: 10px;
+}
+
+.publishArticle {
+padding: 50px 5% 110px;
+}
+
+.publishArticle label {
+  display: table;
+  margin: 0 auto;
+}
+
+.publishArticle label {
+  display: table;
+  margin: 0 auto;
+  font-size: 25px;
+}
+
+.publishArticle #name {
+  display: table;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid rgba(178, 190, 195, 0.87);
+  width: 50%;
+  margin: 10px auto 30px;
+}
+
+.publishArticle #send {
+margin-top: 30px;
+padding: 10px;
+float: right;
 }
 
 /* ------------------------------ 1173px / Desktop - 4K ------------------------------------*/
@@ -472,9 +637,11 @@ footer {
   input {
     width: 100%;
   }
-.email-form {
-  padding-top: 20px;
-}
+
+  .email-form {
+    padding-top: 20px;
+  }
+
   .message-form p {
     padding-top: 0px;
   }
@@ -550,7 +717,7 @@ footer {
     max-height: 110px;
   }
 
-  .BiographyName {
+  .BiographyTitle {
     bottom: 350px;
   }
 

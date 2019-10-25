@@ -44,10 +44,10 @@
               <a class="nav-link" href="index.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Auteur</a>
+              <a class="nav-link" href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=bibliography">Auteur</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://localhost:8888/test1/index.php?action=AllArticles">Publications</a>
+              <a class="nav-link" href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles">Publications</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Ouvrages</a>
@@ -88,7 +88,7 @@
         <br>
         <a href="#">Auteur</a>
         <br>
-        <a href="#">Publications</a>
+        <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles">Publications</a>
         <br>
         <a href="#">Ouvrages</a>
         <br>

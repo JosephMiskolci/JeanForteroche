@@ -15,4 +15,17 @@ class HomeController {
     return $htmlListPostsInTemplate;
   }
 
+  static function viewBibliography() {
+    $postManager = new \JeanForteroche\Blog\Model\PostManager();
+    $posts = $postManager->getPosts();
+    $postView = getView('view/bibliography.php', ['posts' => $posts] );
+
+    $htmlPostInTemplate = loadTemplate(
+      $postView,
+      "Bibliographie de Jean Forteroche",
+      ["public/css/styleArticle.css"]
+    );
+    return $htmlPostInTemplate;
+  }
+
 }

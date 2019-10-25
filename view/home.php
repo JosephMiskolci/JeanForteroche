@@ -8,8 +8,8 @@
             <h3 class="">Découvrez le nouveau roman de Jean Forteroche</h3>
             <h2>Billet simple pour l'Alaska</h2>
             <div class="AccessButtons">
-              <a class="btn btn-outline-secondary" href="#" role="button">Découvrez l'auteur</a>
-              <a class="btn btn-outline-secondary" href="http://localhost:8888/test1/index.php?action=AllArticles" role="button">Accédez aux chapitres</a>
+              <a class="btn btn-outline-secondary" href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=bibliography" role="button">Découvrez l'auteur</a>
+              <a class="btn btn-outline-secondary" href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles" role="button">Accédez aux chapitres</a>
             </div>
           </div>
       </ul>
@@ -28,7 +28,7 @@
       guerre d'Espagne et durant la Seconde Guerre mondiale. Parallèlement à son métier de journaliste, il publie des ouvrages littéraires, romans et recueils de nouvelles écrits dans un style réaliste et direct, tels que <i>In Our Time</i> en
       1985,
       <i>L'Adieu aux armes</i> en 1999, <i>Pour qui sonne le glas</i> en 2004 ou encore <i>Le Vieil Homme et la Mer </i> en 2012.</p>
-    <a class="btn btn-outline-secondary" href="#" role="button">Découvrez sa biographie complète</a>
+    <a class="btn btn-outline-secondary" href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=bibliography" role="button">Découvrez sa biographie complète</a>
   </div>
 </section>
 
@@ -52,7 +52,7 @@ while ($data = $datas["posts"]->fetch())
 $datas["posts"]->closeCursor();
 ?>
 <div class="PublicationButton">
-    <a class="btn btn-secondary" href="#" role="button">Découvrez l'intégralité de ses publications</a>
+    <a class="btn btn-secondary" href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles" role="button">Découvrez l'intégralité de ses publications</a>
     </div>
 </section>
 

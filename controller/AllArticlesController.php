@@ -14,7 +14,7 @@ class AllArticlesController {
 
     $htmlPostInTemplate = loadTemplate(
       $postView,
-      "Page d'accueil",
+      "Découvrez les dernières publications de Jean Forteroche",
       ["public/css/styleArticle.css"]
     );
     return $htmlPostInTemplate;
