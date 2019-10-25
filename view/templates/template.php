@@ -84,9 +84,9 @@
     <div class="site-infos">
       <div class="footer-address">
         <p>Plan du site :</p>
-        <a href="#">Accueil</a>
+        <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php">Accueil</a>
         <br>
-        <a href="#">Auteur</a>
+        <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=bibliography">Auteur</a>
         <br>
         <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles">Publications</a>
         <br>
@@ -98,7 +98,7 @@
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>
-        <a href="#">Connexion Admin</a>
+        <a href="http://joseph-miskolci.com/pages/jeanforteroche/admin">Connexion Admin</a>
       </div>
     </div>
     <p class="copyright">© Copyright 2019 Joseph Miskolci : Projet OpenClassRooms</p>

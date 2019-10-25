@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title><?= $title ?></title>
+  <title>Page d'administration du blog de Jean Forteroche</title>
   <meta name="description" content="Découvrez le blog de l'écrivain Jean Forteroche, auteur de son nouveau roman Billet simple pour l'Alaska, disponible en intégralité sur son site internet." />
 
   <!-- Font Awesome, CSS + Bootstrap-->
@@ -12,12 +12,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="../public/css/styleArticle.css">
-  <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
-  <script>
-  tinymce.init({
-    selector: '#mytextarea'
-  });
-  </script>
 
   <!-- Google Fonts + Favicon -->
 
@@ -41,7 +35,7 @@
               <a class="nav-link" href="index.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Déconnexion</a>
+              <a class="nav-link" href="../index.php">Déconnexion</a>
             </li>
           </ul>
         </div>
@@ -49,7 +43,47 @@
     </div>
   </header>
 
-  <?= $content ?>
+  <section id="Admin-full-width" class="WriteArticleAdmin">
+    <a class="linkAdmin" href="publishArticle.php">
+    <div class="AdminTitle">
+      <h2>Rédiger un article</h2>
+    </div>
+  </a>
+  </section>
+
+<div class="sectionAdminHalfWidth">
+  <section id="Admin-half-width" class="EditArticleAdmin">
+    <a class="linkAdmin" href="tinyMCE.html">
+    <div class="AdminHalfTitle">
+      <h3>Éditer un article</h3>
+    </div>
+  </a>
+  </section>
+
+  <section id="Admin-half-width" class="DeleteArticleAdmin">
+    <a class="linkAdmin" href="tinyMCE.html">
+    <div class="AdminHalfTitle">
+      <h3>Supprimer un article</h3>
+    </div>
+  </a>
+  </section>
+
+  <section id="Admin-half-width" class="EditCommWaitingAdmin">
+    <a class="linkAdmin" href="tinyMCE.html">
+    <div class="AdminHalfTitle">
+      <h3>Modérer les commentaires en attente</h3>
+    </div>
+  </a>
+  </section>
+
+  <section id="Admin-half-width" class="EditCommPostedAdmin">
+    <a class="linkAdmin" href="tinyMCE.html">
+    <div class="AdminHalfTitle">
+      <h3>Modérer les commentaires déjà publiés</h3>
+    </div>
+  </a>
+  </section>
+  </div>
 
   <!-- Footer -->
 
@@ -72,7 +106,7 @@
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>
-        <a href="http://joseph-miskolci.com/pages/jeanforteroche/admin">Déconnexion Admin</a>
+        <a href="#">Connexion Admin</a>
       </div>
     </div>
     <p class="copyright">© Copyright 2019 Joseph Miskolci : Projet OpenClassRooms</p>

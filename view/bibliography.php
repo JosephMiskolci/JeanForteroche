@@ -12,7 +12,7 @@
 <!-- Author's Biography -->
 
 <section id="biography">
-  <div class="BiographyName BiographyTitle">
+  <div class="BiographyTitle">
     <h1> Biographie de Jean Forteroche</h1>
   </div>
 </section>

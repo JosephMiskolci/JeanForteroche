@@ -12,10 +12,11 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="../public/css/styleArticle.css">
-  <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+  <script src="https://cdn.tiny.cloud/1/0okxd6h1z339m6jxcpm75mopcnf8uevzsdrg19ultrmq3qhc/tinymce/5/tinymce.min.js"></script>
   <script>
   tinymce.init({
-    selector: '#mytextarea'
+    selector: '#mytextarea',
+    height : "600px"
   });
   </script>
 
@@ -38,10 +39,10 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Accueil</a>
+              <a class="nav-link" href="http://joseph-miskolci.com/pages/jeanforteroche/admin/index.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Déconnexion</a>
+              <a class="nav-link" href="http://joseph-miskolci.com/pages/jeanforteroche/index.php">Déconnexion</a>
             </li>
           </ul>
         </div>
@@ -49,7 +50,23 @@
     </div>
   </header>
 
-  <?= $content ?>
+<section class="publishArticle">
+  <h1>Publiez votre nouvel article :</h1>
+    <form method="post">
+      <div class="ArticleTitleText">
+        <label for="ArticleTitle">Choisissez le titre de votre article :</label>
+        <input type="text" name="name" id="name" required>
+      </div>
+      <textarea id="mytextarea" name="mytextarea"></textarea>
+      <input name="send" id="send" type="submit" value="Envoyez votre article !">
+      <?php
+          if($_POST){
+          print_r($_POST);
+          }
+          ?>
+          </pre>
+    </form>
+    </section>
 
   <!-- Footer -->
 
@@ -58,9 +75,9 @@
     <div class="site-infos">
       <div class="footer-address">
         <p>Plan du site :</p>
-        <a href="#">Accueil</a>
+        <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php">Accueil</a>
         <br>
-        <a href="#">Auteur</a>
+        <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=bibliography">Auteur</a>
         <br>
         <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles">Publications</a>
         <br>
@@ -72,7 +89,7 @@
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>
-        <a href="http://joseph-miskolci.com/pages/jeanforteroche/admin">Déconnexion Admin</a>
+        <a href="#">Déconnexion Admin</a>
       </div>
     </div>
     <p class="copyright">© Copyright 2019 Joseph Miskolci : Projet OpenClassRooms</p>

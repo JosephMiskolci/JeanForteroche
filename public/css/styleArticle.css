@@ -118,7 +118,7 @@ figure {
 }
 
 /* ------------------------------ Author's Biography -------------------------*/
-.BiographyTitle {
+.BiographyTitle, .PublicationsTitle {
   display: table;
   margin: 0 auto;
   position: relative;
@@ -132,8 +132,8 @@ figure {
   border-radius: 10px;
 }
 
-.BiographyTitle {
-  bottom: 100px;
+.PublicationsTitle {
+  bottom: 130px;
 }
 
 #biography {
@@ -343,7 +343,6 @@ footer {
 /* ------------------------------ Admin ----------------------------------------------------*/
 #Admin-full-width {
   height: 400px;
-  max-width: 1920px;
   margin: 50px 5% 50px;
   border-radius: 10px;
 }
@@ -440,17 +439,16 @@ footer {
   background: linear-gradient(
  rgba(18, 137, 167,0.1),
  rgba(18, 137, 167,0.8)
- ),url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/EditArticle.jpg");
+ ),url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/Comments.jpg");
  background-size:cover;
  background-repeat:no-repeat;
- background-position: bottom;
 }
 
 .EditCommPostedAdmin {
   background: linear-gradient(
  rgba(27, 20, 100,0.1),
  rgba(27, 20, 100,0.8)
- ),url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/EditArticle.jpg");
+ ),url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/PublishedComments.jpg");
  background-size:cover;
  background-repeat:no-repeat;
  background-position: bottom;

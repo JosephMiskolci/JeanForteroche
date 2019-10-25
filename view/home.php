@@ -20,7 +20,7 @@
 
 <section id="biography">
   <img src="public/images/img/Writer.jpg" alt="Jean_Forteroche">
-  <div class="BiographyName">
+  <div class="BiographyTitle">
     <h1>Jean Forteroche</h1>
   </div>
   <div class="BiographyText">

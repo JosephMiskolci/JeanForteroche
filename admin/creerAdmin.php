@@ -2,12 +2,12 @@
 if (isset($_POST['login']) AND isset($_POST['pass']))
 {
     $login = $_POST['login'];
-    $pass_crypte = crypt($_POST['pass']);
+    $pass_crypte = crypt($_POST['pass']); // On crypte le mot de passe
 
     echo '<p>Ligne à copier dans le .htpasswd :<br />' . $login . ':' . $pass_crypte . '</p>';
 }
 
-else //
+else // On n'a pas encore rempli le formulaire
 {
 ?>
 

@@ -9,7 +9,7 @@
 </section>
 
 <section id="biography">
-  <div class="BiographyName">
+  <div class="PublicationsTitle">
     <h2>Découvrez les dernières publications de Jean Forteroche :</h2>
   </div>
 </section>
