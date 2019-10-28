@@ -11,11 +11,12 @@
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="../public/css/styleArticle.css">
-  <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+  <link rel="stylesheet" href="./public/css/styleArticle.css">
+  <script src="https://cdn.tiny.cloud/1/0okxd6h1z339m6jxcpm75mopcnf8uevzsdrg19ultrmq3qhc/tinymce/5/tinymce.min.js"></script>
   <script>
   tinymce.init({
-    selector: '#mytextarea'
+    selector: '#mytextarea',
+    height : "600px"
   });
   </script>
 
@@ -41,7 +42,7 @@
               <a class="nav-link" href="index.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Déconnexion</a>
+              <a class="nav-link" href="../index.php">Déconnexion</a>
             </li>
           </ul>
         </div>
@@ -72,7 +73,7 @@
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>
-        <a href="http://joseph-miskolci.com/pages/jeanforteroche/admin">Déconnexion Admin</a>
+        <a href="#">Connexion Admin</a>
       </div>
     </div>
     <p class="copyright">© Copyright 2019 Joseph Miskolci : Projet OpenClassRooms</p>

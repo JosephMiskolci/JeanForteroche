@@ -16,3 +16,7 @@ Place la view au milieu du template
 function loadTemplate($content, $title, $css_files = null) {
   require("view/templates/template.php");
 }
+
+function loadTemplateAdmin($content, $title, $css_files = null) {
+  require("view/templates/templateAdmin.php");
+}

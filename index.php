@@ -11,6 +11,9 @@ try {
         if ($_GET['action'] == 'post') {              PostController::viewPost($_GET['id']); }
         if ($_GET['action'] == 'addComment') {        PostController::addComment($_GET['id'], $_POST['author'], $_POST['comment']); }
         if ($_GET['action'] == 'allArticles') {       AllArticlesController::AllArticles(); }
+        if ($_GET['action'] == 'admin') {             AdminController::viewHomeAdmin(); }
+        if ($_GET['action'] == 'publishArticle') {    AdminController::publishArticleAdmin(); }
+
     }
     else {
         HomeController::viewHome();
