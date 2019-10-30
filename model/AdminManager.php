@@ -6,12 +6,15 @@ require_once("model/Manager.php");
 
 class AdminManager extends Manager
 {
-
-  public function postArticle($postId, $author, $comment)
+    public function postArticle()
   {
-      $db = $this->dbConnect();
-      $articles = $db->prepare('INSERT INTO posts(id, content, creation_date) VALUES(?, ?, NOW())');
-      $publishedArticles = $articles->execute(array($postId, $author, $comment));
+    $db = $this->dbConnect();
 
-      return $publishedArticles;
+     if(isset($_POST['name']) AND isset($_POST['mytextarea'])) {
+      $title = $_POST['name'];
+      $content = $_POST['mytextarea'];
+      $req_connect = $db->prepare("INSERT INTO posts(title,content,creation_date) VALUES(?,?,NOW())");
+      $req_connect->execute(array($title,$content));
+    }
+   }
 }

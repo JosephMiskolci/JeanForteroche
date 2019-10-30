@@ -1,5 +1,5 @@
 <section id="Admin-full-width" class="WriteArticleAdmin">
-  <a class="linkAdmin" href="publishArticle.php">
+  <a class="linkAdmin" href="index.php?action=viewWritingArticle">
   <div class="AdminTitle">
     <h2>Rédiger un article</h2>
   </div>

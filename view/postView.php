@@ -24,7 +24,7 @@
 <section id="Publications">
   <div class="Articles">
     <p class="ArticleText">
-    <?= nl2br(htmlspecialchars($datas["post"]['content'])) ?>
+    <?= nl2br(html_entity_decode($datas["post"]['content'])) ?>
     </p>
     <p class="ArticleDate">Publié le <?= $datas["post"]['creation_date_fr'] ?></p>
   </div>

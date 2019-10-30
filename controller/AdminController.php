@@ -1,6 +1,6 @@
 <?php
 
-require_once('model/Manager.php');
+require_once('model/AdminManager.php');
 
 class AdminController {
 
@@ -13,19 +13,17 @@ class AdminController {
     return $htmlListPostsInTemplate;
   }
 
-  static function addArticle($postId, $author, $comment) {
-    if (isset($postId) && $postId > 0) {
-        if (!empty($author) && !empty($comment)) {
-          $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-          $commentManager->postComment($postId, $author, $comment);
-          header("location: index.php?action=post&id=" .$postId);
+  static function viewWritingArticle() {
+    $htmlListPosts = getView('admin/publishArticle.php', null);
+    $htmlListPostsInTemplate = loadTemplateAdmin($htmlListPosts, "Écrivez votre article - Blog de Jean Forteroche");
+    return $htmlListPostsInTemplate;
+  }
 
-        }
-        else {
-            throw new Exception('Tous les champs ne sont pas remplis !');
-        }
-    }
-    else {
-        throw new Exception('Aucun identifiant de billet envoyé');
-    }
+  static function addArticle() {
+    $adminManager = new \JeanForteroche\Blog\Model\AdminManager();
+    $adminManager->postArticle();
+    header("location: index.php?action=viewWritingArticle");
+
+
+  }
 }

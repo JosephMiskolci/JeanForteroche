@@ -21,7 +21,7 @@ while ($data = $datas["posts"]->fetch())
 ?>
   <div class="Articles">
     <h3><a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></h3>
-    <p class="ArticleText"><?= nl2br(htmlspecialchars($data['content'])) ?></p>
+    <p class="ArticleText"><?= nl2br(strip_tags($data['content'])) ?></p>
     <p class="ArticleDate">Publié le <?= $data['creation_date_fr'] ?></p>
   </div>
   <hr>

@@ -44,10 +44,10 @@
               <a class="nav-link" href="index.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=bibliography">Auteur</a>
+              <a class="nav-link" href="index.php?action=bibliography">Auteur</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles">Publications</a>
+              <a class="nav-link" href="index.php?action=allArticles">Publications</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Ouvrages</a>
@@ -84,11 +84,11 @@
     <div class="site-infos">
       <div class="footer-address">
         <p>Plan du site :</p>
-        <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php">Accueil</a>
+        <a href="index.php">Accueil</a>
         <br>
-        <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=bibliography">Auteur</a>
+        <a href="index.php?action=bibliography">Auteur</a>
         <br>
-        <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles">Publications</a>
+        <a href="index.php?action=allArticles">Publications</a>
         <br>
         <a href="#">Ouvrages</a>
         <br>
@@ -98,7 +98,7 @@
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>
-        <a href="http://joseph-miskolci.com/pages/jeanforteroche/admin">Connexion Admin</a>
+        <a href="admin/index.php">Connexion Admin</a>
       </div>
     </div>
     <p class="copyright">© Copyright 2019 Joseph Miskolci : Projet OpenClassRooms</p>

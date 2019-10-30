@@ -3,7 +3,7 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
-class PostController {
+class PostCommentsController {
 
   static function viewPost($id) {
     if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
@@ -26,6 +26,20 @@ class PostController {
     );
     return $htmlPostInTemplate;
   }
+  
+  static function AllArticles() {
+    $postManager = new \JeanForteroche\Blog\Model\PostManager();
+    $posts = $postManager->getAllPosts();
+    $postView = getView('view/listArticles.php', ['posts' => $posts] );
+
+    $htmlPostInTemplate = loadTemplate(
+      $postView,
+      "Découvrez les dernières publications de Jean Forteroche",
+      ["public/css/styleArticle.css"]
+    );
+    return $htmlPostInTemplate;
+  }
+
 
   static function addComment($postId, $author, $comment) {
     if (isset($postId) && $postId > 0) {

@@ -6,13 +6,14 @@ require('utils.php');
 
 try {
     if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'home') {              HomeController::viewHome(); };
-        if ($_GET['action'] == 'bibliography') {      HomeController::viewBibliography(); };
-        if ($_GET['action'] == 'post') {              PostController::viewPost($_GET['id']); }
-        if ($_GET['action'] == 'addComment') {        PostController::addComment($_GET['id'], $_POST['author'], $_POST['comment']); }
-        if ($_GET['action'] == 'allArticles') {       AllArticlesController::AllArticles(); }
-        if ($_GET['action'] == 'admin') {             AdminController::viewHomeAdmin(); }
-        if ($_GET['action'] == 'publishArticle') {    AdminController::publishArticleAdmin(); }
+        if ($_GET['action'] == 'home') {                HomeController::viewHome(); };
+        if ($_GET['action'] == 'bibliography') {        HomeController::viewBibliography(); };
+        if ($_GET['action'] == 'post') {                PostCommentsController::viewPost($_GET['id']); }
+        if ($_GET['action'] == 'addComment') {          PostCommentsController::addComment($_GET['id'], $_POST['author'], $_POST['comment']); }
+        if ($_GET['action'] == 'allArticles') {         PostCommentsController::AllArticles(); }
+        if ($_GET['action'] == 'admin') {               AdminController::viewHomeAdmin(); }
+        if ($_GET['action'] == 'viewWritingArticle') {  AdminController::viewWritingArticle(); }
+        if ($_GET['action'] == 'postArticle') {         AdminController::addArticle(); }
 
     }
     else {
