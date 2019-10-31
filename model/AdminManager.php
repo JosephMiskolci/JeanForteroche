@@ -17,4 +17,30 @@ class AdminManager extends Manager
       $req_connect->execute(array($title,$content));
     }
    }
+
+   public function postEditedArticle()
+ {
+   $db = $this->dbConnect();
+
+    if(isset($_POST['name']) AND isset($_POST['mytextarea'])) {
+      $edit_id = htmlspecialchars($_GET['id']);
+      $req_connect = $db->prepare('UPDATE posts SET title = :titre, content = :content WHERE id = :id');
+      $req_connect->execute(array(
+       'titre' => $_POST['name'],
+       'content' => $_POST['mytextarea'],
+       'id' => $edit_id));
+   }
+  }
+
+  public function postDeleteArticle()
+{
+  $db = $this->dbConnect();
+
+   if(isset($_POST['name']) AND isset($_POST['mytextarea']) AND isset($_POST['delete'])) {
+     $edit_id = htmlspecialchars($_GET['id']);
+     $req_connect = $db->prepare('DELETE FROM posts WHERE id = :id');
+     $req_connect->execute(array(
+      'id' => $edit_id));
+  }
+ }
 }

@@ -39,7 +39,7 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Accueil</a>
+              <a class="nav-link" href="index.php?action=admin">Accueil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../index.php">Déconnexion</a>

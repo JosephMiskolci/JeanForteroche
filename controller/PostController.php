@@ -26,7 +26,25 @@ class PostCommentsController {
     );
     return $htmlPostInTemplate;
   }
-  
+
+  static function editPost($id) {
+    if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
+
+    $postManager = new \JeanForteroche\Blog\Model\PostManager();
+    $post = $postManager->getPost($id);
+
+    $postView = getView('admin/editArticles.php', [
+      "post" => $post,
+    ]);
+
+    $htmlPostInTemplate = loadTemplateAdmin(
+      $postView,
+      $post['title'],
+      ["public/css/styleArticle.css"]
+    );
+    return $htmlPostInTemplate;
+  }
+
   static function AllArticles() {
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getAllPosts();
@@ -40,6 +58,18 @@ class PostCommentsController {
     return $htmlPostInTemplate;
   }
 
+  static function AllArticlesAdmin() {
+    $postManager = new \JeanForteroche\Blog\Model\PostManager();
+    $posts = $postManager->getAllPosts();
+    $postView = getView('admin/manageArticles.php', ['posts' => $posts] );
+
+    $htmlPostInTemplate = loadTemplateAdmin(
+      $postView,
+      "Éditer ou supprimer un article - Blog de Jean Forteroche",
+      ["public/css/styleArticle.css"]
+    );
+    return $htmlPostInTemplate;
+  }
 
   static function addComment($postId, $author, $comment) {
     if (isset($postId) && $postId > 0) {

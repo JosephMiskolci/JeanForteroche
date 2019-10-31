@@ -1,17 +1,19 @@
-<section id="Publications">
-  <h1>Managez vos publications :</h1>
+<section class="AdminTopTitle">
+<h1>Managez vos publications :</h1>
+</section>
 
+<section id="Publications">
   <?php
 while ($data = $datas["posts"]->fetch())
 {
 ?>
   <div class="Articles">
     <h3><a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></h3>
-    <p class="ArticleText"><?= nl2br(htmlspecialchars(($data['content']))) ?></p>
+    <p class="ArticleText"><?= nl2br(strip_tags($data['content'])) ?></p>
     <p class="ArticleDate">Publié le <?= $data['creation_date_fr'] ?></p>
     <div class="AccessButtons">
-      <a class="btn btn-outline-secondary" href="index.php?action=bibliography" role="button">Découvrez l'auteur</a>
-      <a class="btn btn-outline-secondary" href="index.php?action=allArticles" role="button">Accédez aux chapitres</a>
+      <a class="btn btn-info" href="index.php?action=edit&amp;id=<?= $data['id'] ?>" role="button">Éditer</a>
+      <a class="btn btn-danger" href="index.php?action=delete&amp;id=<?= $data['id'] ?>" role="button">Supprimer</a>
     </div>
   </div>
   <hr>

@@ -98,7 +98,7 @@
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>
-        <a href="admin/index.php">Connexion Admin</a>
+        <a href="index.php?action=admin">Connexion Admin</a>
       </div>
     </div>
     <p class="copyright">© Copyright 2019 Joseph Miskolci : Projet OpenClassRooms</p>

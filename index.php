@@ -14,7 +14,11 @@ try {
         if ($_GET['action'] == 'admin') {               AdminController::viewHomeAdmin(); }
         if ($_GET['action'] == 'viewWritingArticle') {  AdminController::viewWritingArticle(); }
         if ($_GET['action'] == 'postArticle') {         AdminController::addArticle(); }
-
+        if ($_GET['action'] == 'manageArticle') {       PostCommentsController::AllArticlesAdmin(); }
+        if ($_GET['action'] == 'edit') {                PostCommentsController::editPost($_GET['id']); }
+        if ($_GET['action'] == 'editArticle') {         AdminController::editArticle(); }
+        if ($_GET['action'] == 'delete') {              AdminController::viewDeleteArticle(); }
+        if ($_GET['action'] == 'deleteArticle') {       AdminController::editArticle(); }
     }
     else {
         HomeController::viewHome();
