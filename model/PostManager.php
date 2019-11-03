@@ -18,8 +18,8 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM posts ORDER BY creation_date DESC');
-
-        return $req;
+        $post = $req->fetch();
+        return $post;
     }
 
     public function getPost($postId)
@@ -31,4 +31,40 @@ class PostManager extends Manager
 
         return $post;
     }
-}
+
+    public function postArticle()
+    {
+      $db = $this->dbConnect();
+
+      if(isset($_POST['name']) AND isset($_POST['mytextarea'])) {
+      $title = $_POST['name'];
+      $content = $_POST['mytextarea'];
+      $req_connect = $db->prepare("INSERT INTO posts(title,content,creation_date) VALUES(?,?,NOW())");
+      $req_connect->execute(array($title,$content));
+      }
+    }
+
+   public function postEditedArticle()
+   {
+      $db = $this->dbConnect();
+
+      if(isset($_POST['name']) AND isset($_POST['mytextarea'])) {
+      $edit_id = htmlspecialchars($_GET['id']);
+      $req_connect = $db->prepare('UPDATE posts SET title = :titre, content = :content WHERE id = :id');
+      $req_connect->execute(array(
+       'titre' => $_POST['name'],
+       'content' => $_POST['mytextarea'],
+       'id' => $edit_id));
+      }
+    }
+
+  public function postDeleteArticle()
+  {
+    $db = $this->dbConnect();
+
+     $edit_id = htmlspecialchars($_GET['id']);
+     $req_connect = $db->prepare('DELETE FROM posts WHERE id = :id');
+     $req_connect->execute(array(
+      'id' => $edit_id));
+    }
+  }

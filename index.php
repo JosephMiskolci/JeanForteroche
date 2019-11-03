@@ -17,8 +17,9 @@ try {
         if ($_GET['action'] == 'manageArticle') {       PostCommentsController::AllArticlesAdmin(); }
         if ($_GET['action'] == 'edit') {                PostCommentsController::editPost($_GET['id']); }
         if ($_GET['action'] == 'editArticle') {         AdminController::editArticle(); }
-        if ($_GET['action'] == 'delete') {              AdminController::viewDeleteArticle(); }
-        if ($_GET['action'] == 'deleteArticle') {       AdminController::editArticle(); }
+        if ($_GET['action'] == 'delete') {              PostCommentsController::viewDeletePost($_GET['id']); }
+        if ($_GET['action'] == 'manageComments') {      AdminController::moderateComment(); }
+
     }
     else {
         HomeController::viewHome();

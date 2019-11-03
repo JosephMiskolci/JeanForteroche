@@ -496,6 +496,21 @@ footer {
   width: 50%;
 }
 
+.ArticleTitleDelete {
+  display: table;
+  margin: 0 auto;
+}
+
+.textArticleDelete {
+  display: table;
+  background: white;
+  border: 1px solid rgba(178, 190, 195, 0.87);
+  width: 50%;
+  margin: 10px auto 30px;
+  padding: 30px;
+  border-radius: 10px;
+}
+
 /* ------------------------------ 1173px / Desktop - 4K ------------------------------------*/
 @media screen and (min-width: 1173px) {
   #services-section {

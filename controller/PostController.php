@@ -45,6 +45,24 @@ class PostCommentsController {
     return $htmlPostInTemplate;
   }
 
+  static function viewDeletePost($id) {
+    if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
+
+    $postManager = new \JeanForteroche\Blog\Model\PostManager();
+    $post = $postManager->getPost($id);
+
+    $postView = getView('admin/deleteArticle.php', [
+      "post" => $post,
+    ]);
+
+    $htmlPostInTemplate = loadTemplateAdmin(
+      $postView,
+      $post['title'],
+      ["public/css/styleArticle.css"]
+    );
+    return $htmlPostInTemplate;
+  }
+
   static function AllArticles() {
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getAllPosts();
