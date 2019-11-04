@@ -39,11 +39,13 @@ class AdminController {
   }
 
   static function moderateComment() {
-    $postManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $posts = $postManager->getWaitingComments();
-    $postView = getView('admin/approveComments.php', $comments);
+    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+    $comments = $commentManager->getWaitingComments();
+    $postView = getView('admin/approveComments.php', [
+      "comments" => $comments
+    ]);
 
-    $htmlListPostsInTemplate = loadTemplateAdmin($htmlListPosts, "Modérer ou supprimer les commentaires - Blog de Jean Forteroche");
+    $htmlListPostsInTemplate = loadTemplateAdmin($postView, "Modérer ou supprimer les commentaires - Blog de Jean Forteroche");
     return $htmlListPostsInTemplate;
   }
   }
