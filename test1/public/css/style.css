@@ -1,0 +1,597 @@
+body {
+  margin: 0 auto;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: #F4F4F4;
+}
+
+#home-link, #slideshow-link, #services-link, #overview-link {
+  display: block;
+  position: relative;
+  visibility: hidden;
+}
+
+#slideshow-link {
+  top: 1px;
+}
+
+#services-link, #contacts-link {
+  bottom: 35px;
+}
+
+h3 {
+  font-size: 1.60rem;
+}
+
+/* ----------------------------- Navigation Bar -------------------------*/
+.navbar {
+  padding: 20px 13%;
+}
+
+.bg-dark {
+  background: none !important;
+  z-index: 2;
+}
+
+.nav-link {
+  color: white;
+}
+
+/* ------------------------- Slideshow Home -------------------------*/
+#slideshow-home {
+  height: 650px;
+  bottom: 260px;
+  width: 100%;
+}
+
+figure {
+  margin: 0;
+}
+
+.carousel-slides ul {
+  padding: 0;
+}
+
+.carousel-slides li img {
+  width: 100%;
+  height: 1000px;
+  object-fit: cover;
+  position: relative;
+  bottom: 350px;
+}
+
+.PresentationTextTop {
+  position: absolute;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  top: 7%;
+  width: 100%;
+}
+
+.PresentationText {
+  position: absolute;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  top: 470px;
+  width: 100%;
+}
+
+.PresentationText h3 {
+  font-size: 25px;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+.PresentationText h2 {
+  font-size: 70px;
+  margin-top: 30px;
+  font-weight: 600;
+}
+
+.AccessButtons {
+  margin-top: 30px;
+}
+
+.AccessButtons a {
+  margin-left: 20px;
+}
+
+.btn-outline-secondary {
+  color: white;
+}
+
+/* ------------------------------ Author's Biography -------------------------*/
+#biography {
+  height: 600px;
+  max-width: 1920px;
+  margin: 50px 5% 50px;
+}
+
+#biography img {
+  border-radius: 10px;
+  width: 100%;
+  object-fit: cover;
+  height: 600px;
+}
+
+.BiographyTitle {
+  position: relative;
+  bottom: 600px;
+  color: white;
+  text-align: center;
+  font-family: 'Homemade Apple', cursive;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6705217086834734) 31%, rgba(255, 255, 255, 0.0) 100%);
+  padding: 40px 20px 50px;
+  border-radius: 10px;
+}
+
+.BiographyText {
+  position: relative;
+  bottom: 350px;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.50) 71%, rgba(255, 255, 255, 0.0) 96%);
+  color: white;
+  border-radius: 10px;
+  padding: 40px 5% 20px;
+  font-size: 15px;
+}
+
+.BiographyText p {
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  min-height: 6em;
+  max-height: 6.2em;
+  line-height: 1.5rem;
+  font-size: 15px;
+}
+
+/* ------------------------------ Publications -------------------------*/
+#Publications, #social-medias {
+  padding: 50px 5% 50px;
+  border-radius: 10px;
+  background: rgba(223, 230, 233, 0.5);
+  margin: 0 auto;
+}
+
+.PublicationButton {
+  margin: 40px auto 0;
+  max-width: 1560px;
+}
+
+.PublicationsTitle, .social-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.Articles {
+  background: rgba(178, 190, 195, 0.17);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 1560px;
+  margin: 0 auto;
+  color: #2d3436;
+}
+
+.ArticleText {
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  min-height: 6em;
+  max-height: 6.2em;
+  line-height: 1.5rem;
+  font-size: 15px;
+}
+
+.Articles h3 {
+  padding: 10px 0px;
+  color: #2d3436;
+}
+
+.Articles h3 a {
+  color: #0984e3;
+  padding: 10px 0 0 50px;
+  font-size: 2rem;
+  font-family: 'Homemade Apple', cursive;
+}
+
+.ArticleDate {
+  position: relative;
+  bottom: 5px;
+  float: right;
+  font-size: 10px;
+}
+
+ hr {
+  width: 35%;
+}
+
+/* ------------------------------ Books -------------------------*/
+#MajorBooks {
+  max-width: 1920px;
+  height: 600px;
+  margin: 50px 5% 50px;
+}
+
+#MajorBooks img {
+  border-radius: 10px;
+  width: 100%;
+  object-fit: cover;
+  height: 600px;
+}
+
+.firstBook {
+  height: 400px;
+  margin-bottom: 20px;
+  display: block;
+  height: 400px;
+}
+
+.BookName {
+  position: relative;
+  bottom: 600px;
+  color: white;
+  text-align: center;
+  font-family: 'Homemade Apple', cursive;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6705217086834734) 31%, rgba(255, 255, 255, 0.0) 100%);
+  padding: 40px 20px 50px;
+  border-radius: 10px;
+}
+
+.BookName h3 {
+  font-size: 35px;
+}
+
+.BookText {
+  position: relative;
+  bottom: 339px;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.50) 71%, rgba(255, 255, 255, 0.0) 96%);
+  color: white;
+  border-radius: 10px;
+  padding: 40px 5% 20px;
+  font-size: 15px;
+  max-height: 300px;
+}
+
+.BookText p {
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  min-height: 6em;
+  max-height: 6.2em;
+  line-height: 1.5rem;
+  font-size: 15px;
+}
+
+.BookText a {
+  display: table;
+}
+
+.secondBook img {
+  object-fit: cover;
+  object-position: 10% 30%;
+}
+
+.thirdBook img {
+  object-fit: cover;
+  object-position: 10% 35%;
+}
+
+/* ------------------------------ Social Logos ------------------------------*/
+#social-medias {
+  max-height: 350px;
+  margin-bottom: 50px;
+}
+
+.social-logos {
+  display: table;
+  margin: 0 auto;
+}
+
+.social-title {
+  color: #2d3436;
+}
+
+.social-logos i {
+  padding: 40px 20px;
+  font-size: 50px;
+}
+
+/* ------------------------------ Footer ------------------------------------*/
+footer {
+  background-color: rgba(178, 190, 195, 0.57);
+  padding: 35px;
+  width: 100%;
+}
+
+.site-infos {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.site-infos p {
+  font-family: 'Homemade Apple', cursive;
+  margin-bottom: 8px;
+}
+
+.site-infos a {
+  color: #2d3436;
+  font-size: 14px;
+}
+
+.footer-address, .footer-admin {
+  font-size: 16px;
+  line-height: 150%;
+  display: table;
+  margin: 0 auto;
+}
+
+.copyright {
+  text-align: center;
+  margin: 20px 0 0;
+  line-height: 200%;
+  color: #2d3436;
+  font-size: 10px;
+}
+
+/* ------------------------------ 1173px / Desktop - 4K ------------------------------------*/
+@media screen and (min-width: 1173px) {
+  #services-section {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+
+  #overview {
+    max-width: 1485px;
+  }
+}
+
+/* ------------------------------ 948px ------------------------------------*/
+@media screen and (max-width: 948px) {
+  hr {
+    margin: 10px 0 10px 0px;
+  }
+
+  span {
+    font-size: 14px;
+  }
+
+  h4 {
+    margin: 10px 0 10px 0px;
+    padding: 0;
+    font-size: 15px;
+  }
+
+  .form {
+    height: auto;
+    width: 88%;
+    padding: 10px 10px 30px;
+  }
+
+  .form-text {
+    height: auto;
+  }
+
+  .logo-form img {
+    height: auto;
+    width: 180px;
+  }
+
+  .main-feature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .reservation {
+    height: auto;
+  }
+
+  .logo-form {
+    margin: 10px auto;
+    padding: 0;
+    width: 180px;
+    height: 80px;
+  }
+
+  #overview {
+    height: auto;
+    width: 79%;
+    padding: 10px;
+  }
+
+  .canvas-buttons {
+    margin: 10px auto;
+  }
+
+  #overview-link, #contacts-link {
+    top: 1px;
+  }
+}
+
+/* ------------------------------ 810px ------------------------------------*/
+@media screen and (max-width: 810px) {
+  .PresentationText {
+    top: 390px;
+  }
+
+/* ------------------------------ 768px ------------------------------------*/
+@media screen and (max-width: 768px) {
+  .BiographyText {
+    bottom: 350px;
+  }
+
+  #slideshow-link {
+    top: 1px;
+  }
+
+  #services-link, #contacts-link {
+    top: 0;
+    bottom: 0;
+  }
+
+  .PresentationText {
+    top: 280px;
+    padding: 0 12px;
+  }
+
+  .carousel-slides ul {
+    padding: 0;
+  }
+
+  .carousel-slides li {
+    position: absolute;
+    list-style: none;
+    height: 800px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .carousel-slides li img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .BookText {
+    bottom: 345px;
+  }
+
+  .footer-address, .footer-admin {
+    color: #2d3436;
+    font-size: 16px;
+    line-height: 150%;
+  }
+}
+
+/* ------------------------------ 488px ------------------------------------*/
+@media screen and (max-width: 488px) {
+  .carousel-slides li img {
+    object-fit: cover;
+    object-position: 30% 50%;
+  }
+
+  .PresentationText h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: 400;
+  }
+
+  .PresentationText h2 {
+    font-size: 50px;
+    margin-top: 30px;
+    font-weight: 600;
+  }
+
+  .AccessButtons a {
+    margin: 0 20px 20px;
+    font-size: 18px;
+  }
+
+  .BiographyText {
+    bottom: 400px;
+  }
+
+  .BiographyText a {
+    display: table;
+    margin: 0 auto;
+  }
+
+  .Articles h3 a {
+    text-align: center;
+    padding: 0;
+  }
+
+  .BookText a {
+    margin: 0 auto;
+    font-size: 0.9rem;
+  }
+
+  .social-logos i {
+    padding: 40px 20px;
+    font-size: 40px;
+  }
+
+  .carousel-text p {
+    font-size: 16px;
+  }
+
+  .Articles h3 a {
+    display: table;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .PublicationButton {
+    display: table;
+  }
+
+  .site-infos {
+    flex-direction: column;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .footer-admin {
+    margin-top: 50px;
+  }
+
+  #slideshow-link {
+    top: 300px;
+  }
+
+  .carousel-text {
+    height: 360px;
+    width: 71%;
+    margin-bottom: 10px;
+  }
+
+  #services-section {
+    margin-top: 70px;
+  }
+}
+
+/* ------------------------------ 376px ------------------------------------*/
+@media screen and (max-width: 376px) {
+  .BookText {
+    bottom: 345px;
+  }
+
+  .social-logos i {
+    padding: 30px 20px;
+    font-size: 30px;
+  }
+
+  #slideshow-link {
+    top: 400px;
+  }
+
+  #services-section {
+    margin-top: 195px;
+  }
+
+  .form {
+    height: 730px;
+  }
+
+  #overview h3 {
+    font-size: 1.6rem;
+  }
+
+  /* ------------------------------ 321px ------------------------------------*/
+  @media screen and (max-width: 321px) {
+    .BiographyText {
+      bottom: 425px;
+    }
+  }
