@@ -48,4 +48,23 @@ class AdminController {
     $htmlListPostsInTemplate = loadTemplateAdmin($postView, "Modérer ou supprimer les commentaires - Blog de Jean Forteroche");
     return $htmlListPostsInTemplate;
   }
+
+  static function validateComment() {
+    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+    $commentManager->confirmComments();
+    header("location: index.php?action=manageComments");
+  }
+
+  static function editComment() {
+    $adminManager = new \JeanForteroche\Blog\Model\CommentManager();
+    $adminManager->postEditedComment();
+    header("location: index.php?action=manageComments");
+  }
+
+  static function deleteComment() {
+    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+    $commentManager->supprComments();
+    header("location: index.php?action=manageComments");
+  }
+
   }

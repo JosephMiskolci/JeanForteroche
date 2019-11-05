@@ -56,7 +56,7 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Connexion</a>
+              <a class="nav-link" href="index.php?action=inscription">Connexion</a>
             </li>
           </ul>
         </div>
@@ -94,7 +94,7 @@
         <br>
         <a href="#">Contact</a>
         <br>
-        <a href="#">Connexion</a>
+        <a href="index.php?action=inscription">Connexion</a>
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>

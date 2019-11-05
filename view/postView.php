@@ -44,7 +44,7 @@
   <div class="Comment">
     <div class="Commentaries">
       <p class="CommentaryText">
-        <?= nl2br(htmlspecialchars($comment['comment'])) ?>
+        <?= nl2br(strip_tags($comment['comment'])) ?>
       </p>
       <p class="ArticleDate">Publié le <?= $comment['comment_date_fr'] ?> par <strong><?= htmlspecialchars($comment['author']) ?></strong></p>
     </div>

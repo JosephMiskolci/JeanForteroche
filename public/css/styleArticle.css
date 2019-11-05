@@ -440,7 +440,7 @@ footer {
   background-position: bottom;
 }
 
-.publishArticle h1, .AdminTopTitle h1 {
+.publishArticle h1, .TopTitle h1 {
   display: table;
   margin: 0 auto 50px;
   position: relative;
@@ -453,7 +453,7 @@ footer {
   border-radius: 10px;
 }
 
-.AdminTopTitle h1 {
+.TopTitle h1 {
   margin: 50px auto 50px;
 }
 
@@ -509,6 +509,34 @@ footer {
   margin: 10px auto 30px;
   padding: 30px;
   border-radius: 10px;
+}
+
+/* ------------------------------ Member's Area ------------------------------------*/
+.forminscriptioncore {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  margin: 50px auto 50px;
+}
+
+.forminscriptioncore form {
+  margin: 0px;
+}
+
+.forminscriptioncore h3 {
+  width: 30%;
+  line-height: 1.60;
+}
+
+.forminscriptioncore input {
+  padding: 15px;
+  width: 300px;
+  background: rgba(178, 190, 195, 0.47);
+}
+
+.validateinscription {
+  border: 1px solid #4cd137;
 }
 
 /* ------------------------------ 1173px / Desktop - 4K ------------------------------------*/

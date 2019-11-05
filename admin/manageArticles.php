@@ -1,4 +1,4 @@
-<section class="AdminTopTitle">
+<section class="TopTitle">
 <h1>Managez vos publications :</h1>
 </section>
 

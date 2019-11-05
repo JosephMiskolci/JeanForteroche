@@ -1,5 +1,4 @@
-
-<section class="AdminTopTitle">
+<section class="TopTitle">
 <h1>Bienvenue dans l'interface de gestion du blog de Jean Forteroche :</h1>
 </section>
 
@@ -21,7 +20,7 @@
 </section>
 
 <section id="Admin-half-width" class="EditCommWaitingAdmin">
-  <a class="linkAdmin" href="tinyMCE.html">
+  <a class="linkAdmin" href="index.php?action=manageComments">
   <div class="AdminHalfTitle">
     <h3>Modérer les commentaires en attente</h3>
   </div>

@@ -27,6 +27,23 @@ class PostCommentsController {
     return $htmlPostInTemplate;
   }
 
+  static function editComment($postId) {
+
+    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+    $comments = $commentManager->showComment($postId);
+
+    $postView = getView('admin/editComment.php', [
+      "comments" => $comments
+    ]);
+
+    $htmlPostInTemplate = loadTemplateAdmin(
+      $postView,
+      "Modifiez ce commentaire ! - Blog de Jean Forteroche",
+      ["public/css/styleArticle.css"]
+    );
+    return $htmlPostInTemplate;
+  }
+
   static function editPost($id) {
     if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
 

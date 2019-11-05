@@ -18,7 +18,13 @@ try {
         if ($_GET['action'] == 'edit') {                PostCommentsController::editPost($_GET['id']); }
         if ($_GET['action'] == 'editArticle') {         AdminController::editArticle(); }
         if ($_GET['action'] == 'delete') {              PostCommentsController::viewDeletePost($_GET['id']); }
+        if ($_GET['action'] == 'deleteArticle') {       AdminController::deleteArticle(); }
         if ($_GET['action'] == 'manageComments') {      AdminController::moderateComment(); }
+        if ($_GET['action'] == 'validateComment') {     AdminController::validateComment(); }
+        if ($_GET['action'] == 'moderate') {            PostCommentsController::editComment($_GET['id']); }
+        if ($_GET['action'] == 'postModerateComment') { AdminController::editComment(); }
+        if ($_GET['action'] == 'deleteComment') {       AdminController::deleteComment(); }
+        if ($_GET['action'] == 'inscription') {         MembersController::inscription(); }
 
     }
     else {
