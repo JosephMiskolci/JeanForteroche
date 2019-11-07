@@ -524,6 +524,10 @@ footer {
   margin: 0px;
 }
 
+.connexiontext {
+  width: 100% !important;
+}
+
 .forminscriptioncore h3 {
   width: 30%;
   line-height: 1.60;
@@ -537,6 +541,13 @@ footer {
 
 .validateinscription {
   border: 1px solid #4cd137;
+}
+
+.error_text {
+  position: absolute;
+  top: 290px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* ------------------------------ 1173px / Desktop - 4K ------------------------------------*/

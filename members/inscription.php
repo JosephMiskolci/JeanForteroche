@@ -8,17 +8,17 @@
       <table>
          <tr>
             <td>
-               <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" />
+               <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" />
             </td>
          </tr>
          <tr>
             <td>
-               <input type="email" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
+               <input type="email" placeholder="Votre mail" id="mail" name="mail" />
             </td>
          </tr>
          <tr>
             <td>
-               <input type="email" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
+               <input type="email" placeholder="Confirmez votre mail" id="mail2" name="mail2" />
             </td>
          </tr>
          <tr>
@@ -37,9 +37,4 @@
                   </div>
       </table>
    </form>
-   <?php
-   if(isset($erreur)) {
-      echo '<font color="red">'.$erreur."</font>";
-   }
-   ?>
 </div>

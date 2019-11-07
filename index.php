@@ -25,6 +25,7 @@ try {
         if ($_GET['action'] == 'postModerateComment') { AdminController::editComment(); }
         if ($_GET['action'] == 'deleteComment') {       AdminController::deleteComment(); }
         if ($_GET['action'] == 'inscription') {         MembersController::inscription(); }
+        if ($_GET['action'] == 'connexion') {           MembersController::connexion(); }
 
     }
     else {
