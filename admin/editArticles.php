@@ -1,5 +1,5 @@
 <section class="publishArticle">
-  <h1>Modifier votre article :</h1>
+  <h2>Modifier votre article :</h2>
 
     <form action="index.php?action=editArticle&amp;id=<?= $datas["post"]['id'] ?>" method="POST" onsubmit="">
       <div class="ArticleTitleText">

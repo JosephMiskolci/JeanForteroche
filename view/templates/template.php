@@ -56,7 +56,21 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?action=inscription">Connexion</a>
+              <a class="nav-link"
+                <?php
+                if(isset($_SESSION['id'])) {
+                  ?>
+                  href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
+                  <?php
+                   echo 'Votre profil, ' .$_SESSION['pseudo']. ' !';
+                }
+                else {
+                  ?>
+                  href="index.php?action=connexion">
+                  <?php
+                  echo 'Connexion';
+                }
+                ?></a>
             </li>
           </ul>
         </div>
@@ -94,7 +108,20 @@
         <br>
         <a href="#">Contact</a>
         <br>
-        <a href="index.php?action=inscription">Connexion</a>
+        <a <?php
+        if(isset($_SESSION['id'])) {
+          ?>
+          href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
+          <?php
+           echo 'Votre profil, ' .$_SESSION['pseudo']. ' !';
+        }
+        else {
+          ?>
+          href="index.php?action=connexion">
+          <?php
+          echo 'Connexion';
+        }
+        ?></a>
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>

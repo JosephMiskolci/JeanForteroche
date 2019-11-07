@@ -1,5 +1,5 @@
 <section class="publishArticle">
-  <h1>Publiez votre nouvel article :</h1>
+  <h2>Publiez votre nouvel article :</h2>
     <form action="index.php?action=postArticle" method="POST" onsubmit="">
       <div class="ArticleTitleText">
         <label for="ArticleTitle">Choisissez le titre de votre article :</label>

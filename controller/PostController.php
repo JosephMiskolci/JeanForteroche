@@ -6,6 +6,7 @@ require_once('model/CommentManager.php');
 class PostCommentsController {
 
   static function viewPost($id) {
+    session_start();
     if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
@@ -29,6 +30,7 @@ class PostCommentsController {
 
   static function editComment($postId) {
 
+    session_start();
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
     $comments = $commentManager->showComment($postId);
 
@@ -45,6 +47,7 @@ class PostCommentsController {
   }
 
   static function editPost($id) {
+    session_start();
     if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
@@ -63,6 +66,7 @@ class PostCommentsController {
   }
 
   static function viewDeletePost($id) {
+    session_start();
     if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
@@ -81,6 +85,7 @@ class PostCommentsController {
   }
 
   static function AllArticles() {
+    session_start();
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getAllPosts();
     $postView = getView('view/listArticles.php', ['posts' => $posts] );
@@ -94,6 +99,7 @@ class PostCommentsController {
   }
 
   static function AllArticlesAdmin() {
+    session_start();
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getAllPosts();
     $postView = getView('admin/manageArticles.php', ['posts' => $posts] );
@@ -106,12 +112,13 @@ class PostCommentsController {
     return $htmlPostInTemplate;
   }
 
-  static function addComment($postId, $author, $comment) {
-    if (isset($postId) && $postId > 0) {
-        if (!empty($author) && !empty($comment)) {
+  static function addComment() {
+    session_start();
+    if (isset($_GET['id']) && $_GET['id'] > 0) {
+        if (!empty($_POST['comment'])) {
           $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
           $commentManager->postComment($postId, $author, $comment);
-          header("location: index.php?action=post&id=" .$postId);
+          header("location: index.php?action=post&id=" .$_GET['id']);
 
         }
         else {

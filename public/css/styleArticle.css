@@ -158,13 +158,24 @@ figure {
   font-size: 30px;
 }
 
-.Commentaries {
+.Commentaries, .CommentariesError {
   background: rgba(178, 190, 195, 0.17);
   border-radius: 10px;
   padding: 20px;
   width: 70%;
   margin: 0 auto;
   color: #2d3436;
+}
+
+.CommentariesError {
+  margin-bottom: 50px;
+  font-size: 25px;
+  border: 1px solid rgba(214, 48, 49,1.0);
+}
+
+.CommentariesError p {
+  display: table;
+  margin: 0 auto;
 }
 
 #Publications {
@@ -236,6 +247,10 @@ hr {
   font-size: 10px;
 }
 
+.ArticleLikes {
+  position: absolute;
+}
+
 .CommentsPost {
   margin-top: 50px;
 }
@@ -259,7 +274,6 @@ label {
 }
 
 .message-form p {
-  padding-top: 50px;
   margin: 0 auto;
   width: 80%;
 }
@@ -440,7 +454,7 @@ footer {
   background-position: bottom;
 }
 
-.publishArticle h1, .TopTitle h1 {
+.publishArticle h1, .TopTitle h1, .publishArticle h2, .TopTitle h2 {
   display: table;
   margin: 0 auto 50px;
   position: relative;
@@ -453,7 +467,7 @@ footer {
   border-radius: 10px;
 }
 
-.TopTitle h1 {
+.TopTitle h1, .TopTitle h2 {
   margin: 50px auto 50px;
 }
 
@@ -524,16 +538,12 @@ footer {
   margin: 0px;
 }
 
-.connexiontext {
-  width: 100% !important;
-}
-
 .forminscriptioncore h3 {
   width: 30%;
   line-height: 1.60;
 }
 
-.forminscriptioncore input {
+.forminscriptioncore input, .FormEditionProfile input {
   padding: 15px;
   width: 300px;
   background: rgba(178, 190, 195, 0.47);
@@ -550,6 +560,44 @@ footer {
   transform: translate(-50%, -50%);
 }
 
+.inscriptionbutton {
+  display: table;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  background-color: rgba(0, 184, 148,0.7);
+  border: none;
+  padding: 10px;
+}
+
+.ProfileText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: rgba(178, 190, 195, 0.17);
+  padding: 20px;
+  border-radius: 10px;
+  width: 55%;
+  margin: 0 auto 50px;
+}
+
+.editionProfile {
+  display: table;
+  margin: 0 auto;
+}
+
+.FormEditionProfile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ProfileCommentaries, .ProfileInformations {
+  margin: auto 50px ;
+}
+
+.FormEditionProfile form {
+  margin: 0 50px 0;
+}
 /* ------------------------------ 1173px / Desktop - 4K ------------------------------------*/
 @media screen and (min-width: 1173px) {
   #services-section {

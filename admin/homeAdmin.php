@@ -1,3 +1,8 @@
+<?php
+if($_SESSION['admin'] == "1")
+{
+?>
+
 <section class="TopTitle">
 <h1>Bienvenue dans l'interface de gestion du blog de Jean Forteroche :</h1>
 </section>
@@ -6,7 +11,7 @@
 <section id="Admin-half-width" class="WriteArticleAdmin">
   <a class="linkAdmin" href="index.php?action=viewWritingArticle">
   <div class="AdminHalfTitle">
-    <h2>Rédiger un article</h2>
+    <h3>Rédiger un article</h3>
   </div>
 </a>
 </section>
@@ -35,3 +40,8 @@
 </a>
 </section>
 </div>
+<?php
+} else {
+ echo 'Vous ne pouvez pas accéder à cette partie du site';
+}
+?>

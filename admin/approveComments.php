@@ -1,5 +1,5 @@
 <section class="TopTitle">
-<h1>Managez vos publications :</h1>
+<h2>Managez vos publications :</h2>
 </section>
 
 <section id="Publications">

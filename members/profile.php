@@ -1,17 +1,24 @@
-<div align="center">
-         <h2>Profil de <?php echo $userinfo['pseudo']; ?></h2>
-         <br /><br />
-         Pseudo = <?php echo $userinfo['pseudo']; ?>
-         <br />
-         Mail = <?php echo $userinfo['mail']; ?>
-         <br />
-         <?php
-         if(isset($_SESSION['id']) AND $userinfo['id'] == $_SESSION['id']) {
-         ?>
-         <br />
-         <a href="editionprofil.php">Editer mon profil</a>
-         <a href="deconnexion.php">Se déconnecter</a>
-         <?php
-         }
-         ?>
-      </div>
+<section class="TopTitle">
+  <h2>Profil de <?php echo $_SESSION['pseudo']; ?></h2>
+</section>
+<section class="ProfileText">
+  
+  <div class="ProfileCommentaries">
+    Pseudo = <?php echo $_SESSION['pseudo']; ?>
+    <br />
+    Mail = <?php echo $_SESSION['mail']; ?>
+    <br /><br />
+  </div>
+
+  <div class="ProfileInformations">
+  Pseudo = <?php echo $_SESSION['pseudo']; ?>
+  <br />
+  Mail = <?php echo $_SESSION['mail']; ?>
+  <br /><br />
+  <div class="editionProfile">
+    <a href="index.php?action=edition&amp;id=<?= $_SESSION['id'] ?>">Éditer mon profil</a>
+    <br />
+    <a href="index.php?action=disconnect">Se déconnecter</a>
+  </div>
+    </div>
+</section>
