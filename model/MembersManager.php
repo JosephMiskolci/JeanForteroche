@@ -23,20 +23,35 @@ class MembersManager extends Manager
             if($pseudolength <= 255) {
                if($mail == $mail2) {
                   if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+
                      $reqmail = $db->prepare("SELECT * FROM member_space WHERE mail = ?");
                      $reqmail->execute(array($mail));
                      $mailexist = $reqmail->rowCount();
                      if($mailexist == 0) {
                         if($mdp == $mdp2) {
-                           $insertmbr = $db->prepare("INSERT INTO member_space (pseudo, mail, password) VALUES(?, ?, ?)");
-                           $insertmbr->execute(array($pseudo, $mail, $mdpHached));
-                           $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
-                           echo " <p class='error_text'>$erreur </p>";
+
+                          if(filter_var($pseudo, FILTER_VALIDATE_EMAIL)) {
+                             $reqpseudo = $db->prepare("SELECT * FROM member_space WHERE pseudo = ?");
+                             $reqpsuedo->execute(array($pseudo));
+                             $pseudoexist = $reqpseudo->rowCount();
+                             if($pseudoexist == 0) {
+
+                               $insertmbr = $db->prepare("INSERT INTO member_space (pseudo, mail, password) VALUES(?, ?, ?)");
+                               $insertmbr->execute(array($pseudo, $mail, $mdpHached));
+                               $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
+                               echo " <p class='error_text'>$erreur </p>";
+
                         } else {
                            $erreur = "Vos mots de passes ne correspondent pas !";
                            echo " <p class='error_text'>$erreur </p>";
                         }
-                     } else {
+                     }
+                     else {
+                        $erreur = "Pseudo déjà utilisé !";
+                        echo " <p class='error_text'>$erreur </p>";
+                      }
+                    }
+                     else {
                         $erreur = "Adresse mail déjà utilisée !";
                         echo " <p class='error_text'>$erreur </p>";
                      }
@@ -58,6 +73,7 @@ class MembersManager extends Manager
          }
       }
     }
+  }
 
   public function membersConnexion()
     {
@@ -86,10 +102,10 @@ class MembersManager extends Manager
                       {
                           $_SESSION['id'] = $resultat['id'];
                           $_SESSION['pseudo'] = $resultat['pseudo'];
+                          $_SESSION['mail'] = $resultat['mail'];
                           $_SESSION['password'] = $resultat['password'];
                           $erreur = 'Vous êtes connecté ! :-)<br/>';
                           echo " <p class='error_text'>$erreur </p>";
-                          header("Location: profil.php?id=".$_SESSION['id']);
                       }
                       $req->closeCursor();
                   }
@@ -100,4 +116,43 @@ class MembersManager extends Manager
                   }
                 }
               }
-            }
+
+    public function membersProfile()
+      {
+        $db = $this->dbConnect();
+
+        if(isset($_GET['id']) AND $_GET['id'] > 0) {
+            $getid = intval($_GET['id']);
+            $requser = $db->prepare('SELECT * FROM membres WHERE id = ?');
+            $requser->execute(array($getid));
+      }
+    }
+
+    public function membersDisconnect()
+        {
+          $_SESSION = array();
+          session_destroy();
+        }
+
+    public function membersEdition()
+        {
+          $db = $this->dbConnect();
+
+          if(isset($_SESSION['id'])) {
+            $requser = $db->prepare("SELECT * FROM member_space WHERE id = ?");
+            $requser->execute(array($_SESSION['id']));
+            $user = $requser->fetch();
+              if(isset($_POST['newmdp1']) AND !empty($_POST['newmdp1']) AND isset($_POST['newmdp2']) AND !empty($_POST['newmdp2'])) {
+                $mdp1Hached = password_hash($_POST['newmdp1'], PASSWORD_DEFAULT);
+                $mdp2Hached = password_hash($_POST['newmdp2'], PASSWORD_DEFAULT);
+                if($_POST['newmdp1'] == $_POST['newmdp2']) {
+                  $insertmdp = $db->prepare("UPDATE member_space SET password = ? WHERE id = ?");
+                  $insertmdp->execute(array($mdp1Hached, $_SESSION['id']));
+                  header('index.php?action=profile&id'.$_SESSION['id']);
+                } else {
+                  $msg = "Vos deux mdp ne correspondent pas !";
+                }
+              }
+              }
+        }
+}

@@ -11,14 +11,16 @@
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="./public/css/styleArticle.css">
-  <script src="https://cdn.tiny.cloud/1/0okxd6h1z339m6jxcpm75mopcnf8uevzsdrg19ultrmq3qhc/tinymce/5/tinymce.min.js"></script>
-  <script>
-  tinymce.init({
-    selector: '#mytextarea',
-    height : "600px"
-  });
-  </script>
+  <?php
+  if ($css_files == null) {
+    echo '<link rel="stylesheet" href="public/css/style.css">';
+  }
+  else {
+    foreach ($css_files as $css) {
+      echo '<link rel="stylesheet" href="' . $css .'">';
+    }
+  }
+  ?>
 
   <!-- Google Fonts + Favicon -->
 
@@ -39,10 +41,36 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.php?action=admin">Accueil Admin</a>
+              <a class="nav-link" href="index.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../index.php">Déconnexion Admin</a>
+              <a class="nav-link" href="index.php?action=bibliography">Auteur</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?action=allArticles">Publications</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Ouvrages</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                <?php
+                if(isset($_SESSION['id'])) {
+                  ?>
+                  href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
+                  <?php
+                   echo 'Votre profil, ' .$_SESSION['pseudo']. ' !';
+                }
+                else {
+                  ?>
+                  href="index.php?action=connexion">
+                  <?php
+                  echo 'Connexion';
+                }
+                ?></a>
             </li>
           </ul>
         </div>
@@ -59,11 +87,11 @@
     <div class="site-infos">
       <div class="footer-address">
         <p>Plan du site :</p>
-        <a href="#">Accueil</a>
+        <a href="index.php">Accueil</a>
         <br>
-        <a href="#">Auteur</a>
+        <a href="index.php?action=bibliography">Auteur</a>
         <br>
-        <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles">Publications</a>
+        <a href="index.php?action=allArticles">Publications</a>
         <br>
         <a href="#">Ouvrages</a>
         <br>
@@ -86,7 +114,7 @@
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>
-        <a href="#">Connexion Admin</a>
+        <a href="index.php?action=admin">Connexion Admin</a>
       </div>
     </div>
     <p class="copyright">© Copyright 2019 Joseph Miskolci : Projet OpenClassRooms</p>

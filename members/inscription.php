@@ -1,6 +1,6 @@
 <div class="forminscription">
   <section class="TopTitle">
-  <h1>Inscription</h1>
+  <h2>Inscription</h2>
   </section>
    <div class="forminscriptioncore">
    <h3>Créez un compte pour écrire des commentaires et partager votre avis sur les articles de Jean Forteroche !</h3>

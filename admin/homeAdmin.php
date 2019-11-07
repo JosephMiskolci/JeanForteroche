@@ -6,7 +6,7 @@
 <section id="Admin-half-width" class="WriteArticleAdmin">
   <a class="linkAdmin" href="index.php?action=viewWritingArticle">
   <div class="AdminHalfTitle">
-    <h2>Rédiger un article</h2>
+    <h3>Rédiger un article</h3>
   </div>
 </a>
 </section>

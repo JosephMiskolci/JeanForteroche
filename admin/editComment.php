@@ -1,5 +1,5 @@
 <section class="publishArticle">
-  <h1>Modifier ce commentaire :</h1>
+  <h2>Modifier ce commentaire :</h2>
 
   <?php
   while ($comment = $datas["comments"]->fetch())
