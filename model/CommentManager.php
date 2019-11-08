@@ -51,7 +51,7 @@ class CommentManager extends Manager
         );
 
         return $confirmedComment;
-    }
+  }
 
   public function postEditedComment()
   {
@@ -64,7 +64,7 @@ class CommentManager extends Manager
        'id' => $comment_id));
 
       return $req_connect;
-  }
+}
 
   public function supprComments()
   {
@@ -76,13 +76,11 @@ class CommentManager extends Manager
       'id' => $edit_id));
     }
 
-    public function postComment()
+    public function postComment($postId, $author, $comment)
     {
-
         $db = $this->dbConnect();
-
         $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, validated, comment_date) VALUES(?, ?, ?, "0", NOW())');
-        $commentedLines = $comments->execute(array($_GET['id'], $_SESSION['pseudo'], $_POST['comment']));
+        $commentedLines = $comments->execute(array($postId, $author, $comment));
 
         return $commentedLines;
     }

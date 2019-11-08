@@ -1,8 +1,3 @@
-<?php
-if($_SESSION['admin'] == "1")
-{
-?>
-
 <section class="TopTitle">
 <h1>Bienvenue dans l'interface de gestion du blog de Jean Forteroche :</h1>
 </section>
@@ -40,8 +35,3 @@ if($_SESSION['admin'] == "1")
 </a>
 </section>
 </div>
-<?php
-} else {
- echo 'Vous ne pouvez pas accéder à cette partie du site';
-}
-?>

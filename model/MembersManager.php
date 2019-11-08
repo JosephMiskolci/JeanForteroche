@@ -92,6 +92,7 @@ class MembersManager extends Manager
 
                       $resultat = $req->fetch();
 
+
                       if (!$resultat OR !password_verify($_POST['mdpconnect'], $resultat['password']))
                       {
                           $erreur = 'Identifiant ou Mot De Passe incorrect.<br/>';
@@ -103,7 +104,6 @@ class MembersManager extends Manager
                           $_SESSION['pseudo'] = $resultat['pseudo'];
                           $_SESSION['mail'] = $resultat['mail'];
                           $_SESSION['password'] = $resultat['password'];
-                          $_SESSION['admin'] = $resultat['admin'];
                           $erreur = 'Vous êtes connecté ! :-)<br/>';
                           echo " <p class='error_text'>$erreur </p>";
                       }
