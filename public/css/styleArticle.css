@@ -158,13 +158,24 @@ figure {
   font-size: 30px;
 }
 
-.Commentaries {
+.Commentaries, .CommentariesError {
   background: rgba(178, 190, 195, 0.17);
   border-radius: 10px;
   padding: 20px;
   width: 70%;
   margin: 0 auto;
   color: #2d3436;
+}
+
+.CommentariesError {
+  margin-bottom: 50px;
+  font-size: 25px;
+  border: 1px solid rgba(214, 48, 49,1.0);
+}
+
+.CommentariesError p {
+  display: table;
+  margin: 0 auto;
 }
 
 #Publications {
@@ -236,6 +247,10 @@ hr {
   font-size: 10px;
 }
 
+.ArticleLikes {
+  position: absolute;
+}
+
 .CommentsPost {
   margin-top: 50px;
 }
@@ -259,7 +274,6 @@ label {
 }
 
 .message-form p {
-  padding-top: 50px;
   margin: 0 auto;
   width: 80%;
 }

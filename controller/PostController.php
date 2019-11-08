@@ -112,13 +112,13 @@ class PostCommentsController {
     return $htmlPostInTemplate;
   }
 
-  static function addComment($postId, $author, $comment) {
+  static function addComment() {
     session_start();
-    if (isset($postId) && $postId > 0) {
-        if (!empty($author) && !empty($comment)) {
+    if (isset($_GET['id']) && $_GET['id'] > 0) {
+        if (!empty($_POST['comment'])) {
           $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
           $commentManager->postComment($postId, $author, $comment);
-          header("location: index.php?action=post&id=" .$postId);
+          header("location: index.php?action=post&id=" .$_GET['id']);
 
         }
         else {
