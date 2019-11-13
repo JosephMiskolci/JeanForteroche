@@ -23,8 +23,21 @@ class CommentManager extends Manager
         $comments->execute(array(
           'id' => $comment_id)
         );
-
         return $comments;
+    }
+
+
+    public function getUserComment($user_name)
+    {
+      $db = $this->dbConnect();
+      $comments = $db->query('SELECT c.author, c.id AS com_id, c.comment, c.validated, c.comment_date, p.title
+                              FROM comments c
+                              INNER JOIN posts p
+                              ON c.post_id = p.id
+                              WHERE c.author = "' .$user_name. '"
+                              ORDER BY comment_date DESC');
+
+      return $comments;
     }
 
     public function getWaitingComments()
@@ -51,7 +64,7 @@ class CommentManager extends Manager
         );
 
         return $confirmedComment;
-  }
+    }
 
   public function postEditedComment()
   {
@@ -64,23 +77,23 @@ class CommentManager extends Manager
        'id' => $comment_id));
 
       return $req_connect;
-}
+  }
 
   public function supprComments()
-  {
-    $db = $this->dbConnect();
+    {
+      $db = $this->dbConnect();
 
-     $edit_id = htmlspecialchars($_GET['id']);
-     $req_connect = $db->prepare('DELETE FROM comments WHERE id = :id');
-     $req_connect->execute(array(
-      'id' => $edit_id));
+      $edit_id = htmlspecialchars($_GET['id']);
+      $req_connect = $db->prepare('DELETE FROM comments WHERE id = :id');
+      $req_connect->execute(array(
+        'id' => $edit_id));
     }
 
-    public function postComment($postId, $author, $comment)
+    public function postComment()
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, validated, comment_date) VALUES(?, ?, ?, "0", NOW())');
-        $commentedLines = $comments->execute(array($postId, $author, $comment));
+        $commentedLines = $comments->execute(array($_GET['id'], $_SESSION['pseudo'], $_POST['comment']));
 
         return $commentedLines;
     }

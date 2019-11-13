@@ -6,7 +6,7 @@ require_once('model/CommentManager.php');
 class PostCommentsController {
 
   static function viewPost($id) {
-    session_start();
+
     if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
@@ -30,11 +30,11 @@ class PostCommentsController {
 
   static function editComment($postId) {
 
-    session_start();
+    
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
     $comments = $commentManager->showComment($postId);
 
-    $postView = getView('admin/editComment.php', [
+    $postView = getView('view/admin/editComment.php', [
       "comments" => $comments
     ]);
 
@@ -46,14 +46,32 @@ class PostCommentsController {
     return $htmlPostInTemplate;
   }
 
+  static function editCommentbyUser($postId) {
+
+
+    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+    $comments = $commentManager->showComment($postId);
+
+    $postView = getView('view/members/editCommentbyUser.php', [
+      "comments" => $comments
+    ]);
+
+    $htmlPostInTemplate = loadTemplateMember(
+      $postView,
+      "Modifiez ce commentaire ! - Blog de Jean Forteroche",
+      ["public/css/styleArticle.css"]
+    );
+    return $htmlPostInTemplate;
+  }
+
   static function editPost($id) {
-    session_start();
+
     if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $post = $postManager->getPost($id);
 
-    $postView = getView('admin/editArticles.php', [
+    $postView = getView('view/admin/editArticles.php', [
       "post" => $post,
     ]);
 
@@ -66,13 +84,13 @@ class PostCommentsController {
   }
 
   static function viewDeletePost($id) {
-    session_start();
+
     if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $post = $postManager->getPost($id);
 
-    $postView = getView('admin/deleteArticle.php', [
+    $postView = getView('view/admin/deleteArticle.php', [
       "post" => $post,
     ]);
 
@@ -85,7 +103,7 @@ class PostCommentsController {
   }
 
   static function AllArticles() {
-    session_start();
+
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getAllPosts();
     $postView = getView('view/listArticles.php', ['posts' => $posts] );
@@ -99,10 +117,10 @@ class PostCommentsController {
   }
 
   static function AllArticlesAdmin() {
-    session_start();
+
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getAllPosts();
-    $postView = getView('admin/manageArticles.php', ['posts' => $posts] );
+    $postView = getView('view/admin/manageArticles.php', ['posts' => $posts] );
 
     $htmlPostInTemplate = loadTemplateAdmin(
       $postView,
@@ -112,13 +130,13 @@ class PostCommentsController {
     return $htmlPostInTemplate;
   }
 
-  static function addComment($postId, $author, $comment) {
-    session_start();
-    if (isset($postId) && $postId > 0) {
-        if (!empty($author) && !empty($comment)) {
+  static function addComment() {
+
+    if (isset($_GET['id']) && $_GET['id'] > 0) {
+        if (!empty($_POST['comment'])) {
           $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
           $commentManager->postComment($postId, $author, $comment);
-          header("location: index.php?action=post&id=" .$postId);
+          header("location: index.php?action=post&id=" .$_GET['id']);
 
         }
         else {

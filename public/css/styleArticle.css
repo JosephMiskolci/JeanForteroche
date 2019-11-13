@@ -140,7 +140,7 @@ figure {
   max-height: 100px;
 }
 
-/* ------------------------------ Comments -------------------------*/
+/* ------------------------------ Articles + Comments -------------------------*/
 .CommentsName {
   display: table;
   margin: 0 auto 50px;
@@ -158,13 +158,24 @@ figure {
   font-size: 30px;
 }
 
-.Commentaries {
+.Commentaries, .CommentariesError {
   background: rgba(178, 190, 195, 0.17);
   border-radius: 10px;
   padding: 20px;
   width: 70%;
   margin: 0 auto;
   color: #2d3436;
+}
+
+.CommentariesError {
+  margin-bottom: 50px;
+  font-size: 25px;
+  border: 1px solid rgba(214, 48, 49,1.0);
+}
+
+.CommentariesError p {
+  display: table;
+  margin: 0 auto;
 }
 
 #Publications {
@@ -191,13 +202,27 @@ figure {
   margin-bottom: 25px;
 }
 
-.Articles {
+.Articles, .ErrorMessage {
   background: rgba(178, 190, 195, 0.17);
   border-radius: 10px;
   padding: 20px;
   max-width: 1560px;
   margin: 0 auto;
   color: #2d3436;
+}
+
+.ErrorMessage {
+  margin: 100px auto;
+  padding: 80px;
+  font-size: 40px;
+  display: table;
+  border: 1px solid rgba(214, 48, 49,1.0);
+}
+
+.fa-exclamation-triangle {
+  font-size: 120px;
+  display: table;
+  margin: 0 auto 30px;
 }
 
 .ArticleText {
@@ -236,6 +261,10 @@ hr {
   font-size: 10px;
 }
 
+.ArticleLikes {
+  position: absolute;
+}
+
 .CommentsPost {
   margin-top: 50px;
 }
@@ -259,7 +288,6 @@ label {
 }
 
 .message-form p {
-  padding-top: 50px;
   margin: 0 auto;
   width: 80%;
 }
@@ -409,12 +437,13 @@ footer {
   background-repeat: no-repeat;
 }
 
-.EditArticleAdmin {
-  background: linear-gradient(rgba(247, 159, 31, 0.1),
-      rgba(247, 159, 31, 0.8)), url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/EditArticle.jpg");
+.EditMembersAdmin {
+  background: linear-gradient(rgba(27, 20, 100, 0.1),
+        rgba(27, 20, 100, 0.8)), url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/PeopleChatting.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: center;
+
 }
 
 .DeleteArticleAdmin {
@@ -433,8 +462,8 @@ footer {
 }
 
 .EditCommPostedAdmin {
-  background: linear-gradient(rgba(27, 20, 100, 0.1),
-      rgba(27, 20, 100, 0.8)), url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/PublishedComments.jpg");
+  background: linear-gradient(rgba(247, 159, 31, 0.1),
+      rgba(247, 159, 31, 0.8)), url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/PublishedComments.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -457,13 +486,13 @@ footer {
   margin: 50px auto 50px;
 }
 
-.publishArticle {
-  padding: 50px 5% 110px;
+.publishArticle h3 {
+  display: table;
+  margin: 0 auto 30px;
 }
 
-.publishArticle label {
-  display: table;
-  margin: 0 auto;
+.publishArticle {
+  padding: 50px 5% 110px;
 }
 
 .publishArticle label {
@@ -556,6 +585,15 @@ footer {
 }
 
 .ProfileText {
+  display: table;
+  background: rgba(178, 190, 195, 0.17);
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  margin: 0 auto 50px;
+}
+
+.ProfileEdit {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -566,9 +604,9 @@ footer {
   margin: 0 auto 50px;
 }
 
-.editionProfile {
+.editionProfile, .ProfileInformations p {
   display: table;
-  margin: 0 auto;
+  margin: 0 auto 5px;
 }
 
 .FormEditionProfile {
@@ -577,7 +615,7 @@ footer {
   justify-content: space-between;
 }
 
-.ProfileCommentaries, .ProfileInformations {
+.ProfileCommentaries, .ProfileInformations, .CommentsInformations {
   margin: auto 50px ;
 }
 

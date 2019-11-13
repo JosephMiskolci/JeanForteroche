@@ -19,7 +19,6 @@ function loadTemplate($content, $title, $css_files = null) {
 function loadTemplateMember($content, $title, $css_files = null) {
   require("view/templates/templateMember.php");
 }
-
 function loadTemplateAdmin($content, $title, $css_files = null) {
   require("view/templates/templateAdmin.php");
 }

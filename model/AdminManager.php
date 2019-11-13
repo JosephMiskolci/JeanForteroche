@@ -43,4 +43,74 @@ class AdminManager extends Manager
       'id' => $edit_id));
   }
  }
+
+  public function getAllUsers()
+ {
+     $db = $this->dbConnect();
+     $getAllUsers = $db->query('SELECT * FROM member_space ORDER BY date_creation DESC');
+
+     return $getAllUsers;
+ }
+
+ public function validAdminUsers()
+ {
+     $db = $this->dbConnect();
+
+     $comment_id = htmlspecialchars($_GET['id']);
+     $comments = $db->prepare('UPDATE member_space SET admin = "1" WHERE id = :id');
+     $confirmedComment = $comments->execute(array(
+       'id' => $comment_id)
+     );
+
+     return $confirmedComment;
+ }
+
+ public function unvalidAdminUsers()
+ {
+     $db = $this->dbConnect();
+
+     $comment_id = htmlspecialchars($_GET['id']);
+     $comments = $db->prepare('UPDATE member_space SET admin = "0" WHERE id = :id');
+     $confirmedComment = $comments->execute(array(
+       'id' => $comment_id)
+     );
+
+     return $confirmedComment;
+ }
+
+ public function validModeratorUsers()
+ {
+     $db = $this->dbConnect();
+
+     $comment_id = htmlspecialchars($_GET['id']);
+     $comments = $db->prepare('UPDATE member_space SET moderator = "1" WHERE id = :id');
+     $confirmedComment = $comments->execute(array(
+       'id' => $comment_id)
+     );
+
+     return $confirmedComment;
+ }
+
+ public function unvalidModeratorUsers()
+ {
+     $db = $this->dbConnect();
+
+     $comment_id = htmlspecialchars($_GET['id']);
+     $comments = $db->prepare('UPDATE member_space SET moderator = "0" WHERE id = :id');
+     $confirmedComment = $comments->execute(array(
+       'id' => $comment_id)
+     );
+
+     return $confirmedComment;
+ }
+
+ public function DeleteUsers()
+ {
+   $db = $this->dbConnect();
+
+    $edit_id = htmlspecialchars($_GET['id']);
+    $req_connect = $db->prepare('DELETE FROM member_space WHERE id = :id');
+    $req_connect->execute(array(
+     'id' => $edit_id));
+   }
 }

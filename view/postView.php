@@ -51,7 +51,6 @@
     <hr>
     </hr>
   </div>
-
   <?php
 }
 $datas["comments"]->closeCursor();
@@ -61,18 +60,12 @@ $datas["comments"]->closeCursor();
     <h2>Postez votre commentaire !</h2>
   </div>
 
+  <?php
+    if(isset($_SESSION['pseudo']))
+      {
+  ?>
   <form action="index.php?action=addComment&amp;id=<?= $datas["post"]['id'] ?>" method="post">
     <div class="name-form-and-email-form">
-      <p>
-        <div class="name-form">
-          <label for="pseudo">Pseudo :</label>
-          <input type="text" name="author" id="author" />
-        </div>
-        <div class="email-form">
-          <label for="pass">Courriel :</label>
-          <input type="email" name="email">
-        </div>
-      </p>  
     </div>
     <div class="message-form">
       <p>
@@ -80,10 +73,20 @@ $datas["comments"]->closeCursor();
           Message :
         </label>
         <br />
-        <textarea name="comment" id="comment" rows="10">
-     </textarea>
+        <textarea name="comment" id="comment" rows="10"></textarea>
       </p>
     </div>
         <input type="submit" class="btn btn-secondary comment-sending" value="Publiez votre message !">
   </form>
 </section>
+<?php
+} else {
+?>
+  <div class="name-form-and-email-form">
+      <div class="CommentariesError">
+        <p> Vous devez être connecté pour publier un commentaire ! </p>
+        </div>
+        </div>
+  <?php
+}
+?>

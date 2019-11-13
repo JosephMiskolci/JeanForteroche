@@ -42,7 +42,7 @@
               <a class="nav-link" href="index.php?action=admin">Accueil Admin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../index.php">Déconnexion Admin</a>
+              <a class="nav-link" href="index.php?action=disconnect">Déconnexion Admin</a>
             </li>
           </ul>
         </div>
@@ -86,7 +86,7 @@
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>
-        <a href="#">Connexion Admin</a>
+        <a href="index.php?action=disconnect">Déconnexion Admin</a>
       </div>
     </div>
     <p class="copyright">© Copyright 2019 Joseph Miskolci : Projet OpenClassRooms</p>
