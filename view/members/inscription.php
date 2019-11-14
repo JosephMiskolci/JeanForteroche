@@ -34,7 +34,7 @@
             <td align="center">
                <br />
                <input class="validateinscription" type="submit" name="forminscription" value="Je m'inscris" />
-                  </div>
-      </table>
+      </div>
+        </table>
    </form>
 </div>

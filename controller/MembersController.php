@@ -18,6 +18,7 @@ class MembersController {
     $comments = $commentManager->membersConnexion();
     $htmlListPosts = getView('view/members/connexion.php', null);
     $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Connectez-vous sur le blog de Jean Forteroche",["public/css/styleArticle.css"]);
+    header('index.php?action=profile&id' . $_SESSION['id']);
     return $htmlListPostsInTemplate;
   }
 
@@ -44,7 +45,7 @@ class MembersController {
   }
 
   static function memberEdition() {
-    
+
     $commentManager = new \JeanForteroche\Blog\Model\MembersManager();
     $comments = $commentManager->membersEdition();
     $htmlinscription = getView('view/members/editProfile.php', null);

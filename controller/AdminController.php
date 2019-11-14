@@ -10,7 +10,7 @@ class AdminController {
   Affiche la page avec la liste des posts dans un template
   */
   static function viewHomeAdmin() {
-    
+
     $htmlListPosts = getView('view/admin/homeAdmin.php', null);
     $htmlListPostsInTemplate = loadTemplateAdmin($htmlListPosts, "Page d'administration du blog de Jean Forteroche");
     return $htmlListPostsInTemplate;
@@ -136,5 +136,4 @@ class AdminController {
     $users = $usersManager->deleteUsers();
     header("location: index.php?action=manageUsers");
   }
-
-  }
+}

@@ -7,7 +7,13 @@ class PostCommentsController {
 
   static function viewPost($id) {
 
-    if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
+    if (!isset($id)) { ?>
+    <script>
+      alert("Aucun identifiant de billet envoyé");
+      window.location.replace('index.php?action=allArticles');
+      </script>
+      <?php
+    }
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
@@ -30,7 +36,7 @@ class PostCommentsController {
 
   static function editComment($postId) {
 
-    
+
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
     $comments = $commentManager->showComment($postId);
 
@@ -66,7 +72,13 @@ class PostCommentsController {
 
   static function editPost($id) {
 
-    if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
+    if (!isset($id)) { ?>
+    <script>
+      alert("Aucun identifiant de billet envoyé");
+      window.location.replace('index.php?action=allArticles');
+      </script>
+      <?php
+    }
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $post = $postManager->getPost($id);
@@ -85,7 +97,13 @@ class PostCommentsController {
 
   static function viewDeletePost($id) {
 
-    if (!isset($id)) throw new Exception('Aucun identifiant de billet envoyé');
+    if (!isset($id)) {?>
+    <script>
+      alert("Aucun identifiant de billet envoyé");
+      window.location.replace('index.php?action=allArticles');
+      </script>
+      <?php
+    }
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $post = $postManager->getPost($id);
@@ -140,11 +158,21 @@ class PostCommentsController {
 
         }
         else {
-            throw new Exception('Tous les champs ne sont pas remplis !');
+          ?>
+          <script>
+            alert("Tous les champs ne sont pas remplis !");
+            window.location.replace("index.php?action=allArticles");
+            </script>
+            <?php
         }
     }
     else {
-        throw new Exception('Aucun identifiant de billet envoyé');
+      ?>
+      <script>
+        alert("Aucun identifiant de billet envoyé !");
+        window.location.replace("index.php?action=allArticles");
+        </script>
+        <?php
     }
 
   }

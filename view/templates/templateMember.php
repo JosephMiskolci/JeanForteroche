@@ -114,7 +114,13 @@
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>
+        <?php
+        if($_SESSION['admin'] == "1" OR $_SESSION['moderator'] == "1")
+        { ?>
         <a href="index.php?action=admin">Connexion Admin</a>
+      <?php } else { ?>
+          <i>Vous n'êtes pas autorisé à accéder à cette section du site !</i>
+      <?php } ?>
       </div>
     </div>
     <p class="copyright">© Copyright 2019 Joseph Miskolci : Projet OpenClassRooms</p>

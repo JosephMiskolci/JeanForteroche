@@ -15,7 +15,7 @@
 <section id="biography">
   <div class="BiographyTitle">
     <h1>
-      <?= htmlspecialchars($datas["post"]['title']) ?>
+      <?=htmlspecialchars($datas["post"]['title']) ?>
     </h1>
   </div>
 </section>
@@ -24,47 +24,58 @@
 <section id="Publications">
   <div class="Articles">
     <p class="ArticleText">
-    <?= nl2br(html_entity_decode($datas["post"]['content'])) ?>
+    <?=nl2br(html_entity_decode($datas["post"]['content'])) ?>
     </p>
-    <p class="ArticleDate">Publié le <?= $datas["post"]['creation_date_fr'] ?></p>
+    <p class="ArticleDate">Publié le <?=$datas["post"]['creation_date_fr'] ?></p>
   </div>
 </section>
 
 <!-- Comments -->
 
-<section id="Comments">
-  <div class="CommentsName">
-    <h2>Commentaires</h2>
-  </div>
-
   <?php
-  while ($comment = $datas["comments"]->fetch())
-{
-  ?>
+if ($datas["comments"]->rowCount() > 0)
+{ ?>
+      <section id="Comments">
+        <div class="CommentsName">
+          <h2>Commentaires</h2>
+        </div>
+        <?php
+    while ($comment = $datas["comments"]->fetch())
+    {
+?>
   <div class="Comment">
     <div class="Commentaries">
       <p class="CommentaryText">
-        <?= nl2br(strip_tags($comment['comment'])) ?>
+        <?=nl2br(strip_tags($comment['comment'])) ?>
       </p>
-      <p class="ArticleDate">Publié le <?= $comment['comment_date_fr'] ?> par <strong><?= htmlspecialchars($comment['author']) ?></strong></p>
+      <p class="ArticleDate">Publié le <?=$comment['comment_date_fr'] ?> par <strong><?=htmlspecialchars($comment['author']) ?></strong></p>
     </div>
     <hr>
     </hr>
   </div>
   <?php
+    }
+    $datas["comments"]->closeCursor();
 }
-$datas["comments"]->closeCursor();
-?>
+else
+{ ?>
+        <div class="Articles">
+          <h3>Aucun commentaire n'a été publié !</h3>
+        </div>
+          <hr>
+          </hr>
+<?php
+} ?>
 
   <div class="CommentsName CommentsPost">
     <h2>Postez votre commentaire !</h2>
   </div>
 
   <?php
-    if(isset($_SESSION['pseudo']))
-      {
-  ?>
-  <form action="index.php?action=addComment&amp;id=<?= $datas["post"]['id'] ?>" method="post">
+if (isset($_SESSION['pseudo']))
+{
+?>
+  <form action="index.php?action=addComment&amp;id=<?=$datas["post"]['id'] ?>" method="post">
     <div class="name-form-and-email-form">
     </div>
     <div class="message-form">
@@ -80,7 +91,9 @@ $datas["comments"]->closeCursor();
   </form>
 </section>
 <?php
-} else {
+}
+else
+{
 ?>
   <div class="name-form-and-email-form">
       <div class="CommentariesError">

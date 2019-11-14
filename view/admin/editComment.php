@@ -1,5 +1,5 @@
 <?php
-if($_SESSION['admin'] == "1")
+if($_SESSION['admin'] == "1" OR $_SESSION['moderator'] == "1")
 {
 ?>
 
