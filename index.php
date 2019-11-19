@@ -1,9 +1,9 @@
 <?php
 
+session_start();
 ini_set('display_errors', 1);
 require('controller/controllers.php');
 require('utils.php');
-session_start();
 
 try {
     if (isset($_GET['action'])) {
