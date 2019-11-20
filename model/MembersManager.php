@@ -129,11 +129,10 @@ class MembersManager extends Manager
 
         if (isset($_POST['formconnexion']))
         {
-
+            // Permet d'éviter la connexion en brute force
             sleep(1);
 
             $mailconnect = htmlspecialchars($_POST['mailconnect']);
-            $mdpconnect = htmlspecialchars($_POST['mdpconnect']);
 
             if (!empty($_POST['mailconnect']) and !empty($_POST['mdpconnect']))
             {
@@ -193,12 +192,6 @@ class MembersManager extends Manager
                 $getid
             ));
         }
-    }
-
-    public function membersDisconnect()
-    {
-        $_SESSION = array();
-        session_destroy();
     }
 
     public function membersEdition()
