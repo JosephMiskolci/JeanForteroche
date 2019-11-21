@@ -426,7 +426,7 @@ footer {
   .PresentationText {
     top: 390px;
   }
-
+}
 /* ------------------------------ 768px ------------------------------------*/
 @media screen and (max-width: 768px) {
   .BiographyText {
@@ -588,7 +588,7 @@ footer {
   #overview h3 {
     font-size: 1.6rem;
   }
-
+}
   /* ------------------------------ 321px ------------------------------------*/
   @media screen and (max-width: 321px) {
     .BiographyText {

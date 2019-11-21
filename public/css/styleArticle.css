@@ -202,6 +202,17 @@ figure {
   margin-bottom: 25px;
 }
 
+.FlagForm {
+margin-top: 0px;
+max-width: 100%;
+}
+
+.FlagComments {
+  float : right;
+  border: none;
+  background: rgba(178, 190, 195, 0.00);
+}
+
 .Articles, .ErrorMessage {
   background: rgba(178, 190, 195, 0.17);
   border-radius: 10px;
@@ -537,6 +548,10 @@ footer {
   margin: 10px auto 30px;
   padding: 30px;
   border-radius: 10px;
+}
+
+.circle-admin {
+  float: right;
 }
 
 /* ------------------------------ Member's Area ------------------------------------*/
@@ -881,7 +896,7 @@ footer {
   .secondLastText {
     bottom: 280px;
   }
-
+}
   /* ------------------------------ 376px ------------------------------------*/
   @media screen and (max-width: 376px) {
     .BookText {

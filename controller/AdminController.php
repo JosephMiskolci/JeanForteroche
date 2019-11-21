@@ -56,6 +56,19 @@ class AdminController {
     return $htmlListPostsInTemplate;
   }
 
+  static function moderateFlagComment()
+  {
+
+    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+    $comments = $commentManager->getFlagComments();
+    $postView = getView('view/admin/approveComments.php', [
+      "comments" => $comments
+    ]);
+
+    $htmlListPostsInTemplate = loadTemplateAdmin($postView, "Modérer ou supprimer les commentaires - Blog de Jean Forteroche");
+    return $htmlListPostsInTemplate;
+  }
+
   static function validateComment() {
 
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();

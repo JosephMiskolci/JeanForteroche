@@ -27,7 +27,6 @@ class MembersManager extends Manager
                     {
                         if (filter_var($mail, FILTER_VALIDATE_EMAIL))
                         {
-
                             $reqmail = $db->prepare("SELECT * FROM member_space WHERE mail = ?");
                             $reqmail->execute(array(
                                 $mail
