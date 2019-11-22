@@ -9,12 +9,8 @@ class PostCommentsController
   static function viewPost($id)
   {
 
-    if (!isset($id)) { ?>
-      <script>
-        alert("Aucun identifiant de billet envoyé");
-        window.location.replace('index.php?action=allArticles');
-      </script>
-    <?php
+    if (!isset($id)) {
+      exit('Erreur fatale. <a href="index.php">Revenir à l\'accueil</a>');
         }
 
         $postManager = new \JeanForteroche\Blog\Model\PostManager();

@@ -217,7 +217,7 @@ max-width: 100%;
   background: rgba(178, 190, 195, 0.17);
   border-radius: 10px;
   padding: 20px;
-  max-width: 1560px;
+  width: 85%;
   margin: 0 auto;
   color: #2d3436;
 }
@@ -650,10 +650,6 @@ footer {
 
 /* ------------------------------ 948px ------------------------------------*/
 @media screen and (max-width: 948px) {
-  hr {
-    margin: 10px 0 10px 0px;
-  }
-
   span {
     font-size: 14px;
   }

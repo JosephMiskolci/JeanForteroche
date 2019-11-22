@@ -34,7 +34,7 @@ class CommentManager extends Manager
                               FROM comments c
                               INNER JOIN posts p
                               ON c.post_id = p.id
-                              WHERE c.author = "' . $user_name . '"
+                              WHERE c.author = :user_name
                               ORDER BY comment_date DESC');
         $comments->execute();
         return $comments;

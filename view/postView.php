@@ -44,7 +44,7 @@ if ($datas["comments"]->rowCount() > 0) { ?>
       <div class="Comment">
         <div class="Commentaries">
           <form style="submit" class="FlagForm" action="index.php?action=flagComment&amp;id=<?= $comment['id'] ?>" method="post">
-            <button class="FlagComments"><i class="fas fa-exclamation-circle"></i> <?= $comment['flag_comment'] ?></button>
+            <button class="FlagComments"><i class="fas fa-exclamation-circle"></i> - <?= $comment['flag_comment'] ?></button>
       </form>
           <p class="CommentaryText">
             <?= nl2br(strip_tags($comment['comment'])) ?>
