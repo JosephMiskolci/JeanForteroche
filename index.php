@@ -30,8 +30,8 @@ try {
         if ($_GET['action'] == 'manageComments') {                AdminController::moderateComment(); }
         if ($_GET['action'] == 'manageFlagComments') {            AdminController::moderateFlagComment(); }
         if ($_GET['action'] == 'validateComment') {               AdminController::validateComment(); }
-        if ($_GET['action'] == 'moderate') {                      PostCommentsController::editComment($_GET['id']); }
-        if ($_GET['action'] == 'moderatebyUser') {                PostCommentsController::editCommentbyUser($_GET['id']); }
+        if ($_GET['action'] == 'moderate') {                      PostCommentsController::editComment(); }
+        if ($_GET['action'] == 'moderatebyUser') {                PostCommentsController::editCommentbyUser(); }
         if ($_GET['action'] == 'postModerateComment') {           AdminController::editComment(); }
         if ($_GET['action'] == 'postModerateCommentbyUser') {     AdminController::editCommentbyUser(); }
         if ($_GET['action'] == 'deleteComment') {                 AdminController::deleteComment(); }

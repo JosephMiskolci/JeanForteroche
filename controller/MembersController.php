@@ -6,122 +6,105 @@ class MembersController
 
   static function inscription()
   {
-    if (isset($_POST['forminscription'])) {
 
-      $pseudo = htmlspecialchars($_POST['pseudo']);
-      $mail = htmlspecialchars($_POST['mail']);
-      $mail2 = htmlspecialchars($_POST['mail2']);
-      $mdp = htmlspecialchars($_POST['mdp']);
-      $mdp2 = htmlspecialchars($_POST['mdp2']);
+    if (!isset($_POST['forminscription'])) {
+      die("Error");
+    }
 
-      // Si le formulaire est intégralement rempli
-      if (!empty($_POST['pseudo']) and !empty($_POST['mail']) and !empty($_POST['mail2']) and !empty($_POST['mdp']) and !empty($_POST['mdp2'])) {
-        $pseudolength = strlen($pseudo);
+    $pseudo = $_POST['pseudo'];
+    $mail = $_POST['mail'];
+    $mail2 = $_POST['mail2'];
+    $mdp = $_POST['mdp'];
+    $mdp2 = $_POST['mdp2'];
+    $mdpHached = password_hash(($_POST['mdp']), PASSWORD_DEFAULT);
 
-        // Si le pseudo est plus court que 20 caractères
-        if ($pseudolength <= 20) {
+    // on vérifie si le pseudo est déjà pris
+    $pseudoManager = new \JeanForteroche\Blog\Model\MembersManager();
+    $pseudo2 = $pseudoManager->searchUserByPseudo($pseudo);
+    $pseudoAlreadyUse = $pseudo2->rowCount();
 
-          // Si le mot de passe et la confirmation du mot de passe correspondent
-          if ($mail == $mail2) {
+    // on vérifie si l'email est déjà pris
+    $memberManager = new \JeanForteroche\Blog\Model\MembersManager();
+    $resUserByMail = $memberManager->searchUserByMail($mail);
+    $mailAlreadyUse = $resUserByMail->rowCount();
 
-            //Si la rédaction du mail est bien conforme à xxx@xxx.xxx
-            if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-              $commentManager = new \JeanForteroche\Blog\Model\MembersManager();
-              $comments = $commentManager->searchUserByMail();
-              $mailexist = $comments->rowCount();
+    $errors = [
+      "BAD_LOGIN" => [
+        "message" => "Pseudo déjà utilisé !",
+        "condition" => $pseudoAlreadyUse
+      ],
+      "BAD_PASSWD_VERIF" => [
+        "message" => "Vos mots de passes ne correspondent pas !",
+        "condition" => ($mdp != $mdp2)
+      ],
+      "EMAIL_ALREADY_USE" => [
+        "message" => "Adresse mail déjà utilisée !",
+        "condition" => $mailAlreadyUse
+      ],
+      "EMAIL_NOT_VALID"   => [
+        "message" => "Votre adresse mail n'est pas valide !",
+        "condition" => (filter_var($mail, FILTER_VALIDATE_EMAIL) == false)
+      ],
+      "BAD_EMAIL_VERIF" => [
+        "message" => "Vos adresses mail ne correspondent pas !",
+        "condition" => ($mail != $mail2)
+      ],
+      "PSEUDO_TOO_LONG" => [
+        "message" => "Votre pseudo ne doit pas dépasser 255 caractères !",
+        "condition" => (length($pseudo) > 255)
+      ],
+      "FILL_ALL" => [
+        "message" => "Tous les champs doivent être complétés ! Vous devez recommencer votre inscription.",
+        "condition" => (empty($pseudo) || empty($mail) || empty($mail2) || empty($mdp) || empty($mdp2))
+      ]
+    ];
 
-              //Si le mail n'existe pas dans la bdd
-              if ($mailexist == 0) {
-
-                // Si le mot de passe et le mot de passe de confirmation correspondent
-                if ($mdp == $mdp2) {
-                  $pseudoManager = new \JeanForteroche\Blog\Model\MembersManager();
-                  $pseudo2 = $pseudoManager->searchUserByPseudo();
-                  $pseudoexist = $pseudo2->rowCount();
-
-                  //Si le pseudo n'existe pas dans la bdd, alors le compte est créé
-                  if ($pseudoexist == 0) {
-                    $pseudoManager = new \JeanForteroche\Blog\Model\MembersManager();
-                    $pseudo2 = $pseudoManager->insertNewMembers();
-                    ?>
-                    <script>
-                      alert("Votre compte a bien été créé ! Cliquez sur 'OK' pour retourner sur la page de connexion et connectez-vous !");
-                      window.location.replace('index.php?action=connexion');
-                    </script>
-                  <?php
-                                    } else {
-                                      ?>
-                    <script>
-                      alert("Pseudo déjà utilisé !");
-                    </script>
-                  <?php
-                                    }
-                                  } else {
-                                    ?>
-                  <script>
-                    alert("Vos mots de passes ne correspondent pas !");
-                  </script>
-                <?php
-                                }
-                              } else {
-                                ?>
-                <script>
-                  alert("Adresse mail déjà utilisée !");
-                </script>
-              <?php
-                            }
-                          } else {
-                            ?>
-              <script>
-                alert("Votre adresse mail n'est pas valide !");
-              </script>
-            <?php
-                        }
-                      } else {
-                        ?>
-            <script>
-              alert("Vos adresses mail ne correspondent pas !");
-            </script>
-          <?php
-                    }
-                  } else {
-                    ?>
-          <script>
-            alert("Votre pseudo ne doit pas dépasser 255 caractères !");
-          </script>
-        <?php
-                }
-              } else {
-                ?>
+    $numberOfErrors = 0;
+    foreach ($errors as $error) {
+      if ($error["condition"]) {
+        $numberOfErrors++;
+        ?>
         <script>
-          alert("Tous les champs doivent être complétés ! Vous devez recommencer votre inscription.");
+          alert(<? $error["message"] ?>);
         </script>
-        <?php
-              }
+      <?php
             }
-
-            $htmlinscription = getView('view/members/inscription.php', null);
-            $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
-            return $htmlinscriptionInTemplate;
           }
 
-          static function connexion()
-          {
+          if ($numberOfErrors == 0) {
+            $pseudoManager = new \JeanForteroche\Blog\Model\MembersManager();
+            $pseudo = $pseudoManager->insertNewMembers($pseudo, $mail, $mdpHached);
+            ?>
+      <script>
+        alert("Votre compte a bien été créé ! Cliquez sur 'OK' pour retourner sur la page de connexion et connectez-vous !");
+        window.location.replace('index.php?action=connexion');
+      </script>
+      <?php
 
-            if (isset($_POST['formconnexion'])) {
+          }
+          $htmlinscription = getView('view/members/inscription.php', null);
+          $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+          return $htmlinscriptionInTemplate;
+    }
 
-              // Permet d'éviter l'attaque par force brute en instaurant une pause d'une seconde entre chaque utilisation de la fonction connexion()
-              sleep(1);
+        static function connexion()
+        {
 
-              //Si le formulaire est intégralement rempli
-              if (!empty($_POST['mailconnect']) and !empty($_POST['mdpconnect'])) {
-                $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
-                $members = $membersManager->connectUserByMail();
-                $resultat = $members->fetch();
+          if (isset($_POST['formconnexion'])) {
+            $mail = $_POST['mail'];
 
-                //Si le formulaire n'est pas intégralement rempli ou que le mot de passe ne correspond pas
-                if (!$resultat or !password_verify($_POST['mdpconnect'], $resultat['password'])) {
-                  ?>
+            // Permet d'éviter l'attaque par force brute en instaurant une pause d'une seconde entre chaque utilisation de la fonction connexion()
+            sleep(1);
+
+            //Si le formulaire est intégralement rempli
+            if (!empty($_POST['mailconnect']) and !empty($_POST['mdpconnect'])) {
+              $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
+              $members = $membersManager->connectUserByMail($mail);
+              $resultat = $members->fetch();
+
+              //Si le formulaire n'est pas intégralement rempli ou que le mot de passe ne correspond pas
+              if (!$resultat or !password_verify($_POST['mdpconnect'], $resultat['password'])) {
+                ?>
           <script>
             alert("Identifiant ou mot de passe incorrect.");
           </script>
@@ -159,11 +142,13 @@ class MembersController
           static function profile()
           {
 
+            $pseudo = $_SESSION['pseudo'];
+
             $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
-            $members = $membersManager->membersProfile();
+            $members = $membersManager->membersProfile($_GET['id']);
 
             $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-            $comments = $commentManager->getUserComment($_SESSION['pseudo']);
+            $comments = $commentManager->getUserComment($pseudo);
 
             $htmlListPosts = getView('view/members/profile.php', ["comments" => $comments]);
             $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Connectez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
@@ -180,16 +165,18 @@ class MembersController
 
           static function memberEdition()
           {
+            $sessionID = $_SESSION['id'];
+            $mdp1Hached = password_hash($_POST['newmdp1'], PASSWORD_DEFAULT);
 
             if (isset($_SESSION['id'])) {
               $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
-              $members = $membersManager->searchUserbySessionID();
+              $members = $membersManager->searchUserbySessionID($sessionID);
               $user = $members->fetch();
 
               if (isset($_POST['newmdp1']) and !empty($_POST['newmdp1']) and isset($_POST['newmdp2']) and !empty($_POST['newmdp2'])) {
                 if ($_POST['newmdp1'] == $_POST['newmdp2']) {
                   $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
-                  $members = $membersManager->editPasswordbyUser();
+                  $members = $membersManager->editPasswordbyUser($sessionID, $mdp1Hached);
                   header('index.php?action=profile&id' . $_SESSION['id']);
 
                   ?>
@@ -202,7 +189,7 @@ class MembersController
           <script>
             alert("Vos deux mots de passe ne correspondent pas !");
           </script>
-        <?php
+<?php
         }
       }
     }

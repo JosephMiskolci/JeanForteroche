@@ -26,21 +26,21 @@ class AdminController {
   static function addArticle() {
 
     $adminManager = new \JeanForteroche\Blog\Model\PostManager();
-    $adminManager->postArticle();
+    $adminManager->postArticle($_POST['name'], $_POST['mytextarea']);
     header("location: index.php?action=manageArticle");
   }
 
   static function editArticle() {
 
     $adminManager = new \JeanForteroche\Blog\Model\PostManager();
-    $adminManager->postEditedArticle();
+    $adminManager->postEditedArticle($_POST['name'], $_POST['mytextarea'], $_GET['id']);
     header("location: index.php?action=manageArticle");
   }
 
   static function deleteArticle() {
 
     $adminManager = new \JeanForteroche\Blog\Model\PostManager();
-    $adminManager->postDeleteArticle();
+    $adminManager->postDeleteArticle($_GET['id']);
     header("location: index.php?action=manageArticle");
   }
 
@@ -56,8 +56,7 @@ class AdminController {
     return $htmlListPostsInTemplate;
   }
 
-  static function moderateFlagComment()
-  {
+  static function moderateFlagComment() {
 
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
     $comments = $commentManager->getFlagComments();
@@ -72,34 +71,34 @@ class AdminController {
   static function validateComment() {
 
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $commentManager->confirmComments();
+    $commentManager->confirmComments($_GET['id']);
     header("location: index.php?action=manageComments");
   }
 
   static function editComment() {
 
     $adminManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $adminManager->postEditedComment();
+    $adminManager->postEditedComment($_GET['id'], $_POST['mytextarea']);
     header("location: index.php?action=manageComments");
   }
 
   static function editCommentbyUser() {
 
     $adminManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $adminManager->postEditedComment();
+    $adminManager->postEditedComment($_GET['id'], $_POST['mytextarea']);
     header("location: index.php?action=profile");
   }
 
   static function deleteComment() {
 
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $commentManager->supprComments();
+    $commentManager->supprComments($_GET['id']);
     header("location: index.php?action=manageComments");
   }
   static function deleteCommentbyUser() {
 
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $commentManager->supprComments();
+    $commentManager->supprComments($_GET['id']);
     header("location: index.php?action=profile");
   }
 
@@ -118,35 +117,35 @@ class AdminController {
   static function adminUsers() {
 
     $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->validAdminUsers();
+    $users = $usersManager->validAdminUsers($_GET['id']);
     header("location: index.php?action=manageUsers");
   }
 
   static function RemoveAdminUsers() {
 
     $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->unvalidAdminUsers();
+    $users = $usersManager->unvalidAdminUsers($_GET['id']);
     header("location: index.php?action=manageUsers");
   }
 
   static function moderatorUsers() {
 
     $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->validModeratorUsers();
+    $users = $usersManager->validModeratorUsers($_GET['id']);
     header("location: index.php?action=manageUsers");
   }
 
   static function RemoveModeratorUsers() {
 
     $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->unvalidModeratorUsers();
+    $users = $usersManager->unvalidModeratorUsers($_GET['id']);
     header("location: index.php?action=manageUsers");
   }
 
   static function deleteUsers() {
 
     $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->deleteUsers();
+    $users = $usersManager->deleteUsers($_GET['id']);
     header("location: index.php?action=manageUsers");
   }
 }

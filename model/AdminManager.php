@@ -5,14 +5,12 @@ require_once ("model/Manager.php");
 
 class AdminManager extends Manager
 {
-    public function postArticle()
+    public function postArticle($title, $content)
     {
         $db = $this->dbConnect();
 
         if (isset($_POST['name']) and isset($_POST['mytextarea']))
         {
-            $title = $_POST['name'];
-            $content = $_POST['mytextarea'];
             $req_connect = $db->prepare("INSERT INTO posts(title,content,creation_date) VALUES(?,?,NOW())");
             $req_connect->execute(array(
                 $title,
@@ -21,29 +19,27 @@ class AdminManager extends Manager
         }
     }
 
-    public function postEditedArticle()
+    public function postEditedArticle($edit_name, $edit_content, $edit_id)
     {
         $db = $this->dbConnect();
 
         if (isset($_POST['name']) and isset($_POST['mytextarea']))
-        {
-            $edit_id = htmlspecialchars($_GET['id']);
+        {   
             $req_connect = $db->prepare('UPDATE posts SET title = :titre, content = :content WHERE id = :id');
             $req_connect->execute(array(
-                'titre' => $_POST['name'],
-                'content' => $_POST['mytextarea'],
+                'titre' => $edit_name,
+                'content' => $edit_content,
                 'id' => $edit_id
             ));
         }
     }
 
-    public function postDeleteArticle()
+    public function postDeleteArticle($edit_id)
     {
         $db = $this->dbConnect();
 
         if (isset($_POST['name']) and isset($_POST['mytextarea']) and isset($_POST['delete']))
         {
-            $edit_id = htmlspecialchars($_GET['id']);
             $req_connect = $db->prepare('DELETE FROM posts WHERE id = :id');
             $req_connect->execute(array(
                 'id' => $edit_id
@@ -60,11 +56,10 @@ class AdminManager extends Manager
         return $getAllUsers;
     }
 
-    public function validAdminUsers()
+    public function validAdminUsers($comment_id)
     {
         $db = $this->dbConnect();
 
-        $comment_id = htmlspecialchars($_GET['id']);
         $comments = $db->prepare('UPDATE member_space SET admin = "1" WHERE id = :id');
         $confirmedComment = $comments->execute(array(
             'id' => $comment_id
@@ -73,11 +68,10 @@ class AdminManager extends Manager
         return $confirmedComment;
     }
 
-    public function unvalidAdminUsers()
+    public function unvalidAdminUsers($comment_id)
     {
         $db = $this->dbConnect();
 
-        $comment_id = htmlspecialchars($_GET['id']);
         $comments = $db->prepare('UPDATE member_space SET admin = "0" WHERE id = :id');
         $confirmedComment = $comments->execute(array(
             'id' => $comment_id
@@ -86,11 +80,10 @@ class AdminManager extends Manager
         return $confirmedComment;
     }
 
-    public function validModeratorUsers()
+    public function validModeratorUsers($comment_id)
     {
         $db = $this->dbConnect();
 
-        $comment_id = htmlspecialchars($_GET['id']);
         $comments = $db->prepare('UPDATE member_space SET moderator = "1" WHERE id = :id');
         $confirmedComment = $comments->execute(array(
             'id' => $comment_id
@@ -99,11 +92,10 @@ class AdminManager extends Manager
         return $confirmedComment;
     }
 
-    public function unvalidModeratorUsers()
+    public function unvalidModeratorUsers($comment_id)
     {
         $db = $this->dbConnect();
 
-        $comment_id = htmlspecialchars($_GET['id']);
         $comments = $db->prepare('UPDATE member_space SET moderator = "0" WHERE id = :id');
         $confirmedComment = $comments->execute(array(
             'id' => $comment_id
@@ -112,11 +104,10 @@ class AdminManager extends Manager
         return $confirmedComment;
     }
 
-    public function DeleteUsers()
+    public function DeleteUsers($edit_id)
     {
         $db = $this->dbConnect();
 
-        $edit_id = htmlspecialchars($_GET['id']);
         $req_connect = $db->prepare('DELETE FROM member_space WHERE id = :id');
         $req_connect->execute(array(
             'id' => $edit_id

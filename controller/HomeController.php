@@ -11,7 +11,9 @@ class HomeController {
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getPosts();
-    $htmlListPosts = getView('view/home.php', ['posts' => $posts]);
+    $htmlListPosts = getView('view/home.php', [
+      'posts' => $posts
+      ]);
     $htmlListPostsInTemplate = loadTemplate($htmlListPosts, "Page d'accueil");
     return $htmlListPostsInTemplate;
   }
@@ -20,7 +22,9 @@ class HomeController {
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getPosts();
-    $postView = getView('view/bibliography.php', ['posts' => $posts] );
+    $postView = getView('view/bibliography.php', [
+      'posts' => $posts
+      ] );
 
     $htmlPostInTemplate = loadTemplate(
       $postView,

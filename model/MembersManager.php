@@ -5,89 +5,81 @@ require_once ("model/Manager.php");
 
 class MembersManager extends Manager
 {
-    public function searchUserByMail() {
+    public function searchUserByMail($mail) {
         $db = $this->dbConnect();
-        $mail = htmlspecialchars($_POST['mail']);
 
-        $reqmail = $db->prepare("SELECT * FROM member_space WHERE mail = ?");
+        $reqmail = $db->prepare("SELECT * FROM member_space WHERE mail = :mail");
         $reqmail->execute(array(
-            $mail
+            'mail' => $mail
         ));
         return $reqmail;
     }
 
-    public function searchUserbyPseudo() {
+    public function searchUserbyPseudo($pseudo) {
         $db = $this->dbConnect();
-        $pseudo = htmlspecialchars($_POST['pseudo']);
 
-        $reqpseudo = $db->prepare("SELECT * FROM member_space WHERE pseudo = ?");
+        $reqpseudo = $db->prepare("SELECT * FROM member_space WHERE pseudo = :pseudo");
         $reqpseudo->execute(array(
-            $pseudo
+            'pseudo' => $pseudo
         ));
         return $reqpseudo;
     }
 
-    public function insertNewMembers() {
+    public function insertNewMembers($pseudo, $mail, $mdpHached) {
 
         $db = $this->dbConnect();
-        $pseudo = htmlspecialchars($_POST['pseudo']);
-        $mail = htmlspecialchars($_POST['mail']);
-        $mdpHached = password_hash(htmlspecialchars($_POST['mdp']), PASSWORD_DEFAULT);
 
-        $insertmbr = $db->prepare("INSERT INTO member_space (pseudo, mail, password, admin, moderator) VALUES (?, ?, ?, 0, 0)");
+        $insertmbr = $db->prepare("INSERT INTO member_space (pseudo, mail, password, admin, moderator) VALUES (:pseudo, :mail, :password, 0, 0)");
         $insertmbr->execute(array(
-            $pseudo,
-            $mail,
-            $mdpHached
+            'pseudo' => $pseudo,
+            'mail' => $mail,
+            'password' => $mdpHached
         ));
         return $insertmbr;
     }
-    public function connectUserByMail()
+    public function connectUserByMail($mail)
     {
         $db = $this->dbConnect();
-        $mail = htmlspecialchars($_POST['mailconnect']);
 
-        $reqmail = $db->prepare("SELECT * FROM member_space WHERE mail = ?");
+        $reqmail = $db->prepare("SELECT * FROM member_space WHERE mail = :mail");
         $reqmail->execute(array(
-            $mail
+            'mail' => $mail
         ));
         return $reqmail;
     }
 
-    public function membersProfile()
+    public function membersProfile($getid)
     {
         $db = $this->dbConnect();
 
         if (isset($_GET['id']) and $_GET['id'] > 0)
         {
-            $getid = intval($_GET['id']);
-            $requser = $db->prepare('SELECT * FROM member_space WHERE id = ?');
+            $requser = $db->prepare('SELECT * FROM member_space WHERE id = :id');
             $requser->execute(array(
-                $getid
+                'id' => $getid
             ));
         }
     }
 
-    public function searchUserbySessionID()
+    public function searchUserbySessionID($sessionID)
     {
         $db = $this->dbConnect();
 
-        $requser = $db->prepare("SELECT * FROM member_space WHERE id = ?");
+        $requser = $db->prepare("SELECT * FROM member_space WHERE id = :id");
         $requser->execute(array(
-            $_SESSION['id']
+            'id' => $sessionID
         ));
         return $requser;
     }
 
-    public function editPasswordbyUser()
+    public function editPasswordbyUser($sessionID, $mdp1Hached)
     {
         $db = $this->dbConnect();
-        $mdp1Hached = password_hash($_POST['newmdp1'], PASSWORD_DEFAULT);
 
-        $insertmdp = $db->prepare("UPDATE member_space SET password = ? WHERE id = ?");
+        $insertmdp = $db->prepare("UPDATE member_space SET password = :password WHERE id = :id");
         $insertmdp->execute(array(
-            $mdp1Hached,
-            $_SESSION['id']
+            'password' => $mdp1Hached,
+            'id' => $sessionID
         ));
         return $insertmdp;
     }

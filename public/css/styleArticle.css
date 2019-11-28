@@ -213,6 +213,14 @@ max-width: 100%;
   background: rgba(178, 190, 195, 0.00);
 }
 
+.FlagCommentsRed {
+  float : right;
+  background: rgba(214, 48, 49, 0.90);
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
 .Articles, .ErrorMessage {
   background: rgba(178, 190, 195, 0.17);
   border-radius: 10px;
@@ -228,6 +236,10 @@ max-width: 100%;
   font-size: 40px;
   display: table;
   border: 1px solid rgba(214, 48, 49,1.0);
+}
+
+.ErrorText {
+  text-align: center;
 }
 
 .fa-exclamation-triangle {

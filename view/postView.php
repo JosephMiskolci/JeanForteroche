@@ -44,8 +44,12 @@ if ($datas["comments"]->rowCount() > 0) { ?>
       <div class="Comment">
         <div class="Commentaries">
           <form style="submit" class="FlagForm" action="index.php?action=flagComment&amp;id=<?= $comment['id'] ?>" method="post">
-            <button class="FlagComments"><i class="fas fa-exclamation-circle"></i> - <?= $comment['flag_comment'] ?></button>
-      </form>
+            <?php if ($comment['flag_comment'] >= "1") { ?>
+              <button class="FlagCommentsRed"><i class="fas fa-exclamation-circle"></i> <?= $comment['flag_comment'] ?></button>
+            <?php } else { ?>
+              <button class="FlagComments"><i class="fas fa-exclamation-circle"></i> <?= $comment['flag_comment'] ?></button>
+            <?php } ?>
+          </form>
           <p class="CommentaryText">
             <?= nl2br(strip_tags($comment['comment'])) ?>
           </p>

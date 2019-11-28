@@ -6,18 +6,18 @@ require_once('model/CommentManager.php');
 class PostCommentsController
 {
 
-  static function viewPost($id)
+  static function viewPost()
   {
 
-    if (!isset($id)) {
+    if (!isset($_GET['id'])) {
       exit('Erreur fatale. <a href="index.php">Revenir à l\'accueil</a>');
         }
 
         $postManager = new \JeanForteroche\Blog\Model\PostManager();
         $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
-        $post = $postManager->getPost($id);
-        $comments = $commentManager->getComments($id);
+        $post = $postManager->getPost($_GET['id']);
+        $comments = $commentManager->getComments($_GET['id']);
 
         $postView = getView('view/postView.php', [
           "post" => $post,
@@ -32,10 +32,10 @@ class PostCommentsController
         return $htmlPostInTemplate;
       }
 
-      static function editComment($postId)
+      static function editComment()
       {
         $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-        $comments = $commentManager->showComment($postId);
+        $comments = $commentManager->showComment($_GET['id']);
 
         $postView = getView('view/admin/editComment.php', [
           "comments" => $comments
@@ -49,10 +49,10 @@ class PostCommentsController
         return $htmlPostInTemplate;
       }
 
-      static function editCommentbyUser($postId)
+      static function editCommentbyUser()
       {
         $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-        $comments = $commentManager->showComment($postId);
+        $comments = $commentManager->showComment($_GET['id']);
 
         $postView = getView('view/members/editCommentbyUser.php', [
           "comments" => $comments
@@ -66,10 +66,10 @@ class PostCommentsController
         return $htmlPostInTemplate;
       }
 
-      static function editPost($id)
+      static function editPost()
       {
 
-        if (!isset($id)) { ?>
+        if (!isset($_GET['id'])) { ?>
       <script>
         alert("Aucun identifiant de billet envoyé");
         window.location.replace('index.php?action=allArticles');
@@ -78,7 +78,7 @@ class PostCommentsController
         }
 
         $postManager = new \JeanForteroche\Blog\Model\PostManager();
-        $post = $postManager->getPost($id);
+        $post = $postManager->getPost(($_GET['id']));
 
         $postView = getView('view/admin/editArticles.php', [
           "post" => $post,
@@ -92,10 +92,10 @@ class PostCommentsController
         return $htmlPostInTemplate;
       }
 
-      static function viewDeletePost($id)
+      static function viewDeletePost()
       {
 
-        if (!isset($id)) { ?>
+        if (!isset($_GET['id'])) { ?>
       <script>
         alert("Aucun identifiant de billet envoyé");
         window.location.replace('index.php?action=allArticles');
@@ -104,7 +104,7 @@ class PostCommentsController
           }
 
           $postManager = new \JeanForteroche\Blog\Model\PostManager();
-          $post = $postManager->getPost($id);
+          $post = $postManager->getPost($_GET['id']);
 
           $postView = getView('view/admin/deleteArticle.php', [
             "post" => $post,
@@ -123,7 +123,9 @@ class PostCommentsController
 
           $postManager = new \JeanForteroche\Blog\Model\PostManager();
           $posts = $postManager->getAllPosts();
-          $postView = getView('view/listArticles.php', ['posts' => $posts]);
+          $postView = getView('view/listArticles.php', [
+            'posts' => $posts
+            ]);
 
           $htmlPostInTemplate = loadTemplate(
             $postView,
@@ -138,7 +140,9 @@ class PostCommentsController
 
           $postManager = new \JeanForteroche\Blog\Model\PostManager();
           $posts = $postManager->getAllPosts();
-          $postView = getView('view/admin/manageArticles.php', ['posts' => $posts]);
+          $postView = getView('view/admin/manageArticles.php', [
+            'posts' => $posts
+            ]);
 
           $htmlPostInTemplate = loadTemplateAdmin(
             $postView,
@@ -154,7 +158,7 @@ class PostCommentsController
           if (isset($_GET['id']) && $_GET['id'] > 0) {
             if (!empty($_POST['comment'])) {
               $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-              $commentManager->postComment($postId, $author, $comment);
+              $commentManager->postComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
               header("location: index.php?action=post&id=" . $_GET['id']);
             } else {
               ?>

@@ -8,9 +8,9 @@ class CommentManager extends Manager
     public function getComments($postId)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, author, comment, flag_comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? AND validated = "1" ORDER BY comment_date DESC');
+        $comments = $db->prepare('SELECT id, author, comment, flag_comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = :id AND validated = "1" ORDER BY comment_date DESC');
         $comments->execute(array(
-            $postId
+            'id' => $postId
         ));
 
         return $comments;
@@ -18,7 +18,6 @@ class CommentManager extends Manager
 
     public function showComment($comment_id)
     {
-        $comment_id = htmlspecialchars($_GET['id']);
         $db = $this->dbConnect();
         $comments = $db->prepare('SELECT id, author, comment, flag_comment DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE id = :id ORDER BY comment_date DESC');
         $comments->execute(array(
@@ -36,7 +35,9 @@ class CommentManager extends Manager
                               ON c.post_id = p.id
                               WHERE c.author = :user_name
                               ORDER BY comment_date DESC');
-        $comments->execute();
+        $comments->execute(array(
+            'user_name' => $user_name
+        ));
         return $comments;
     }
 
@@ -66,11 +67,10 @@ class CommentManager extends Manager
         return $comments;
     }
 
-    public function confirmComments()
+    public function confirmComments($comment_id)
     {
         $db = $this->dbConnect();
 
-        $comment_id = htmlspecialchars($_GET['id']);
         $comments = $db->prepare('UPDATE comments SET validated = "1" WHERE id = :id');
         $confirmedComment = $comments->execute(array(
             'id' => $comment_id
@@ -79,12 +79,10 @@ class CommentManager extends Manager
         return $confirmedComment;
     }
 
-    public function postEditedComment()
+    public function postEditedComment($comment_id, $comment_content)
     {
         $db = $this->dbConnect();
 
-        $comment_id = htmlspecialchars($_GET['id']);
-        $comment_content = htmlspecialchars($_POST['mytextarea']);
         $req_connect = $db->prepare('UPDATE comments SET comment = :comment WHERE id = :id');
         $req_connect->execute(array(
             'comment' => $comment_content,
@@ -94,29 +92,25 @@ class CommentManager extends Manager
         return $req_connect;
     }
 
-    public function supprComments()
+    public function supprComments($edit_id)
     {
         $db = $this->dbConnect();
 
-        $edit_id = htmlspecialchars($_GET['id']);
         $req_connect = $db->prepare('DELETE FROM comments WHERE id = :id');
         $req_connect->execute(array(
             'id' => $edit_id
         ));
     }
 
-    public function postComment()
+    public function postComment($comment_id, $comment_pseudo, $comment_content)
     {
         $db = $this->dbConnect();
         
-        $comment_id = htmlspecialchars($_GET['id']);
-        $comment_pseudo = htmlspecialchars($_SESSION['pseudo']);
-        $comment_content = htmlspecialchars($_POST['comment']);
-        $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, validated, flag_comment, comment_date) VALUES(?, ?, ?, "0", "0", NOW())');
+        $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, validated, flag_comment, comment_date) VALUES(:id, :pseudo, :content, "0", "0", NOW())');
         $commentedLines = $comments->execute(array(
-            $comment_id,
-            $comment_pseudo,
-            $comment_content
+            'id' => $comment_id,
+            'pseudo' => $comment_pseudo,
+            'content' => $comment_content
         ));
 
         return $commentedLines;
