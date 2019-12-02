@@ -9,14 +9,11 @@ class AdminManager extends Manager
     {
         $db = $this->dbConnect();
 
-        if (isset($_POST['name']) and isset($_POST['mytextarea']))
-        {
             $req_connect = $db->prepare("INSERT INTO posts(title,content,creation_date) VALUES(?,?,NOW())");
             $req_connect->execute(array(
                 $title,
                 $content
             ));
-        }
     }
 
     public function postEditedArticle($edit_name, $edit_content, $edit_id)
@@ -38,13 +35,10 @@ class AdminManager extends Manager
     {
         $db = $this->dbConnect();
 
-        if (isset($_POST['name']) and isset($_POST['mytextarea']) and isset($_POST['delete']))
-        {
             $req_connect = $db->prepare('DELETE FROM posts WHERE id = :id');
             $req_connect->execute(array(
                 'id' => $edit_id
             ));
-        }
     }
 
     public function getAllUsers()

@@ -18,7 +18,7 @@ while ($data = $datas["posts"]->fetch())
     <p class="ArticleDate">Publié le <?= $data['creation_date_fr'] ?></p>
     <div class="AccessButtons">
       <a class="btn btn-info" href="index.php?action=edit&amp;id=<?= $data['id'] ?>" role="button">Éditer</a>
-      <a class="btn btn-danger" href="index.php?action=delete&amp;id=<?= $data['id'] ?>" role="button">Supprimer</a>
+      <a class="btn btn-danger" href="index.php?action=delete&amp;id=<?= $data['id'] ?>" role="button">Supprimer définitivement</a>
     </div>
   </div>
   <hr>

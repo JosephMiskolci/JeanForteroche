@@ -43,13 +43,22 @@ if ($datas["comments"]->rowCount() > 0) { ?>
         ?>
       <div class="Comment">
         <div class="Commentaries">
-          <form style="submit" class="FlagForm" action="index.php?action=flagComment&amp;id=<?= $comment['id'] ?>" method="post">
-            <?php if ($comment['flag_comment'] >= "1") { ?>
-              <button class="FlagCommentsRed"><i class="fas fa-exclamation-circle"></i> <?= $comment['flag_comment'] ?></button>
+          <?php if($_SESSION['id']) {
+
+            $db = new \PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
+            $dislikes = $db->prepare('SELECT id FROM flag_comments WHERE id_comments = ?');
+            $dislikes->execute(array($comment['id']));
+            $dislikes = $dislikes->rowCount(); ?>
+
+          <form class="FlagForm" action="index.php?action=flagComment&amp;id=<?= $comment['id'] ?>" method="post">
+                      <?php if ($dislikes >= "1") {
+             ?>     
+              <button type="submit" class="FlagCommentsRed"><i class="fas fa-exclamation-circle"></i> <?= $dislikes ?></button>
             <?php } else { ?>
-              <button class="FlagComments"><i class="fas fa-exclamation-circle"></i> <?= $comment['flag_comment'] ?></button>
+              <button type="submit" class="FlagComments"><i class="fas fa-exclamation-circle"></i> <?= $dislikes ?></button>
             <?php } ?>
           </form>
+          <?php }?>
           <p class="CommentaryText">
             <?= nl2br(strip_tags($comment['comment'])) ?>
           </p>

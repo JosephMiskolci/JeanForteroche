@@ -16,10 +16,12 @@ class PostCommentsController {
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
+    $flagcomments = showFlagComment($_GET['id']);
 
     $postView = getView('view/postView.php', [
       "post" => $post,
-      "comments" => $comments
+      "comments" => $comments,
+      "flag_comments" => $flagcomments
     ]);
 
     $htmlPostInTemplate = loadTemplate(

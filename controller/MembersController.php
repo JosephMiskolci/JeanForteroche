@@ -7,10 +7,6 @@ class MembersController
   static function inscription()
   {
 
-    if (!isset($_POST['forminscription'])) {
-      die("Error");
-    }
-
     $pseudo = $_POST['pseudo'];
     $mail = $_POST['mail'];
     $mail2 = $_POST['mail2'];
@@ -91,7 +87,7 @@ class MembersController
         {
 
           if (isset($_POST['formconnexion'])) {
-            $mail = $_POST['mail'];
+            $mail = $_POST['mailconnect'];
 
             // Permet d'éviter l'attaque par force brute en instaurant une pause d'une seconde entre chaque utilisation de la fonction connexion()
             sleep(1);
@@ -141,11 +137,11 @@ class MembersController
 
           static function profile()
           {
-
+            $sessionID = $_SESSION['id'];
             $pseudo = $_SESSION['pseudo'];
 
             $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
-            $members = $membersManager->membersProfile($_GET['id']);
+            $members = $membersManager->membersProfile($sessionID);
 
             $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
             $comments = $commentManager->getUserComment($pseudo);
@@ -166,7 +162,6 @@ class MembersController
           static function memberEdition()
           {
             $sessionID = $_SESSION['id'];
-            $mdp1Hached = password_hash($_POST['newmdp1'], PASSWORD_DEFAULT);
 
             if (isset($_SESSION['id'])) {
               $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
@@ -175,6 +170,9 @@ class MembersController
 
               if (isset($_POST['newmdp1']) and !empty($_POST['newmdp1']) and isset($_POST['newmdp2']) and !empty($_POST['newmdp2'])) {
                 if ($_POST['newmdp1'] == $_POST['newmdp2']) {
+                  
+                  $mdp1Hached = password_hash($_POST['newmdp1'], PASSWORD_DEFAULT);
+
                   $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
                   $members = $membersManager->editPasswordbyUser($sessionID, $mdp1Hached);
                   header('index.php?action=profile&id' . $_SESSION['id']);

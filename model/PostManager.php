@@ -32,43 +32,33 @@ class PostManager extends Manager
         return $post;
     }
 
-    public function postArticle()
+    public function postArticle($title, $content)
     {
         $db = $this->dbConnect();
 
-        if (isset($_POST['name']) and isset($_POST['mytextarea']))
-        {
-            $title = $_POST['name'];
-            $content = $_POST['mytextarea'];
             $req_connect = $db->prepare("INSERT INTO posts(title,content,creation_date) VALUES(?,?,NOW())");
             $req_connect->execute(array(
                 $title,
                 $content
             ));
-        }
     }
 
-    public function postEditedArticle()
+    public function postEditedArticle($title, $content, $edit_id)
     {
         $db = $this->dbConnect();
 
-        if (isset($_POST['name']) and isset($_POST['mytextarea']))
-        {
-            $edit_id = htmlspecialchars($_GET['id']);
             $req_connect = $db->prepare('UPDATE posts SET title = :titre, content = :content WHERE id = :id');
             $req_connect->execute(array(
-                'titre' => $_POST['name'],
-                'content' => $_POST['mytextarea'],
+                'titre' => $title,
+                'content' => $content,
                 'id' => $edit_id
             ));
-        }
     }
 
-    public function postDeleteArticle()
+    public function postDeleteArticle($edit_id)
     {
         $db = $this->dbConnect();
 
-        $edit_id = htmlspecialchars($_GET['id']);
         $req_connect = $db->prepare('DELETE FROM posts WHERE id = :id');
         $req_connect->execute(array(
             'id' => $edit_id

@@ -18,10 +18,12 @@ class PostCommentsController
 
         $post = $postManager->getPost($_GET['id']);
         $comments = $commentManager->getComments($_GET['id']);
+        $flag = $commentManager->showFlagComment($_GET['id']);
 
         $postView = getView('view/postView.php', [
           "post" => $post,
-          "comments" => $comments
+          "comments" => $comments,
+          "flag" => $flag
         ]);
 
         $htmlPostInTemplate = loadTemplate(
@@ -182,10 +184,11 @@ class PostCommentsController
         {
           if (isset($_SESSION['id'])) {
               $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-              $commentManager->addFlagComment();
-              header("location: index.php?action=post&id=" . $_GET['id']);
+              $commentManager->addFlagComment($_GET['id'], $_SESSION['id']);
+              header("location:" .  $_SERVER['HTTP_REFERER']); 
           } else {
               header("location: index.php?action=error");
-    }
+            }
+        }
+
   }
-}

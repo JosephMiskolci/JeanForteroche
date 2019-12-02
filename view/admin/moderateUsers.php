@@ -29,7 +29,7 @@ if($_SESSION['admin'] == "1")
       <?php } else {?>
         <a class="btn btn-warning" href="index.php?action=moderatorUser&amp;id=<?= $data['id'] ?>" role="button">Modérateur</a>
       <?php } ?>
-      <a class="btn btn-danger" href="index.php?action=deleteUser&amp;id=<?= $data['id'] ?>" role="button">Supprimer défintivement</a>
+      <a class="btn btn-danger" href="index.php?action=deleteUser&amp;id=<?= $data['id'] ?>" role="button">Supprimer définitivement</a>
     </div>
   </div>
   <hr>

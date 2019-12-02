@@ -36,11 +36,14 @@ try {
         if ($_GET['action'] == 'postModerateCommentbyUser') {     AdminController::editCommentbyUser(); }
         if ($_GET['action'] == 'deleteComment') {                 AdminController::deleteComment(); }
         if ($_GET['action'] == 'deleteCommentbyUser') {           AdminController::deleteCommentbyUser(); }
-        if ($_GET['action'] == 'inscription') {                   MembersController::inscription(); }
+        if ($_GET['action'] == 'inscription') {                   MembersController::viewInscription(); }
+        if ($_GET['action'] == 'sendInscription') {               MembersController::inscription(); }
         if ($_GET['action'] == 'connexion') {                     MembersController::connexion(); }
         if ($_GET['action'] == 'profile') {                       MembersController::profile(); }
         if ($_GET['action'] == 'disconnect') {                    MembersController::disconnect(); }
         if ($_GET['action'] == 'edition') {                       MembersController::memberEdition(); }
+        if ($_GET['action'] == 'contact') {                       HomeController::form();}
+        if ($_GET['action'] == 'sendcontact') {                   HomeController::sendform();}
         if ($_GET['action'] == 'error') {                         HomeController::error(); }
 
 

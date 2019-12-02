@@ -584,7 +584,7 @@ footer {
   line-height: 1.60;
 }
 
-.forminscriptioncore input, .FormEditionProfile input {
+.forminscriptioncore input, .FormEditionProfile input, .FormInfos input, .formMessage input {
   padding: 15px;
   width: 300px;
   background: rgba(178, 190, 195, 0.47);
@@ -645,9 +645,42 @@ footer {
   margin: auto 50px ;
 }
 
+.contactForm {
+  position: relative;
+  background: rgba(178, 190, 195, 0.17);
+  padding: 20px;
+  border-radius: 10px;
+  width: 55%;
+  margin: 0 auto 50px;
+}
+
 .FormEditionProfile form {
   margin: 0 50px 0;
 }
+
+.FormInfos {
+  display: table;
+  margin: 0 auto;
+}
+
+.FormInfos form {
+  margin: 20px 50px 20px;
+}
+
+#FormTitle {
+  max-height: 50px;
+}
+
+.formMessage textarea {
+  height: 150px;
+  padding: 10px 10px;
+}
+
+.formMessage input {
+  display: table;
+  margin: 0 auto;
+}
+
 /* ------------------------------ 1173px / Desktop - 4K ------------------------------------*/
 @media screen and (min-width: 1173px) {
   #services-section {

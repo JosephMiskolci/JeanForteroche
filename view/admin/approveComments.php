@@ -19,7 +19,7 @@ if ($_SESSION['admin'] == "1" or $_SESSION['moderator'] == "1") {
         <div class="AccessButtons">
           <a class="btn btn-info" href="index.php?action=validateComment&amp;id=<?= $data['com_id'] ?>" role="button">Valider</a>
           <a class="btn btn-warning" href="index.php?action=moderate&amp;id=<?= $data['com_id'] ?>" role="button">Modérer</a>
-          <a class="btn btn-danger" href="index.php?action=deleteComment&amp;id=<?= $data['com_id'] ?>" role="button">Supprimer défintivement</a>
+          <a class="btn btn-danger" href="index.php?action=deleteComment&amp;id=<?= $data['com_id'] ?>" role="button">Supprimer définitivement</a>
         </div>
       </div>
       <hr>

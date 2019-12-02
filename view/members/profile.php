@@ -34,8 +34,8 @@
           <i>Commentaire validé !</i>
         <?php } ?></p>
       <div class="AccessButtons">
-        <a class="btn btn-warning" href="index.php?action=moderatebyUser&amp;id=<?= $data['com_id'] ?>" role="button">Modérer</a>
-        <a class="btn btn-danger" href="index.php?action=deleteCommentbyUser&amp;id=<?= $data['com_id'] ?>" role="button">Supprimer défintivement</a>
+        <a class="btn btn-warning" href="index.php?action=moderatebyUser&amp;id=<?= $data['com_id'] ?>" role="button">Éditer</a>
+        <a class="btn btn-danger" href="index.php?action=deleteCommentbyUser&amp;id=<?= $data['com_id'] ?>" role="button">Supprimer définitivement</a>
       </div>
     </div>
       <hr>

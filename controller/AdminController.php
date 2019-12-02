@@ -25,23 +25,29 @@ class AdminController {
 
   static function addArticle() {
 
-    $adminManager = new \JeanForteroche\Blog\Model\PostManager();
-    $adminManager->postArticle($_POST['name'], $_POST['mytextarea']);
-    header("location: index.php?action=manageArticle");
+    if (isset($_POST['name']) and isset($_POST['mytextarea'])) {
+      $adminManager = new \JeanForteroche\Blog\Model\PostManager();
+      $adminManager->postArticle($_POST['name'], $_POST['mytextarea']);
+      header("location: index.php?action=manageArticle");
+    }
   }
 
   static function editArticle() {
 
+    if (isset($_POST['name']) and isset($_POST['mytextarea'])) {
     $adminManager = new \JeanForteroche\Blog\Model\PostManager();
     $adminManager->postEditedArticle($_POST['name'], $_POST['mytextarea'], $_GET['id']);
     header("location: index.php?action=manageArticle");
+    }
   }
 
   static function deleteArticle() {
 
+    if (isset($_POST['name']) and isset($_POST['mytextarea']) and isset($_POST['delete'])) {
     $adminManager = new \JeanForteroche\Blog\Model\PostManager();
     $adminManager->postDeleteArticle($_GET['id']);
     header("location: index.php?action=manageArticle");
+    }
   }
 
   static function moderateComment() {
