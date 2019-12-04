@@ -8,31 +8,26 @@ class PostCommentsController
 
   static function viewPost()
   {
-
     if (!isset($_GET['id'])) {
       exit('Erreur fatale. <a href="index.php">Revenir à l\'accueil</a>');
-        }
+    }
+    $postManager = new \JeanForteroche\Blog\Model\PostManager();
+    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+    $post = $postManager->getPost($_GET['id']);
+    $comments = $commentManager->getComments($_GET['id']);
 
-        $postManager = new \JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+    $postView = getView('view/postView.php', [
+      "post" => $post,
+      "comments" => $comments
+    ]);
 
-        $post = $postManager->getPost($_GET['id']);
-        $comments = $commentManager->getComments($_GET['id']);
-        $flag = $commentManager->showFlagComment($_GET['id']);
-
-        $postView = getView('view/postView.php', [
-          "post" => $post,
-          "comments" => $comments,
-          "flag" => $flag
-        ]);
-
-        $htmlPostInTemplate = loadTemplate(
-          $postView,
-          $post['title'],
-          ["public/css/styleArticle.css"]
-        );
-        return $htmlPostInTemplate;
-      }
+    $htmlPostInTemplate = loadTemplate(
+      $postView,
+      $post['title'],
+      ["public/css/styleArticle.css"]
+    );
+    return $htmlPostInTemplate;
+  }
 
       static function editComment()
       {
@@ -190,5 +185,7 @@ class PostCommentsController
               header("location: index.php?action=error");
             }
         }
+
+        
 
   }

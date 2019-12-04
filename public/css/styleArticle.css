@@ -284,6 +284,13 @@ hr {
   font-size: 10px;
 }
 
+.ArticleDateProfile {
+  position: relative;
+  top: 25px;
+  float: right;
+  font-size: 10px;
+}
+
 .ArticleLikes {
   position: absolute;
 }

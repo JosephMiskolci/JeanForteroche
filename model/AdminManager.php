@@ -20,15 +20,12 @@ class AdminManager extends Manager
     {
         $db = $this->dbConnect();
 
-        if (isset($_POST['name']) and isset($_POST['mytextarea']))
-        {   
             $req_connect = $db->prepare('UPDATE posts SET title = :titre, content = :content WHERE id = :id');
             $req_connect->execute(array(
                 'titre' => $edit_name,
                 'content' => $edit_content,
                 'id' => $edit_id
             ));
-        }
     }
 
     public function postDeleteArticle($edit_id)

@@ -54,19 +54,6 @@ class CommentManager extends Manager
         return $comments;
     }
 
-    public function getFlagComments()
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT c.author, c.id AS com_id, c.comment, c.comment_date, p.title
-                                FROM comments c
-                                INNER JOIN posts p
-                                ON c.post_id = p.id
-                                WHERE c.validated = "1"
-                                ORDER BY flag_comment DESC');
-        $comments->execute();
-        return $comments;
-    }
-
     public function confirmComments($comment_id)
     {
         $db = $this->dbConnect();
@@ -106,7 +93,7 @@ class CommentManager extends Manager
     {
         $db = $this->dbConnect();
         
-        $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, validated, comment_date) VALUES(:id, :pseudo, :content, "0", "0", NOW())');
+        $comments = $db->prepare('INSERT INTO comments (post_id, author, comment, validated, comment_date) VALUES(:id, :pseudo, :content, "0", NOW())');
         $commentedLines = $comments->execute(array(
             'id' => $comment_id,
             'pseudo' => $comment_pseudo,

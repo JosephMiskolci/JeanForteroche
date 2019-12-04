@@ -43,10 +43,13 @@ class AdminController {
 
   static function deleteArticle() {
 
-    if (isset($_POST['name']) and isset($_POST['mytextarea']) and isset($_POST['delete'])) {
+    if (isset($_POST['send'])) {
     $adminManager = new \JeanForteroche\Blog\Model\PostManager();
     $adminManager->postDeleteArticle($_GET['id']);
     header("location: index.php?action=manageArticle");
+    } else {
+      new Exception("error");
+      header("location: index.php");
     }
   }
 

@@ -62,7 +62,7 @@ if ($datas["comments"]->rowCount() > 0) { ?>
           <p class="CommentaryText">
             <?= nl2br(strip_tags($comment['comment'])) ?>
           </p>
-          <p class="ArticleDate">Publié le <?= $comment['comment_date_fr'] ?> par <strong><?= htmlspecialchars($comment['author']) ?></strong></p>
+          <p class="ArticleDateProfile">Publié le <?= $comment['comment_date_fr'] ?> par <strong><?= htmlspecialchars($comment['author']) ?></strong></p>
         </div>
         <hr>
         </hr>
