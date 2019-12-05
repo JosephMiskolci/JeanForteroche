@@ -8,7 +8,7 @@ class CommentManager extends Manager
     public function getComments($postId)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, author, comment DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = :id AND validated = "1" ORDER BY comment_date DESC');
+        $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = :id AND validated = "1" ORDER BY comment_date DESC');
         $comments->execute(array(
             'id' => $postId
         ));
@@ -16,10 +16,28 @@ class CommentManager extends Manager
         return $comments;
     }
 
+    /* public function getComments($postId)
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare('SELECT c.id, c.author, c.comment, DATE_FORMAT(c.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS c.comment_date_fr, f.id, f.id_comments, f.user_id 
+                                FROM comments c
+                                INNER JOIN flag_comments f
+                                ON c.id = f.id_comments
+                                WHERE c.post_id = :id 
+                                AND c.validated = "1" 
+                                ORDER BY c.comment_date 
+                                DESC');
+        $comments->execute(array(
+            'id' => $postId
+        ));
+        return $comments;
+    }
+    */
+
     public function showComment($comment_id)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, author, comment DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE id = :id ORDER BY comment_date DESC');
+        $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE id = :id ORDER BY comment_date DESC');
         $comments->execute(array(
             'id' => $comment_id
         ));

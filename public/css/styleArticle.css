@@ -332,6 +332,7 @@ input, textarea {
 
 textarea {
   width: 100%;
+  padding: 20px;
 }
 
 .comment-sending {

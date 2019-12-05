@@ -37,6 +37,7 @@ class MembersManager extends Manager
         ));
         return $insertmbr;
     }
+    
     public function connectUserByMail($mail)
     {
         $db = $this->dbConnect();

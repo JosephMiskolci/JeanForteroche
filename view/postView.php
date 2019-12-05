@@ -46,12 +46,13 @@ if ($datas["comments"]->rowCount() > 0) { ?>
           <?php if($_SESSION['id']) {
 
             $db = new \PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
-            $dislikes = $db->prepare('SELECT id FROM flag_comments WHERE id_comments = ?');
-            $dislikes->execute(array($comment['id']));
-            $dislikes = $dislikes->rowCount(); ?>
+            $flags = $db->prepare('SELECT * FROM flag_comments WHERE id_comments = ?');
+            $flags->execute(array($comment['id']));
+
+            $dislikes = $flags->rowCount(); ?>
 
           <form class="FlagForm" action="index.php?action=flagComment&amp;id=<?= $comment['id'] ?>" method="post">
-                      <?php if ($dislikes >= "1") {
+              <?php if ($dislikes >= "1") {
              ?>     
               <button type="submit" class="FlagCommentsRed"><i class="fas fa-exclamation-circle"></i> <?= $dislikes ?></button>
             <?php } else { ?>
@@ -62,7 +63,7 @@ if ($datas["comments"]->rowCount() > 0) { ?>
           <p class="CommentaryText">
             <?= nl2br(strip_tags($comment['comment'])) ?>
           </p>
-          <p class="ArticleDateProfile">Publié le <?= $comment['comment_date_fr'] ?> par <strong><?= htmlspecialchars($comment['author']) ?></strong></p>
+          <p class="ArticleDate">Publié le <?= $comment['comment_date_fr'] ?> par <strong><?= htmlspecialchars($comment['author']) ?></strong></p>
         </div>
         <hr>
         </hr>

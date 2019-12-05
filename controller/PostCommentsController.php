@@ -6,15 +6,20 @@ require_once('model/CommentManager.php');
 class PostCommentsController
 {
 
-  static function viewPost()
+  static function viewPost($id)
   {
-    if (!isset($_GET['id'])) {
+    if (!isset($id)) {
       exit('Erreur fatale. <a href="index.php">Revenir à l\'accueil</a>');
     }
+
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+
+    $id = $_GET['id'];
+
+    $post = $postManager->getPost($id);
+    $comments = $commentManager->getComments($id);
+
 
     $postView = getView('view/postView.php', [
       "post" => $post,

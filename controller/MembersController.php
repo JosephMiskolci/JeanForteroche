@@ -4,8 +4,14 @@ require_once('model/MembersManager.php');
 class MembersController
 {
 
-  static function inscription()
+  static function viewInscription()
   {
+          $htmlinscription = getView('view/members/inscription.php', null);
+          $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+          return $htmlinscriptionInTemplate;
+  }
+
+  static function inscription() {
 
     $pseudo = $_POST['pseudo'];
     $mail = $_POST['mail'];
@@ -47,8 +53,8 @@ class MembersController
       ],
       "PSEUDO_TOO_LONG" => [
         "message" => "Votre pseudo ne doit pas dépasser 255 caractères !",
-        "condition" => (length($pseudo) > 255)
-      ],
+        "condition" => (strlen($pseudo) > 255)
+      ], 
       "FILL_ALL" => [
         "message" => "Tous les champs doivent être complétés ! Vous devez recommencer votre inscription.",
         "condition" => (empty($pseudo) || empty($mail) || empty($mail2) || empty($mdp) || empty($mdp2))
@@ -59,11 +65,7 @@ class MembersController
     foreach ($errors as $error) {
       if ($error["condition"]) {
         $numberOfErrors++;
-        ?>
-        <script>
-          alert(<? $error["message"] ?>);
-        </script>
-      <?php
+          echo($error["message"]);
             }
           }
 
@@ -76,12 +78,13 @@ class MembersController
         window.location.replace('index.php?action=connexion');
       </script>
       <?php
-
           }
-          $htmlinscription = getView('view/members/inscription.php', null);
-          $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
-          return $htmlinscriptionInTemplate;
-    }
+
+        $htmlinscription = getView('view/members/inscription.php', null);
+        $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+        return $htmlinscriptionInTemplate;
+
+  } 
 
         static function connexion()
         {

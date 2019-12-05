@@ -9,7 +9,7 @@ try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'home') {                          HomeController::viewHome(); };
         if ($_GET['action'] == 'bibliography') {                  HomeController::viewBibliography(); };
-        if ($_GET['action'] == 'post') {                          PostCommentsController::viewPost(); }
+        if ($_GET['action'] == 'post') {                          PostCommentsController::viewPost($_GET['id']); }
         if ($_GET['action'] == 'addComment') {                    PostCommentsController::addComment(); }
         if ($_GET['action'] == 'flagComment') {                   PostCommentsController::flagComment(); }
         if ($_GET['action'] == 'allArticles') {                   PostCommentsController::AllArticles(); }
