@@ -25,7 +25,7 @@
     if ($datas['envoi'] === TRUE) {
         echo "Mail envoyé !";
     } elseif ($datas['envoi'] === FALSE)  {
-        echo "marche pas !";
+        echo "Le Mail n'a pas été envoyé. Veuillez réessayer !";
     }?>
 
     <div class="FormInfos">

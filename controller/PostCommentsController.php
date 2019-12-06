@@ -15,15 +15,15 @@ class PostCommentsController
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
-    $id = $_GET['id'];
-
     $post = $postManager->getPost($id);
     $comments = $commentManager->getComments($id);
+    $flags = $commentManager->showFlagComment($_GET['id']);
 
 
     $postView = getView('view/postView.php', [
       "post" => $post,
-      "comments" => $comments
+      "comments" => $comments,
+      'flags' => $flags
     ]);
 
     $htmlPostInTemplate = loadTemplate(
@@ -180,16 +180,26 @@ class PostCommentsController
           }
         }
 
-        static function flagComment()
-        {
-          if (isset($_SESSION['id'])) {
-              $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-              $commentManager->addFlagComment($_GET['id'], $_SESSION['id']);
-              header("location:" .  $_SERVER['HTTP_REFERER']); 
-          } else {
-              header("location: index.php?action=error");
-            }
-        }
+  static function flagComment()
+  {
+    if (isset($_SESSION['id'])) {
+      $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+      $commentManager->addFlagComment($_GET['id'], $_SESSION['id']);
+      header("location:" .  $_SERVER['HTTP_REFERER']);
+    } else {
+      header("location: index.php?action=error");
+    }
+  }
+  static function unflagComment()
+  {
+    if (isset($_SESSION['id'])) {
+      $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+      $commentManager->removeFlagComment($_GET['id'], $_SESSION['id']);
+      header("location:" .  $_SERVER['HTTP_REFERER']);
+    } else {
+      header("location: index.php?action=error");
+    }
+  }
 
         
 

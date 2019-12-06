@@ -2,6 +2,11 @@
    <section class="TopTitle">
       <h2>Inscription</h2>
    </section>
+
+   <?php if ($datas['numberOfErrors'] >= 1) { ?>
+      <div class="error_text"> <?php echo $datas['errortext'] ?></div> <?php
+    } ?>
+    
    <div class="forminscriptioncore">
       <h3>Créez un compte pour écrire des commentaires et partager votre avis sur les articles de Jean Forteroche !</h3>
       <form method="POST" action="index.php?action=sendInscription">

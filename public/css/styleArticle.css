@@ -603,10 +603,11 @@ footer {
 }
 
 .error_text {
-  position: absolute;
-  top: 290px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: table;
+  margin: 0 auto;
+  padding: 15px;
+  background: rgba(178, 190, 195, 0.47);
+  border-radius: 10px;
 }
 
 .inscriptionbutton {

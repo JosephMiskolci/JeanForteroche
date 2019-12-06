@@ -12,6 +12,7 @@ try {
         if ($_GET['action'] == 'post') {                          PostCommentsController::viewPost($_GET['id']); }
         if ($_GET['action'] == 'addComment') {                    PostCommentsController::addComment(); }
         if ($_GET['action'] == 'flagComment') {                   PostCommentsController::flagComment(); }
+        if ($_GET['action'] == 'unflagComment') {                 PostCommentsController::unflagComment(); }
         if ($_GET['action'] == 'allArticles') {                   PostCommentsController::AllArticles(); }
         if ($_GET['action'] == 'admin') {                         AdminController::viewHomeAdmin(); }
         if ($_GET['action'] == 'viewWritingArticle') {            AdminController::viewWritingArticle(); }

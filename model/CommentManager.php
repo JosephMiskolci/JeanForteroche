@@ -121,16 +121,16 @@ class CommentManager extends Manager
         return $commentedLines;
     }
 
-    public function showFlagComment($comment_id)
+    public function showFlagComment()
     {
         $db = $this->dbConnect();
-
-        $req = $db->prepare('SELECT id FROM flag_comments WHERE id_comments = :id_comments');
-        $reqFlag = $req->execute(array(
-            'id_comments' => $comment_id,
-        ));
-
-        return $reqFlag;
+        $comments = $db->prepare('SELECT c.author, c.id, c.comment, c.comment_date, f.id, f.id_comments, f.user_id
+                                FROM comments c
+                                INNER JOIN flag_comments f
+                                ON c.id = f.id_comments
+                                ORDER BY comment_date DESC');
+        $comments->execute();
+        return $comments;
     }
 
     public function addFlagComment($comment_id, $user_id)
@@ -144,5 +144,18 @@ class CommentManager extends Manager
         ));
 
         return $addFlag;
+    }
+
+    public function removeFlagComment($comment_id, $user_id)
+    {
+        $db = $this->dbConnect();
+
+        $req = $db->prepare('DELETE FROM flag_comments WHERE id_comments = :id_comments AND user_id = :user_id');
+        $removeFlag = $req->execute(array(
+            'id_comments' => $comment_id,
+            'user_id' => $user_id
+        ));
+
+        return $removeFlag;
     }
 }
