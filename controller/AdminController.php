@@ -68,7 +68,7 @@ class AdminController {
   static function moderateFlagComment() {
 
     $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $comments = $commentManager->getFlagComments();
+    $comments = $commentManager->showFlagComment();
     $postView = getView('view/admin/approveComments.php', [
       "comments" => $comments
     ]);

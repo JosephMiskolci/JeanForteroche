@@ -20,6 +20,10 @@ body {
   bottom: 35px;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
 h2 {
   line-height: 1.5;
 }
@@ -42,7 +46,7 @@ h3 {
   color: #2d3436 !important;
 }
 
-.navbar-toggler-icon {
+.navbar-dark .navbar-toggler-icon {
   background-image: url('http://joseph-miskolci.com/pages/OCR%20web/public/images/icons/bars-solid.svg') !important;
   color: #2d3436 !important;
   font-size: 15px;
@@ -123,13 +127,14 @@ figure {
   margin: 0 auto;
   position: relative;
   width: 40%;
-  bottom: 130px;
+  bottom: 110px;
   color: #0984e3;
   text-align: center;
   font-family: 'Homemade Apple', cursive;
   background: rgba(178, 190, 195, 0.7);
-  padding: 40px 20px 30px;
+  padding: 50px 20px 30px;
   border-radius: 10px;
+  min-height: 130px;
 }
 
 .PublicationsTitle {
@@ -137,7 +142,7 @@ figure {
 }
 
 #biography {
-  max-height: 100px;
+  height: 50px;
 }
 
 /* ------------------------------ Articles + Comments -------------------------*/
@@ -181,7 +186,7 @@ figure {
 #Publications {
   padding: 10px 5% 50px;
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 40px auto 0;
 }
 
 #social-medias {
@@ -286,7 +291,7 @@ hr {
 
 .ArticleDateProfile {
   position: relative;
-  top: 25px;
+  bottom: 10px;
   float: right;
   font-size: 10px;
 }
@@ -318,7 +323,7 @@ label {
 }
 
 .message-form p {
-  margin: 0 auto;
+  margin: 0 auto 15px;
   width: 80%;
 }
 
@@ -337,7 +342,7 @@ textarea {
 
 .comment-sending {
   display: table;
-  margin: 0 auto 50px;
+  margin: 10px auto 50px;
 }
 
 /* ------------------------------ Social Logos ------------------------------*/
@@ -358,6 +363,7 @@ textarea {
 .social-logos i {
   padding: 40px 20px;
   font-size: 50px;
+  color: #2d3436;
 }
 
 /* ------------------------------ Footer ------------------------------------*/
@@ -641,7 +647,7 @@ footer {
 
 .editionProfile, .ProfileInformations p {
   display: table;
-  margin: 0 auto 5px;
+  margin: 0 auto;
 }
 
 .FormEditionProfile {
@@ -650,7 +656,7 @@ footer {
   justify-content: space-between;
 }
 
-.ProfileCommentaries, .ProfileInformations, .CommentsInformations {
+.ProfileCommentaries, .CommentsInformations {
   margin: auto 50px ;
 }
 
@@ -766,10 +772,20 @@ footer {
   #overview-link, #contacts-link {
     top: 1px;
   }
+
+  .PublicationsTitle {
+    padding: 30px 20px 30px;
+    bottom: 280px;
+  }
 }
 
 /* ------------------------------ 768px ------------------------------------*/
 @media screen and (max-width: 768px) {
+
+  .h2 {
+    font-size: 20px;
+  }
+
   .BiographyText {
     bottom: 350px;
   }
@@ -792,14 +808,6 @@ footer {
     padding: 0;
   }
 
-  .carousel-slides li {
-    position: absolute;
-    list-style: none;
-    height: 800px;
-    width: 100%;
-    object-fit: cover;
-  }
-
   .carousel-slides li img {
     width: 100%;
     object-fit: cover;
@@ -811,7 +819,7 @@ footer {
     line-height: 150%;
   }
 
-  form {
+  .MessageForm {
     padding: 0 100px;
   }
 
@@ -832,10 +840,55 @@ footer {
   .message-form p {
     padding-top: 0px;
   }
+
+  .ProfileText {
+    width: 40%;
+  }
+
+  .AccessButtons {
+    float: left;
+    margin-top: 0px;
+  }
+
+  .CommentsName {
+    width: 45%;
+  }
+
+  .ArticleDateProfile {
+    position: relative;
+    top: 0px;
+    font-size: 13px;
+    display: table;
+    margin: 0 auto;
+    float: none;
+    width: 40%;
+  } 
+
+  .BiographyTitle {
+    bottom: 130px;
+  }
+
+  .BiographyTitle h1 {
+    display: table;
+    margin: 0 auto;
+  }
+
+  .comment-sending {
+    width: 40%;
+  }
 }
 
 /* ------------------------------ 488px ------------------------------------*/
 @media screen and (max-width: 488px) {
+  body {
+  font-size: 14px;
+  }
+
+  .BiographyTitle {
+  bottom: 130px;
+  padding: 40px 20px 30px;
+  }
+
   .carousel-slides li img {
     object-fit: cover;
     object-position: 30% 50%;
@@ -901,11 +954,7 @@ footer {
   }
 
   #biography {
-    max-height: 110px;
-  }
-
-  .BiographyTitle {
-    bottom: 350px;
+    max-height: 100px;
   }
 
   .site-infos {
@@ -934,6 +983,55 @@ footer {
 
   #services-section {
     margin-top: 70px;
+  }
+
+  .ArticleDate {
+    position: relative;
+    bottom: 0px;
+    float: none;
+    font-size: 10px;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .comment-sending {
+    width: 80%;
+  }
+
+  .MessageForm {
+    padding: 0px;
+  }
+
+  .TopTitle h1, .TopTitle h2 {
+    margin: 50px auto 50px;
+    width: 90%;
+  }
+
+  .sectionAdminHalfWidth {
+  flex-direction: column;
+  }
+
+  #Admin-half-width {
+    height: 400px;
+    width: 90%;
+  }
+
+  .publishArticle textarea {
+    display: table;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin: 10px auto 20px;
+    width: 90%;
+  }
+
+.ArticleDateProfile {
+    width: 90%;
+  }
+
+  .AccessButtons a {
+    float: none;
+    width: 80%;
   }
 }
 

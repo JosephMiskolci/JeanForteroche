@@ -35,7 +35,7 @@
       <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <a class="navbar-brand" href="index.php">Jean Forteroche</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <i class="fas fa-bars"></i>
         </button>
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarNav">
           <ul class="navbar-nav ml-auto">
@@ -79,10 +79,10 @@
   <section id="social-medias">
     <h2 class="social-title">Suivez Jean Forteroche ou contactez-le :</h2>
     <div class="social-logos">
-      <i class="fab fa-facebook"></i>
-      <i class="fab fa-twitter-square"></i>
-      <i class="fab fa-instagram"></i>
-      <i class="fas fa-align-left"></i>
+      <a href="https://fr-fr.facebook.com"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com/login?lang=fr"><i class="fab fa-twitter-square"></i></a>
+      <a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram"></i></a>
+      <a href="index.php?action=contact"><i class="fas fa-align-left"></i></a>
     </div>
 
   </section>

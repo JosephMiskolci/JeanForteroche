@@ -4,9 +4,9 @@
 <section class="ProfileText">
 
   <div class="ProfileInformations">
-    <p>Pseudo = <?php echo $_SESSION['pseudo']; ?></p>
-    <p>Mail = <?php echo $_SESSION['mail']; ?></p>
-    <br /><br />
+    <p><b>Pseudo</b> = <?php echo $_SESSION['pseudo']; ?></p>
+    <p><b>Mail</b> = <?php echo $_SESSION['mail']; ?></p>
+    <br />
     <div class="editionProfile">
       <a href="index.php?action=edition&amp;id=<?= $_SESSION['id'] ?>">Éditer mon profil</a>
       <br />
@@ -28,7 +28,9 @@
         <div class="AccessButtons">
           <a class="btn btn-warning" href="index.php?action=moderatebyUser&amp;id=<?= $data['com_id'] ?>" role="button">Éditer</a>
           <a class="btn btn-danger" href="index.php?action=deleteCommentbyUser&amp;id=<?= $data['com_id'] ?>" role="button">Supprimer définitivement</a>
-          <p class="ArticleDateProfile">Publié le <?= $data['comment_date'] ?> par <strong><?= htmlspecialchars($data['author']) ?></strong> -
+        </div>
+        <div class="ArticleDateProfile">
+          <p>Publié le <?= $data['comment_date'] ?> par <strong><?= htmlspecialchars($data['author']) ?></strong> -
             <?php
                 if ($data['validated'] === "0") { ?>
               <i>Commentaire en attente de validation</i>
@@ -36,6 +38,8 @@
               <i>Commentaire validé !</i>
             <?php } ?></p>
         </div>
+
+
       </div>
       <hr>
       </hr>

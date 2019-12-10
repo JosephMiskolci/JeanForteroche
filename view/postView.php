@@ -106,7 +106,7 @@ if ($datas["comments"]->rowCount() > 0) { ?>
   <?php
   if (isset($_SESSION['pseudo'])) {
     ?>
-    <form action="index.php?action=addComment&amp;id=<?= $datas["post"]['id'] ?>" method="post">
+    <form class="MessageForm" action="index.php?action=addComment&amp;id=<?= $datas["post"]['id'] ?>" method="post">
       <div class="name-form-and-email-form">
       </div>
       <div class="message-form">

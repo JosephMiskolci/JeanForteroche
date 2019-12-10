@@ -47,7 +47,7 @@ class CommentManager extends Manager
     public function getUserComment($user_name)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT c.author, c.id AS com_id, c.comment, c.validated, c.comment_date, p.title
+        $comments = $db->prepare('SELECT c.author, c.id AS com_id, c.comment, c.validated, c.comment_date, p.title 
                               FROM comments c
                               INNER JOIN posts p
                               ON c.post_id = p.id
@@ -124,10 +124,10 @@ class CommentManager extends Manager
     public function showFlagComment()
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT c.author, c.id, c.comment, c.comment_date, f.id, f.id_comments, f.user_id
+        $comments = $db->prepare('SELECT c.author, c.id AS com_id, c.comment, c.comment_date, p.title
                                 FROM comments c
-                                INNER JOIN flag_comments f
-                                ON c.id = f.id_comments
+                                INNER JOIN posts p
+                                ON c.post_id = p.id
                                 ORDER BY comment_date DESC');
         $comments->execute();
         return $comments;

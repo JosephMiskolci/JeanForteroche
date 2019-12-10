@@ -7,9 +7,9 @@
 
    <div class="ProfileCommentaries">
      <h3>Éléments impossibles à modifier !</h3>
-     Pseudo = <?php echo $_SESSION['pseudo']; ?>
+     <b>Pseudo</b> = <?php echo $_SESSION['pseudo']; ?>
      <br />
-     Mail = <?php echo $_SESSION['mail']; ?>
+     <b>Mail</b> = <?php echo $_SESSION['mail']; ?>
      <br /><br />
    </div>
 

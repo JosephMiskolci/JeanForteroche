@@ -14,10 +14,10 @@
   <link rel="stylesheet" href="./public/css/styleArticle.css">
   <script src="https://cdn.tiny.cloud/1/0okxd6h1z339m6jxcpm75mopcnf8uevzsdrg19ultrmq3qhc/tinymce/5/tinymce.min.js"></script>
   <script>
-  tinymce.init({
-    selector: '#mytextarea',
-    height : "600px"
-  });
+    tinymce.init({
+      selector: '#mytextarea',
+      height: "600px"
+    });
   </script>
 
   <!-- Google Fonts + Favicon -->
@@ -34,7 +34,7 @@
       <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <a class="navbar-brand" href="index.php">Jean Forteroche</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <i class="fas fa-bars"></i>
         </button>
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarNav">
           <ul class="navbar-nav ml-auto">
@@ -70,16 +70,14 @@
         <a href="#">Contact</a>
         <br>
         <a <?php
-        if(isset($_SESSION['id'])) {
-          ?>
-          href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
-          <?php
-           echo 'Votre profil, ' .$_SESSION['pseudo']. ' !';
-        }
-        else {
+            if (isset($_SESSION['id'])) {
+              ?> href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
+        <?php
+          echo 'Votre profil, ' . $_SESSION['pseudo'] . ' !';
+        } else {
           ?>
           href="index.php?action=connexion">
-          <?php
+        <?php
           echo 'Connexion';
         }
         ?></a>
