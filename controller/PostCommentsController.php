@@ -17,8 +17,7 @@ class PostCommentsController
 
     $post = $postManager->getPost($id);
     $comments = $commentManager->getComments($id);
-    $flags = $commentManager->showFlagComment($_GET['id']);
-
+    $flags = $commentManager->showFlagComment($id);
 
     $postView = getView('view/postView.php', [
       "post" => $post,

@@ -184,9 +184,9 @@ figure {
 }
 
 #Publications {
-  padding: 10px 5% 50px;
+  padding: 10px 5% 10px;
   border-radius: 10px;
-  margin: 40px auto 0;
+  margin: 40px auto 40px;
 }
 
 #social-medias {
@@ -599,9 +599,10 @@ footer {
 }
 
 .forminscriptioncore input, .FormEditionProfile input, .FormInfos input, .formMessage input {
-  padding: 15px;
+  padding: 10px;
   width: 300px;
   background: rgba(178, 190, 195, 0.47);
+  margin-bottom: 10px;
 }
 
 .validateinscription {
@@ -657,7 +658,7 @@ footer {
 }
 
 .ProfileCommentaries, .CommentsInformations {
-  margin: auto 50px ;
+  margin: 20px auto 20px ;
 }
 
 .contactForm {
@@ -881,12 +882,13 @@ footer {
 /* ------------------------------ 488px ------------------------------------*/
 @media screen and (max-width: 488px) {
   body {
-  font-size: 14px;
+    font-size: 14px;
   }
 
   .BiographyTitle {
-  bottom: 130px;
-  padding: 40px 20px 30px;
+    bottom: 130px;
+    padding: 40px 20px 30px;
+    width: 65%;
   }
 
   .carousel-slides li img {
@@ -936,7 +938,7 @@ footer {
   }
 
   .Commentaries {
-    width: 90%;
+    width: 80%;
   }
 
   .carousel-text p {
@@ -968,7 +970,8 @@ footer {
   }
 
   form {
-    padding: 0 5%;
+    padding: 0px;
+    width: 80%;
   }
 
   #slideshow-link {
@@ -1025,13 +1028,55 @@ footer {
     width: 90%;
   }
 
-.ArticleDateProfile {
+  .ArticleDateProfile {
     width: 90%;
   }
 
   .AccessButtons a {
     float: none;
     width: 80%;
+  }
+
+  .contactForm {
+    width: 90%;
+  }
+
+  .FormInfos form {
+    margin : none;
+    padding: none;
+  }
+
+  .forminscriptioncore input, .FormEditionProfile input, .FormInfos input, .formMessage input {
+    width: 100%;
+  }
+
+  #Publications {
+    margin: 0px;
+  }
+
+  .forminscriptioncore {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 50px auto 50px;
+  }
+
+  .forminscriptioncore h3 {
+    width: auto;
+  }
+
+  .forminscriptioncore form {
+    margin: 20px auto;
+  }
+  
+  .inscriptionbutton {
+    width: 90%;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 90%;
   }
 }
 

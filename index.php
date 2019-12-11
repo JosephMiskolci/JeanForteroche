@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-ini_set('display_errors', 1);
+// ini_set('display_errors', 1);
 require('controller/controllers.php');
 require('utils.php');
 
