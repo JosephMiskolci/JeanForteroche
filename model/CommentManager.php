@@ -1,7 +1,8 @@
 <?php
+
 namespace JeanForteroche\Blog\Model;
 
-require_once ("model/Manager.php");
+require_once("model/Manager.php");
 
 class CommentManager extends Manager
 {
@@ -15,24 +16,6 @@ class CommentManager extends Manager
 
         return $comments;
     }
-
-    /* public function getComments($postId)
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT c.id, c.author, c.comment, DATE_FORMAT(c.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS c.comment_date_fr, f.id, f.id_comments, f.user_id 
-                                FROM comments c
-                                INNER JOIN flag_comments f
-                                ON c.id = f.id_comments
-                                WHERE c.post_id = :id 
-                                AND c.validated = "1" 
-                                ORDER BY c.comment_date 
-                                DESC');
-        $comments->execute(array(
-            'id' => $postId
-        ));
-        return $comments;
-    }
-    */
 
     public function showComment($comment_id)
     {
@@ -110,7 +93,7 @@ class CommentManager extends Manager
     public function postComment($comment_id, $comment_pseudo, $comment_content)
     {
         $db = $this->dbConnect();
-        
+
         $comments = $db->prepare('INSERT INTO comments (post_id, author, comment, validated, comment_date) VALUES(:id, :pseudo, :content, "0", NOW())');
         $commentedLines = $comments->execute(array(
             'id' => $comment_id,

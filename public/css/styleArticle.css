@@ -6,20 +6,6 @@ body {
   color: #2d3436;
 }
 
-#home-link, #slideshow-link, #services-link, #overview-link {
-  display: block;
-  position: relative;
-  visibility: hidden;
-}
-
-#slideshow-link {
-  top: 1px;
-}
-
-#services-link, #contacts-link {
-  bottom: 35px;
-}
-
 h1 {
   font-size: 2rem;
 }
@@ -30,6 +16,18 @@ h2 {
 
 h3 {
   font-size: 1.60rem;
+}
+
+#slideshow-link {
+  top: 1px;
+}
+
+#services-link, #contacts-link {
+  bottom: 35px;
+}
+
+.centertext{
+  text-align: center;
 }
 
 /* ----------------------------- Navigation Bar -------------------------*/
@@ -611,7 +609,7 @@ footer {
 
 .error_text {
   display: table;
-  margin: 0 auto;
+  margin: 0 auto 50px;
   padding: 15px;
   background: rgba(178, 190, 195, 0.47);
   border-radius: 10px;
@@ -971,8 +969,12 @@ footer {
 
   form {
     padding: 0px;
-    width: 80%;
+    margin-top: 0;
   }
+
+  .FormInfos form {
+    margin: 10px 10px 10px;
+}
 
   #slideshow-link {
     top: 300px;

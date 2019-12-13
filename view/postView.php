@@ -53,25 +53,17 @@ if ($datas["comments"]->rowCount() > 0) { ?>
 
         if ($_SESSION['id'] == $flag['user_id'] && $comment['id'] == $flag['id_comments']) { ?>
           <form class="FlagForm" action="index.php?action=unflagComment&amp;id=<?= $comment['id'] ?>" method="post">
-              <?php if ($dislikes >= 1) {
-                      ?>
-                <button type="submit" class="FlagCommentsRed"><i class="fas fa-exclamation-circle"></i> <?= $dislikes ?></button>
-              <?php
-                    } else { ?>
-                <button type="submit" class="FlagComments"><i class="fas fa-exclamation-circle"></i> <?= $dislikes ?></button>
-              <?php
-                    } 
-                    ?>
+                <button type="submit" class="FlagCommentsRed"><i class="fas fa-exclamation-circle"></i></button>
             </form>
             <?php
         } else { ?>
           <form class="FlagForm" action="index.php?action=flagComment&amp;id=<?= $comment['id'] ?>" method="post">
               <?php if ($dislikes >= 1) {
                       ?>
-                <button type="submit" class="FlagCommentsRed"><i class="fas fa-exclamation-circle"></i> <?= $dislikes ?></button>
+                <button type="submit" class="FlagCommentsRed"><i class="fas fa-exclamation-circle"></i></button>
               <?php
                     } else { ?>
-                <button type="submit" class="FlagComments"><i class="fas fa-exclamation-circle"></i> <?= $dislikes ?></button>
+                <button type="submit" class="FlagComments"><i class="fas fa-exclamation-circle"></i></button>
               <?php
                     } } 
                     ?>

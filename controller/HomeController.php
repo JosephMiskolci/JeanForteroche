@@ -1,64 +1,59 @@
 <?php
-
 require_once('model/PostManager.php');
 
-class HomeController {
+class HomeController
+{
 
   /*
-  Affiche la page avec la liste des posts dans un template
-  */
-  static function viewHome() {
+    Affiche la page avec la liste des posts dans un template
+    */
+  static function viewHome()
+  {
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getPosts();
-    $htmlListPosts = getView('view/home.php', [
-      'posts' => $posts
-      ]);
+    $htmlListPosts = getView('view/home.php', ['posts' => $posts]);
     $htmlListPostsInTemplate = loadTemplate($htmlListPosts, "Page d'accueil");
     return $htmlListPostsInTemplate;
   }
 
-  static function viewBibliography() {
+  static function viewBibliography()
+  {
 
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getPosts();
-    $postView = getView('view/bibliography.php', [
-      'posts' => $posts
-      ] );
+    $postView = getView('view/bibliography.php', ['posts' => $posts]);
 
-    $htmlPostInTemplate = loadTemplate(
-      $postView,
-      "Bibliographie de Jean Forteroche",
-      ["public/css/styleArticle.css"]
-    );
+    $htmlPostInTemplate = loadTemplate($postView, "Bibliographie de Jean Forteroche", ["public/css/styleArticle.css"]);
     return $htmlPostInTemplate;
   }
 
-  static function error() {
-    
+  static function error()
+  {
+
     $htmlListPosts = getView('view/error.php', NULL);
-    $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Erreur ! Cette page n'existe pas !",["public/css/styleArticle.css"]);
+    $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Erreur ! Cette page n'existe pas !", ["public/css/styleArticle.css"]);
     return $htmlListPostsInTemplate;
   }
 
-  static function form() {
+  static function form()
+  {
 
     $htmlListPosts = getView('view/formView.php', NULL);
     $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Contactez les gérants du site en cas de soucis technique", ["public/css/styleArticle.css"]);
     return $htmlListPostsInTemplate;
   }
 
-  static function sendform() 
+  static function sendform()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       $envoi = NULL;
 
-      $to    = "nielebung@gmail.com";
-      $from  = "jean-forteroche";
+      $to = "nielebung@gmail.com";
+      $from = "jean-forteroche";
 
-      ini_set("SMTP", "smtp.mondomaine.com");   // Pour les hébergements mutualisés Windows de OVH
-
+      ini_set("SMTP", "smtp.mondomaine.com"); // Pour les hébergements mutualisés Windows de OVH
       $Subject = $_POST['objet'];
       $message = $_POST['message'];
       $mail = $_POST['mail'];
@@ -67,7 +62,7 @@ class HomeController {
 
       $mail_Data .= "$mail <br> \n";;
 
-      $headers  = "MIME-Version: 1.0 \n";
+      $headers = "MIME-Version: 1.0 \n";
 
       $headers .= "Content-type: text/html; charset=iso-8859-1 \n";
 
@@ -79,25 +74,21 @@ class HomeController {
 
       $headers .= "X-MSMail-Priority: High \n";
 
-      $CR_Mail = TRUE;
+      $CR_Mail = true;
 
       $CR_Mail = @mail($to, $Subject, $mail_Data, $headers);
 
-      if ($CR_Mail === FALSE) {
+      if ($CR_Mail === false) {
 
         $envoi = false;
-
       } else {
 
         $envoi = true;
       }
     }
 
-    $htmlListPosts = getView('view/formView.php', [
-      "envoi" => $envoi
-      ]);
+    $htmlListPosts = getView('view/formView.php', ["envoi" => $envoi]);
     $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Contactez les gérants du site en cas de soucis technique", ["public/css/styleArticle.css"]);
     return $htmlListPostsInTemplate;
   }
-
 }

@@ -1,7 +1,8 @@
 <?php
+
 namespace JeanForteroche\Blog\Model;
 
-require_once ("model/Manager.php");
+require_once("model/Manager.php");
 
 class PostManager extends Manager
 {
@@ -36,23 +37,23 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
 
-            $req_connect = $db->prepare("INSERT INTO posts(title,content,creation_date) VALUES(?,?,NOW())");
-            $req_connect->execute(array(
-                $title,
-                $content
-            ));
+        $req_connect = $db->prepare("INSERT INTO posts(title,content,creation_date) VALUES(?,?,NOW())");
+        $req_connect->execute(array(
+            $title,
+            $content
+        ));
     }
 
     public function postEditedArticle($title, $content, $edit_id)
     {
         $db = $this->dbConnect();
 
-            $req_connect = $db->prepare('UPDATE posts SET title = :titre, content = :content WHERE id = :id');
-            $req_connect->execute(array(
-                'titre' => $title,
-                'content' => $content,
-                'id' => $edit_id
-            ));
+        $req_connect = $db->prepare('UPDATE posts SET title = :titre, content = :content WHERE id = :id');
+        $req_connect->execute(array(
+            'titre' => $title,
+            'content' => $content,
+            'id' => $edit_id
+        ));
     }
 
     public function postDeleteArticle($edit_id)

@@ -1,11 +1,13 @@
 <?php
+
 namespace JeanForteroche\Blog\Model;
 
-require_once ("model/Manager.php");
+require_once("model/Manager.php");
 
 class MembersManager extends Manager
 {
-    public function searchUserByMail($mail) {
+    public function searchUserByMail($mail)
+    {
         $db = $this->dbConnect();
 
         $reqmail = $db->prepare("SELECT * FROM member_space WHERE mail = :mail");
@@ -15,7 +17,8 @@ class MembersManager extends Manager
         return $reqmail;
     }
 
-    public function searchUserbyPseudo($pseudo) {
+    public function searchUserbyPseudo($pseudo)
+    {
         $db = $this->dbConnect();
 
         $reqpseudo = $db->prepare("SELECT * FROM member_space WHERE pseudo = :pseudo");
@@ -25,7 +28,8 @@ class MembersManager extends Manager
         return $reqpseudo;
     }
 
-    public function insertNewMembers($pseudo, $mail, $mdpHached) {
+    public function insertNewMembers($pseudo, $mail, $mdpHached)
+    {
 
         $db = $this->dbConnect();
 
@@ -37,7 +41,7 @@ class MembersManager extends Manager
         ));
         return $insertmbr;
     }
-    
+
     public function connectUserByMail($mail)
     {
         $db = $this->dbConnect();
@@ -53,8 +57,7 @@ class MembersManager extends Manager
     {
         $db = $this->dbConnect();
 
-        if (isset($_GET['id']) and $_GET['id'] > 0)
-        {
+        if (isset($_GET['id']) and $_GET['id'] > 0) {
             $requser = $db->prepare('SELECT * FROM member_space WHERE id = :id');
             $requser->execute(array(
                 'id' => $getid
