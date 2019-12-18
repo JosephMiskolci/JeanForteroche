@@ -7,8 +7,13 @@ require('utils.php');
 
 try {
     if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'home') {                          HomeController::viewHome(); };
-        if ($_GET['action'] == 'bibliography') {                  HomeController::viewBibliography(); };
+        if ($_GET['action'] == 'home') {                          HomeController::viewHome(); }
+        if ($_GET['action'] == 'bibliography') {                  HomeController::viewBibliography(); }
+        if ($_GET['action'] == 'allBooks') {                      HomeController::viewAllBooks(); }
+        if ($_GET['action'] == 'bookOne') {                       HomeController::viewBookOne(); }
+        if ($_GET['action'] == 'bookTwo') {                       HomeController::viewBookTwo();}
+        if ($_GET['action'] == 'bookThree') {                     HomeController::viewBookThree();}
+        if ($_GET['action'] == 'bookFour') {                      HomeController::viewBookFour();}
         if ($_GET['action'] == 'post') {                          PostCommentsController::viewPost($_GET['id']); }
         if ($_GET['action'] == 'addComment') {                    PostCommentsController::addComment(); }
         if ($_GET['action'] == 'flagComment') {                   PostCommentsController::flagComment(); }

@@ -71,5 +71,4 @@ $datas["posts"]->closeCursor();
       <a class="btn btn-outline-secondary" href="#" role="button">Découvrez les oeuvres de l'auteur</a>
     </div>
   </div>
-
 </section>

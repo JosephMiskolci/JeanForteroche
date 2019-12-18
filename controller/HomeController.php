@@ -9,7 +9,6 @@ class HomeController
     */
   static function viewHome()
   {
-
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getPosts();
     $htmlListPosts = getView('view/home.php', ['posts' => $posts]);
@@ -19,18 +18,24 @@ class HomeController
 
   static function viewBibliography()
   {
-
     $postManager = new \JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getPosts();
     $postView = getView('view/bibliography.php', ['posts' => $posts]);
-
     $htmlPostInTemplate = loadTemplate($postView, "Bibliographie de Jean Forteroche", ["public/css/styleArticle.css"]);
+    return $htmlPostInTemplate;
+  }
+
+  static function viewAllBooks()
+  {
+    $postManager = new \JeanForteroche\Blog\Model\PostManager();
+    $posts = $postManager->getPosts();
+    $postView = getView('view/allBooks.php', ['posts' => $posts]);
+    $htmlPostInTemplate = loadTemplate($postView, "Découvrez tous les ouvrages de Jean Forteroche", ["public/css/styleArticle.css"]);
     return $htmlPostInTemplate;
   }
 
   static function error()
   {
-
     $htmlListPosts = getView('view/error.php', NULL);
     $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Erreur ! Cette page n'existe pas !", ["public/css/styleArticle.css"]);
     return $htmlListPostsInTemplate;
@@ -42,6 +47,34 @@ class HomeController
     $htmlListPosts = getView('view/formView.php', NULL);
     $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Contactez les gérants du site en cas de soucis technique", ["public/css/styleArticle.css"]);
     return $htmlListPostsInTemplate;
+  }
+
+  static function viewBookOne()
+  {
+    $postView = getView('view/bookOne.php', NULL);
+    $htmlPostInTemplate = loadTemplate($postView, "Découvrez tous les ouvrages de Jean Forteroche", ["public/css/styleArticle.css"]);
+    return $htmlPostInTemplate;
+  }
+
+  static function viewBookTwo()
+  {
+    $postView = getView('view/allBooks.php', NULL);
+    $htmlPostInTemplate = loadTemplate($postView, "Découvrez tous les ouvrages de Jean Forteroche", ["public/css/styleArticle.css"]);
+    return $htmlPostInTemplate;
+  }
+
+  static function viewBookThree()
+  {
+    $postView = getView('view/allBooks.php', NULL);
+    $htmlPostInTemplate = loadTemplate($postView, "Découvrez tous les ouvrages de Jean Forteroche", ["public/css/styleArticle.css"]);
+    return $htmlPostInTemplate;
+  }
+
+  static function viewBookFour()
+  {
+    $postView = getView('view/allBooks.php', NULL);
+    $htmlPostInTemplate = loadTemplate($postView, "Découvrez tous les ouvrages de Jean Forteroche", ["public/css/styleArticle.css"]);
+    return $htmlPostInTemplate;
   }
 
   static function sendform()

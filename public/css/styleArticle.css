@@ -124,7 +124,7 @@ figure {
   display: table;
   margin: 0 auto;
   position: relative;
-  width: 40%;
+  width: 50%;
   bottom: 110px;
   color: #0984e3;
   text-align: center;
@@ -362,6 +362,108 @@ textarea {
   padding: 40px 20px;
   font-size: 50px;
   color: #2d3436;
+}
+
+/* ------------------------------ Books ------------------------------*/
+#MajorBooks {
+  max-width: 1920px;
+  height: 600px;
+  margin: 50px 5% 50px;
+}
+
+#MajorBooks img {
+  border-radius: 10px;
+  width: 100%;
+  object-fit: cover;
+  height: 600px;
+}
+
+.firstBook {
+  height: 400px;
+  margin-bottom: 20px;
+  display: block;
+  height: 400px;
+}
+
+.BookName {
+  position: relative;
+  bottom: 600px;
+  color: white;
+  text-align: center;
+  font-family: 'Homemade Apple', cursive;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6705217086834734) 31%, rgba(255, 255, 255, 0.0) 100%);
+  padding: 40px 20px 50px;
+  border-radius: 10px;
+}
+
+.BookName h3 {
+  font-size: 35px;
+}
+
+.BookText {
+  position: relative;
+  bottom: 339px;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.50) 71%, rgba(255, 255, 255, 0.0) 96%);
+  color: white;
+  border-radius: 10px;
+  padding: 40px 5% 20px;
+  font-size: 15px;
+  max-height: 300px;
+}
+
+.BookText p {
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  min-height: 6em;
+  max-height: 6.2em;
+  line-height: 1.5rem;
+  font-size: 15px;
+}
+
+.BookText a {
+  display: table;
+}
+
+.secondBook img {
+  object-fit: cover;
+  object-position: 10% 30%;
+}
+
+.thirdBook img {
+  object-fit: cover;
+  object-position: 10% 35%;
+}
+
+.BookPresentation {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: 50px auto;
+  background-color: rgba(178, 190, 195, 0.57);
+  border-radius: 10px; 
+}
+
+.BookPicture, .BookInfos {
+  display: table;
+  margin: 50px auto;
+  width: 30%;
+  background: #F4F4F4;
+  border-radius: 10px; 
+  height: 400px;
+}
+
+.BookPicture img {
+  display: table;
+  margin: 0px auto;
+  padding: 20px;
+  width: auto;
+  height: 400px;
+  border-radius: 10px; 
 }
 
 /* ------------------------------ Footer ------------------------------------*/
@@ -863,10 +965,6 @@ footer {
     width: 40%;
   } 
 
-  .BiographyTitle {
-    bottom: 130px;
-  }
-
   .BiographyTitle h1 {
     display: table;
     margin: 0 auto;
@@ -881,12 +979,6 @@ footer {
 @media screen and (max-width: 488px) {
   body {
     font-size: 14px;
-  }
-
-  .BiographyTitle {
-    bottom: 130px;
-    padding: 40px 20px 30px;
-    width: 65%;
   }
 
   .carousel-slides li img {
@@ -918,6 +1010,12 @@ footer {
   .BiographyText a {
     display: table;
     margin: 0 auto;
+  }
+
+  .BiographyTitle {
+  bottom: 130px;
+  padding: 40px 20px 30px;
+  width: 90%;
   }
 
   .BookText a {
@@ -1144,4 +1242,8 @@ footer {
     .thirdLastText {
       bottom: 310px;
     }
+
+    .BiographyTitle {
+    bottom: 150px;
+}
   }
