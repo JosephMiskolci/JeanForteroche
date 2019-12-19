@@ -65,7 +65,7 @@
         <br>
         <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles">Publications</a>
         <br>
-        <a href="#">Ouvrages</a>
+        <a href="index.php?action=allBooks">Ouvrages</a>
         <br>
         <a href="#">Contact</a>
         <br>

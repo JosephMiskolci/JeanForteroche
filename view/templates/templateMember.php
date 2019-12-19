@@ -49,7 +49,7 @@
               <a class="nav-link" href="index.php?action=allArticles">Publications</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Ouvrages</a>
+              <a class="nav-link" href="index.php?action=allBooks">Ouvrages</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
@@ -89,7 +89,7 @@
         <br>
         <a href="index.php?action=allArticles">Publications</a>
         <br>
-        <a href="#">Ouvrages</a>
+        <a href="index.php?action=allBooks">Ouvrages</a>
         <br>
         <a href="#">Contact</a>
         <br>

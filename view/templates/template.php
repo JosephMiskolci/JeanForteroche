@@ -49,24 +49,25 @@
               <a class="nav-link" href="index.php?action=allArticles">Publications</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Ouvrages</a>
+              <a class="nav-link" href="index.php?action=allBooks">Ouvrages</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="index.php?action=contact">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" <?php
-                                  if (isset($_SESSION['id'])) {
-                                    ?> href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
+              <a class="nav-link" 
               <?php
-                echo 'Votre profil, ' . $_SESSION['pseudo'] . ' !';
+              if (isset($_SESSION['id'])) {
+                  ?> href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
+                <?php
+                  echo 'Votre profil, ' . $_SESSION['pseudo'] . ' !';
               } else {
-                ?>
-                href="index.php?action=connexion">
-              <?php
-                echo 'Connexion';
+                  ?>
+                  href="index.php?action=connexion">
+                <?php
+                  echo 'Connexion';
               }
-              ?></a>
+                ?></a>
             </li>
           </ul>
         </div>
@@ -100,7 +101,7 @@
         <br>
         <a href="index.php?action=allArticles">Publications</a>
         <br>
-        <a href="#">Ouvrages</a>
+        <a href="index.php?action=allBooks">Ouvrages</a>
         <br>
         <a href="#">Contact</a>
         <br>

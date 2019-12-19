@@ -37,23 +37,22 @@
 <section id="Publications">
   <h2 class="PublicationsTitle">Découvrez les dernières publications de Jean Forteroche :</h2>
   <?php
-while ($data = $datas["posts"]->fetch())
-{
-?>
-  <div class="Articles">
-    <h3><a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></h3>
-    <p class="ArticleText"><?= nl2br(strip_tags($data['content'])) ?></p>
-    <p class="ArticleDate">Publié le <?= $data['creation_date_fr'] ?></p>
-  </div>
-  <hr>
-  </hr>
-  <?php
-}
-$datas["posts"]->closeCursor();
-?>
-<div class="PublicationButton">
-    <a class="btn btn-secondary" href="index.php?action=allArticles" role="button">Découvrez l'intégralité de ses publications</a>
+  while ($data = $datas["posts"]->fetch()) {
+  ?>
+    <div class="Articles">
+      <h3><a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></h3>
+      <p class="ArticleText"><?= nl2br(strip_tags($data['content'])) ?></p>
+      <p class="ArticleDate">Publié le <?= $data['creation_date_fr'] ?></p>
     </div>
+    <hr>
+    </hr>
+  <?php
+                                                                  }
+                                                                  $datas["posts"]->closeCursor();
+  ?>
+  <div class="PublicationButton">
+    <a class="btn btn-secondary" href="index.php?action=allArticles" role="button">Découvrez l'intégralité de ses publications</a>
+  </div>
 </section>
 
 <!-- Publications -->
@@ -68,7 +67,7 @@ $datas["posts"]->closeCursor();
       <p>Vivez le format de publication innovant du nouvel ouvrage de Jean Forteroche, <i>Aller simple pour l'Alaska</i>. Nathan, jeune adolescent turbulent issu du petit village d'Edwardsville dans le Kansas, commet son méfait de trop. La justice le condamne à six mois de travaux forcés dans la base militaire de Kirkland AFB, située en Alaska. Plusieurs
         évenements vont attiser la curiosité du jeune homme qui commence à remettre en question les véritables ambitions de la base... Dans son dernier ouvrage, Jean Forteroche entame le pari audacieux de découper son récit en épisodes distribués
         gratuitement sur son site internet.</p>
-      <a class="btn btn-outline-secondary" href="#" role="button">Découvrez les oeuvres de l'auteur</a>
+      <a class="btn btn-outline-secondary" href="index.php?action=allBooks" role="button">Découvrez les oeuvres de l'auteur</a>
     </div>
   </div>
 </section>

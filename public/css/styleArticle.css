@@ -440,30 +440,80 @@ textarea {
 }
 
 .BookPresentation {
-  display: flex;
-  flex-direction: row;
   width: 90%;
   margin: 50px auto;
-  background-color: rgba(178, 190, 195, 0.57);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                  url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/DarkWater.jpg");
   border-radius: 10px; 
 }
 
-.BookPicture, .BookInfos {
+.BookVisualPresentation {
+  display: flex;
+  flex-direction: row;
+}
+
+.BookPicture, .BookInfos, .BookResume {
   display: table;
   margin: 50px auto;
   width: 30%;
   background: #F4F4F4;
   border-radius: 10px; 
   height: 400px;
+  padding: 20px;
+}
+
+.BookResume {
+  height: auto;
+  width: 70%;
+  margin: 50px auto;
+  position: relative;
+  bottom: 50px;
+}
+
+.BookInfos {
+  padding: 30px;
 }
 
 .BookPicture img {
   display: table;
   margin: 0px auto;
-  padding: 20px;
   width: auto;
-  height: 400px;
+  height: 430px;
   border-radius: 10px; 
+}
+
+.BookProfileText h2 {
+  display: table;
+  margin: 0 auto;
+  color: #0984e3;
+  font-family: 'Homemade Apple', cursive;
+  padding: 5px;
+  font-size: 1.8rem;
+}
+
+.BookInfosText {
+  padding-top: 30px;
+}
+
+.BookInfosText h3 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.BookLogos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.BookLogos img {
+  width: 65px;
+  min-height: 65px;
+  max-height: auto;
+  margin: 10px auto 0;
+  padding: 3px;
 }
 
 /* ------------------------------ Footer ------------------------------------*/
