@@ -442,9 +442,17 @@ textarea {
 .BookPresentation {
   width: 90%;
   margin: 50px auto;
+  border-radius: 10px; 
+}
+
+.BookPresentationOne {
   background-image: radial-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
                   url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/DarkWater.jpg");
-  border-radius: 10px; 
+}
+
+.BookPresentationTwo {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                  url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/DarkForest.jpg");
 }
 
 .BookVisualPresentation {
@@ -455,10 +463,10 @@ textarea {
 .BookPicture, .BookInfos, .BookResume {
   display: table;
   margin: 50px auto;
-  width: 30%;
+  width: 35%;
   background: #F4F4F4;
-  border-radius: 10px; 
-  height: 400px;
+  border-radius: 10px;
+  height: 470px;
   padding: 20px;
 }
 
@@ -926,7 +934,8 @@ footer {
 
   .PublicationsTitle {
     padding: 30px 20px 30px;
-    bottom: 280px;
+    bottom: 160px;
+    width: 90%;
   }
 }
 
@@ -1062,10 +1071,37 @@ footer {
     margin: 0 auto;
   }
 
-  .BiographyTitle {
-  bottom: 130px;
-  padding: 40px 20px 30px;
-  width: 90%;
+  .BiographyTitle, .BookName {
+    bottom: 160px;
+    padding: 40px 20px 30px;
+    width: 90%;
+  }
+
+  .PublicationsTitle {
+    padding: 30px 20px 30px;
+    bottom: 160px;
+    width: 90%;
+}
+
+  #biography {
+    height: 400px;
+  }
+
+  #biography img {
+    height: 400px;
+  }
+
+  #MajorBooks {
+    height: 400px;
+  }
+
+  #MajorBooks img {
+    height: 400px;
+  }
+
+  .CommentsName {
+    display: table;
+    margin: 40px auto 50px;
   }
 
   .BookText a {
@@ -1226,6 +1262,10 @@ footer {
   table {
     border-collapse: collapse;
     margin: 0 auto;
+    width: 90%;
+  }
+
+  .CommentariesError {
     width: 90%;
   }
 }

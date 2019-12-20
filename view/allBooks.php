@@ -12,7 +12,7 @@
 <!-- Author's Biography -->
 
 <section id="biography">
-    <div class="BiographyTitle">
+    <div class="PublicationsTitle">
         <h1>Tous les ouvrages de Jean Forteroche</h1>
     </div>
 </section>

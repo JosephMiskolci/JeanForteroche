@@ -13,7 +13,7 @@
 <!-- Author's Biography -->
 
 <section id="biography">
-  <div class="BiographyTitle">
+  <div class="PublicationsTitle">
     <h1>
       <?= htmlspecialchars($datas["post"]['title']) ?>
     </h1>

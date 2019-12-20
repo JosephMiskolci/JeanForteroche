@@ -9,7 +9,7 @@
 </section>
 
 <section id="FormTitle">
-    <div class="BiographyTitle">
+    <div class="PublicationsTitle">
         <h1>
             Formulaire de contact :
         </h1>
