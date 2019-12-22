@@ -12,37 +12,35 @@
 <!-- Author's Biography -->
 
 <section id="biography">
-    <div class="PublicationsTitle">
+    <div class="BiographyTitle">
         <h1>Tous les ouvrages de Jean Forteroche</h1>
     </div>
 </section>
 
 <section id="MajorBooks">
     <div class="firstBook">
-        <img src="public/images/img/AlaskaNight.jpg" alt="Aller_simple_pour_l_Alaska_img">
+        <img src="public/images/img/ParisLargePicture.jpg" alt="Paris_est_une_fête_img">
         <div class="BookName">
-            <h3>Aller simple pour l'Alaska</h3>
+            <h3>Paris est une fête</h3>
         </div>
         <div class="BookText">
-            <p>Vivez le format de publication innovant du nouvel ouvrage de Jean Forteroche, <i>Aller simple pour l'Alaska</i>. Nathan, jeune adolescent turbulent issu du petit village d'Edwardsville dans le Kansas, commet son méfait de trop. La justice le condamne à six mois de travaux forcés dans la base militaire de Kirkland AFB, située en Alaska. Plusieurs
-                évenements vont attiser la curiosité du jeune homme qui commence à remettre en question les véritables ambitions de la base... Dans son dernier ouvrage, Jean Forteroche entame le pari audacieux de découper son récit en épisodes distribués
-                gratuitement sur son site internet.</p>
-            <a class="btn btn-outline-secondary" href="#" role="button">Découvrez la page d'Aller simple pour l'Alaska</a>
+            <p>Au cours de l'été 1957, Hemingway commença à travailler sur les «Vignettes parisiennes», comme il appelait alors Paris est une fête. Il y travailla à Cuba et à Ketchum, et emporta même le manuscrit avec lui en Espagne pendant l'été 59, puis à Paris, à l'automne de cette même année. Le livre, qui resta inachevé, fut publié de manière posthume en 1964. Pendant les trois années, ou presque, qui s'écoulent entre la mort de l'auteur et la première publication, le manuscrit subit d'importants amendements de la main des éditeurs. Se trouve aujourd'hui restitué et présenté pour la première fois le texte manuscrit original tel qu'il était au moment de la mort de l'écrivain en 1961. Ainsi, «Le poisson-pilote et les riches», l'un des textes les plus personnels et intéressants, retrouve ici ces passages, supprimés par les premiers éditeurs, dans lesquels Hemingway assume la responsabilité d'une rupture amoureuse, exprime ses remords ou encore parle de «l'incroyable bonheur» qu'il connut avec Pauline, sa deuxième épouse. Quant à «Nada y pues nada», autre texte inédit et capital, écrit en trois jours en 1961, il est le reflet de l'état d'esprit de l'écrivain au moment de la rédaction, trois semaines seulement avant une tentative de suicide. Hemingway y déclare qu'il était né pour écrire, qu'il «avait écrit et qu'il écrirait encore»...</p>
+            <a class="btn btn-outline-secondary" href="index.php?action=bookThree" role="button">Découvrez la page de "Paris est une fête"</a>
         </div>
     </div>
 </section>
 
 <section id="MajorBooks">
     <div class="firstBook">
-        <img src="public/images/img/DarkForest.jpg" alt="Dark_Forest_img">
+        <img src="public/images/img/VeniseLargePicture.jpg" alt="Au_dela_du_fleuve_et_sous_les_arbres_img">
         <div class="BookName">
             <h3>Au-delà du fleuve et sous les arbres</h3>
         </div>
         <div class="BookText">
-            <p>Vivez le format de publication innovant du nouvel ouvrage de Jean Forteroche, <i>Aller simple pour l'Alaska</i>. Nathan, jeune adolescent turbulent issu du petit village d'Edwardsville dans le Kansas, commet son méfait de trop. La justice le condamne à six mois de travaux forcés dans la base militaire de Kirkland AFB, située en Alaska. Plusieurs
-                évenements vont attiser la curiosité du jeune homme qui commence à remettre en question les véritables ambitions de la base... Dans son dernier ouvrage, Jean Forteroche entame le pari audacieux de découper son récit en épisodes distribués
-                gratuitement sur son site internet.</p>
-            <a class="btn btn-outline-secondary" href="#" role="button">Découvrez les oeuvres de l'auteur</a>
+            <p>«Ils passèrent dans la gondole, et ce fut de nouveau le même enchantement : la coque légère et le balancement soudain quand on monte, et l'équilibre des corps dans l'intimité noire une première fois puis une seconde, quand le gondoliere se mit à godiller, en faisant se coucher la gondole un peu sur le côté, pour mieux la tenir en main.
+                - Voilà, dit la jeune fille. Nous sommes chez nous maintenant et je t'aime. Embrasse-moi et mets-y tout ton amour.
+                Le colonel la tint serrée et la tête rejetée en arrière ; il l'embrassa jusqu'à ce que le baiser n'eût plus qu'un goût de désespoir.»</p>
+            <a class="btn btn-outline-secondary" href="index.php?action=bookTwo" role="button">Découvrez "Au-delà du fleuve et sous les arbres"</a>
         </div>
     </div>
 </section>
@@ -75,7 +73,7 @@
         <hr>
         </hr>
     <?php
-       }
-       $datas["posts"]->closeCursor();
+    }
+    $datas["posts"]->closeCursor();
     ?>
 </section>

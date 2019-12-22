@@ -378,13 +378,6 @@ textarea {
   height: 600px;
 }
 
-.firstBook {
-  height: 400px;
-  margin-bottom: 20px;
-  display: block;
-  height: 400px;
-}
-
 .BookName {
   position: relative;
   bottom: 600px;
@@ -445,14 +438,18 @@ textarea {
   border-radius: 10px; 
 }
 
-.BookPresentationOne {
+.BookOne {
   background-image: radial-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
                   url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/DarkWater.jpg");
 }
 
-.BookPresentationTwo {
+.BookTwo {
   background-image: radial-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-                  url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/DarkForest.jpg");
+                  url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/VeniseLargePicture.jpg");
+}
+.BookThree {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                  url("http://joseph-miskolci.com/pages/jeanforteroche/public/images/img/ParisLargePicture.jpg");
 }
 
 .BookVisualPresentation {
@@ -463,10 +460,10 @@ textarea {
 .BookPicture, .BookInfos, .BookResume {
   display: table;
   margin: 50px auto;
-  width: 35%;
+  width: 30%;
   background: #F4F4F4;
-  border-radius: 10px;
-  height: 470px;
+  border-radius: 10px; 
+  height: 400px;
   padding: 20px;
 }
 
@@ -934,8 +931,7 @@ footer {
 
   .PublicationsTitle {
     padding: 30px 20px 30px;
-    bottom: 160px;
-    width: 90%;
+    bottom: 280px;
   }
 }
 
@@ -1071,37 +1067,10 @@ footer {
     margin: 0 auto;
   }
 
-  .BiographyTitle, .BookName {
-    bottom: 160px;
-    padding: 40px 20px 30px;
-    width: 90%;
-  }
-
-  .PublicationsTitle {
-    padding: 30px 20px 30px;
-    bottom: 160px;
-    width: 90%;
-}
-
-  #biography {
-    height: 400px;
-  }
-
-  #biography img {
-    height: 400px;
-  }
-
-  #MajorBooks {
-    height: 400px;
-  }
-
-  #MajorBooks img {
-    height: 400px;
-  }
-
-  .CommentsName {
-    display: table;
-    margin: 40px auto 50px;
+  .BiographyTitle {
+  bottom: 130px;
+  padding: 40px 20px 30px;
+  width: 90%;
   }
 
   .BookText a {
@@ -1262,10 +1231,6 @@ footer {
   table {
     border-collapse: collapse;
     margin: 0 auto;
-    width: 90%;
-  }
-
-  .CommentariesError {
     width: 90%;
   }
 }

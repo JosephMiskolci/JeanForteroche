@@ -21,6 +21,7 @@ class MembersController
     $mdpHached = password_hash(($_POST['mdp']), PASSWORD_DEFAULT);
 
     // on vérifie si le pseudo est déjà pris
+    //if (!isset($_POST($pseudo) || empty($mail) || empty($mail2) || empty($mdp) || empty($mdp2))) ect
     $pseudoManager = new \JeanForteroche\Blog\Model\MembersManager();
     $pseudo2 = $pseudoManager->searchUserByPseudo($pseudo);
     $pseudoAlreadyUse = $pseudo2->rowCount();
@@ -30,7 +31,7 @@ class MembersController
     $resUserByMail = $memberManager->searchUserByMail($mail);
     $mailAlreadyUse = $resUserByMail->rowCount();
 
-      $errors = [
+    $errors = [
       "BAD_LOGIN" => [
         "message" => "Pseudo déjà utilisé !",
         "condition" => $pseudoAlreadyUse
@@ -72,142 +73,129 @@ class MembersController
     if ($numberOfErrors == 0) {
       $pseudoManager = new \JeanForteroche\Blog\Model\MembersManager();
       $pseudo = $pseudoManager->insertNewMembers($pseudo, $mail, $mdpHached);
-      ?>
-      <script>
-        alert("Votre compte a bien été créé ! Cliquez sur 'OK' pour retourner sur la page de connexion et connectez-vous !");
-        window.location.replace('index.php?action=connexion');
-      </script>
-      <?php
+
+      $withAlert = 'Votre compte a bien été créé ! Cliquez sur "OK" pour retourner sur la page de connexion et connectez-vous !';
+      $withReplace = 'index.php?action=connexion';
     }
 
-  $htmlinscription = getView('view/members/inscription.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors]);
-  $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
-  return $htmlinscriptionInTemplate;
+    $htmlinscription = getView('view/members/inscription.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors], $withAlert, $withReplace);
+    $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+    return $htmlinscriptionInTemplate;
   }
 
   static function connexion()
-    {
-     if (isset($_POST['formconnexion'])) {
-       $mail = $_POST['mailconnect'];
+  {
+    if (isset($_POST['formconnexion'])) {
+      $mail = $_POST['mailconnect'];
 
-       // Permet d'éviter l'attaque par force brute en instaurant une pause d'une seconde entre chaque utilisation de la fonction connexion()
-       sleep(1);
+      // Permet d'éviter l'attaque par force brute en instaurant une pause d'une seconde entre chaque utilisation de la fonction connexion()
+      sleep(1);
 
-       //On vérifie dans la base de données les informations
-       $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
-       $members = $membersManager->connectUserByMail($mail);
-       $resultat = $members->fetch();
+      //On vérifie dans la base de données les informations
+      $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
+      $members = $membersManager->connectUserByMail($mail);
+      $resultat = $members->fetch();
 
       $errors = [
         "BAD_PASSWD_VERIF" => [
-           "message" => "Identifiant ou mot de passe incorrect.",
+          "message" => "Identifiant ou mot de passe incorrect.",
           "condition" => (!$resultat or !password_verify($_POST['mdpconnect'], $resultat['password']))
-         ],
-         "FILL_ALL" => [
-           "message" => "Renseignez un pseudo et un mot de passe.",
-           "condition" => (!$resultat)
-         ]
-       ];
+        ],
+        "FILL_ALL" => [
+          "message" => "Renseignez un pseudo et un mot de passe.",
+          "condition" => (!$resultat)
+        ]
+      ];
 
-         $numberOfErrors = 0;
-         foreach ($errors as $error) {
-           if ($error["condition"]) {
-             $numberOfErrors++;
-             $errortext = $error['message'];
-           }
-         }
+      $numberOfErrors = 0;
+      foreach ($errors as $error) {
+        if ($error["condition"]) {
+          $numberOfErrors++;
+          $errortext = $error['message'];
+        }
+      }
 
-         if ($numberOfErrors == 0) {
-           $_SESSION['id'] = $resultat['id'];
-           $_SESSION['pseudo'] = $resultat['pseudo'];
-           $_SESSION['mail'] = $resultat['mail'];
-           $_SESSION['password'] = $resultat['password'];
-           $_SESSION['admin'] = $resultat['admin'];
-           $_SESSION['moderator'] = $resultat['moderator'];
-           ?>
-     <script>
-       alert("Vous êtes désormais connecté ! Cliquez sur 'OK' pour être redirigé vers votre profil.");
-       window.location.replace('index.php?action=profile');
-     </script>
-   <?php
-   }
-   $members->closeCursor();
-   }
+      if ($numberOfErrors == 0) {
+        $_SESSION['id'] = $resultat['id'];
+        $_SESSION['pseudo'] = $resultat['pseudo'];
+        $_SESSION['mail'] = $resultat['mail'];
+        $_SESSION['password'] = $resultat['password'];
+        $_SESSION['admin'] = $resultat['admin'];
+        $_SESSION['moderator'] = $resultat['moderator'];
 
-   $htmlListPosts = getView('view/members/connexion.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors]);
-   $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Connectez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
-   return $htmlListPostsInTemplate;
-   }
+        $withAlert = 'Vous êtes désormais connecté ! Cliquez sur "OK" pour être redirigé vers votre profil.';
+        $withReplace = 'index.php?action=profile';
+      }
+      $members->closeCursor();
+    }
+
+    $htmlListPosts = getView('view/members/connexion.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors], $withAlert, $withReplace);
+    $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Connectez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+    return $htmlListPostsInTemplate;
+  }
 
   static function profile()
   {
-      $sessionID = $_SESSION['id'];
-      $pseudo = $_SESSION['pseudo'];
+    $sessionID = $_SESSION['id'];
+    $pseudo = $_SESSION['pseudo'];
 
-      $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
-      $members = $membersManager->membersProfile($sessionID);
+    $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
+    $members = $membersManager->membersProfile($sessionID);
 
-      $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-      $comments = $commentManager->getUserComment($pseudo);
+    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+    $comments = $commentManager->getUserComment($pseudo);
 
-      $htmlListPosts = getView('view/members/profile.php', ["comments" => $comments]);
-      $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Connectez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
-      return $htmlListPostsInTemplate;
+    $htmlListPosts = getView('view/members/profile.php', ["comments" => $comments]);
+    $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Connectez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+    return $htmlListPostsInTemplate;
   }
 
   static function disconnect()
   {
 
-      $_SESSION = array();
-      session_destroy();
-      header("location:index.php");
+    $_SESSION = array();
+    session_destroy();
+    header("location:index.php");
   }
 
   static function memberEdition()
   {
-      $sessionID = $_SESSION['id'];
-      $mdp1Hached = password_hash($_POST['newmdp1'], PASSWORD_DEFAULT);
+    $sessionID = $_SESSION['id'];
+    $mdp1Hached = password_hash($_POST['newmdp1'], PASSWORD_DEFAULT);
 
-      if (isset($_SESSION['id']))
-      {
-          $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
-          $members = $membersManager->searchUserbySessionID($sessionID);
-          $user = $members->fetch();
+    if (isset($_SESSION['id'])) {
+      $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
+      $members = $membersManager->searchUserbySessionID($sessionID);
+      $user = $members->fetch();
 
-           $errors = [
-             "BAD_PASSWD_VERIF" => [
-               "message" => "Vos mots de passe ne correspondent pas !",
-               "condition" => ($_POST['newmdp1'] != $_POST['newmdp2'])
-             ],
-             "FILL_ALL" => [
-               "message" => "Tous les champs doivent être complétés ! Vous devez recommencer votre inscription.",
-               "condition" => (empty($_POST['newmdp1']) || empty($_POST['newmdp1']) || empty($_POST['newmdp2']) || empty($_POST['newmdp2']))
-             ]
-           ];
+      $errors = [
+        "BAD_PASSWD_VERIF" => [
+          "message" => "Vos mots de passe ne correspondent pas !",
+          "condition" => ($_POST['newmdp1'] != $_POST['newmdp2'])
+        ],
+        "FILL_ALL" => [
+          "message" => "Tous les champs doivent être complétés ! Vous devez recommencer votre inscription.",
+          "condition" => (empty($_POST['newmdp1']) || empty($_POST['newmdp1']) || empty($_POST['newmdp2']) || empty($_POST['newmdp2']))
+        ]
+      ];
 
-          $numberOfErrors = 0;
-          foreach ($errors as $error)
-          {
-              if ($error["condition"])
-              {
-                  $numberOfErrors++;
-                  $errortext = $error['message'];
-              }
-          }
-          if ($numberOfErrors == 0)
-          {
-              $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
-              $members = $membersManager->editPasswordbyUser($sessionID, $mdp1Hached);
-              header('index.php?action=profile&id' . $_SESSION['id']);
-          ?>
-          <script>
-            alert("Votre mot de passe à bien été modifié !");
-          </script>
-          <?php
-          }
+      $numberOfErrors = 0;
+      foreach ($errors as $error) {
+        if ($error["condition"]) {
+          $numberOfErrors++;
+          $errortext = $error['message'];
+        }
       }
-  $htmlinscription = getView('view/members/editProfile.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors]);
-  $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
-  return $htmlinscriptionInTemplate;
+      if ($numberOfErrors == 0) {
+        $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
+        $members = $membersManager->editPasswordbyUser($sessionID, $mdp1Hached);
+        header('index.php?action=profile&id' . $_SESSION['id']);
+        $withAlert = "Votre mot de passe à bien été modifié !";
+
+      }
+    }
+    $htmlinscription = getView('view/members/editProfile.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors], $withAlert);
+    $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+    return $htmlinscriptionInTemplate;
   }
-}  
+}

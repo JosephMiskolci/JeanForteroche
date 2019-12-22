@@ -58,14 +58,14 @@ class HomeController
 
   static function viewBookTwo()
   {
-    $postView = getView('view/allBooks.php', NULL);
+    $postView = getView('view/bookTwo.php', NULL);
     $htmlPostInTemplate = loadTemplate($postView, "Découvrez tous les ouvrages de Jean Forteroche", ["public/css/styleArticle.css"]);
     return $htmlPostInTemplate;
   }
 
   static function viewBookThree()
   {
-    $postView = getView('view/allBooks.php', NULL);
+    $postView = getView('view/bookThree.php', NULL);
     $htmlPostInTemplate = loadTemplate($postView, "Découvrez tous les ouvrages de Jean Forteroche", ["public/css/styleArticle.css"]);
     return $htmlPostInTemplate;
   }

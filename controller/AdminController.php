@@ -47,7 +47,7 @@ class AdminController
 
   static function deleteArticle()
   {
-
+    
     if (isset($_POST['send'])) {
       $adminManager = new \JeanForteroche\Blog\Model\PostManager();
       $adminManager->postDeleteArticle($_GET['id']);

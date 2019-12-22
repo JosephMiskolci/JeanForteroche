@@ -1,8 +1,8 @@
-<section class="BookPresentationOne">
+<section class="BookPresentation BookOne">
 
     <div class="BookVisualPresentation">
         <div class="BookPicture">
-            <img src="public/images/img/LeVieilHommeEtLaMer.jpg" alt="Dark_Forest_img">
+            <img src="public/images/img/LeVieilHommeEtLaMer.jpg" alt="Le_vieil_homme_et_la_mer_img">
         </div>
 
         <div class="BookInfos">

@@ -1,4 +1,4 @@
-<section class="BookPresentationThree">
+<section class="BookPresentation BookThree">
 
     <div class="BookVisualPresentation">
         <div class="BookPicture">

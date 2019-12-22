@@ -49,12 +49,9 @@ class PostCommentsController
   static function editPost()
   {
 
-    if (!isset($_GET['id'])) { ?>
-      <script>
-        alert("Aucun identifiant de billet envoyé");
-        window.location.replace('index.php?action=allArticles');
-      </script>
-      <?php
+    if (!isset($_GET['id'])) { 
+        $withAlert = "Aucun identifiant de billet envoyé";
+        $withReplace = 'index.php?action=allArticles';
         }
 
         $postManager = new \JeanForteroche\Blog\Model\PostManager();
@@ -62,19 +59,16 @@ class PostCommentsController
 
         $postView = getView('view/admin/editArticles.php', ["post" => $post,]);
 
-        $htmlPostInTemplate = loadTemplateAdmin($postView, $post['title'], ["public/css/styleArticle.css"]);
+        $htmlPostInTemplate = loadTemplateAdmin($postView, $post['title'], ["public/css/styleArticle.css"], $withAlert, $withReplace);
         return $htmlPostInTemplate;
   }
 
       static function viewDeletePost()
   {
 
-        if (!isset($_GET['id'])) { ?>
-      <script>
-        alert("Aucun identifiant de billet envoyé");
-        window.location.replace('index.php?action=allArticles');
-      </script>
-      <?php
+        if (!isset($_GET['id'])) {
+      $withAlert = "Aucun identifiant de billet envoyé";
+      $withReplace = 'index.php?action=allArticles'; 
           }
 
           $postManager = new \JeanForteroche\Blog\Model\PostManager();
@@ -82,7 +76,7 @@ class PostCommentsController
 
           $postView = getView('view/admin/deleteArticle.php', ["post" => $post,]);
 
-          $htmlPostInTemplate = loadTemplateAdmin($postView, $post['title'], ["public/css/styleArticle.css"]);
+          $htmlPostInTemplate = loadTemplateAdmin($postView, $post['title'], ["public/css/styleArticle.css"], $withAlert, $withReplace);
           return $htmlPostInTemplate;
   }
 
@@ -117,21 +111,18 @@ class PostCommentsController
               $commentManager->postComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
               header("location: index.php?action=post&id=" . $_GET['id']);
             } else {
-              ?>
-        <script>
-          alert("Tous les champs ne sont pas remplis !");
-          window.location.replace("index.php?action=allArticles");
-        </script>
-        <?php
+        $withAlert = "Tous les champs ne sont pas remplis !";
+        $withReplace = 'index.php?action=allArticles'; 
             }
           } else {
-            ?>
-      <script>
-        alert("Aucun identifiant de billet envoyé !");
-        window.location.replace("index.php?action=allArticles");
-      </script>
-      <?php
+      $withAlert = "Aucun identifiant de billet envoyé !";
+      $withReplace = 'index.php?action=allArticles'; 
         }
+
+    $postView = getView(NULL, NULL, $withAlert, $withReplace);
+    $htmlPostInTemplate = loadTemplateAdmin($postView, "", $withAlert, $withReplace);
+    return $htmlPostInTemplate;
+
   }
 
   static function flagComment()

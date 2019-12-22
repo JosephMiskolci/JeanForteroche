@@ -1,8 +1,8 @@
-<section class="BookPresentationTwo">
+<section class="BookPresentation BookTwo">
 
     <div class="BookVisualPresentation">
         <div class="BookPicture">
-            <img src="public/images/img/AuDelaDuFleuveEtSousLesArbres.jpeg" alt="Au_Dela_Du_Fleuve_Et_Sous_Les_Arbes_img">
+            <img src="public/images/img/AuDelaDuFleuveEtSousLesArbres.jpeg" alt="Au_Dela_Du_Fleuve_Et_Sous_Les_Arbres_img">
         </div>
 
         <div class="BookInfos">
@@ -26,10 +26,10 @@
 
     <div class="BookResume">
         <p>«Ils passèrent dans la gondole, et ce fut de nouveau le même enchantement : la coque légère et le balancement soudain quand on monte, et l'équilibre des corps dans l'intimité noire une première fois puis une seconde, quand le gondoliere se mit à godiller, en faisant se coucher la gondole un peu sur le côté, pour mieux la tenir en main.
-        <br>
-- Voilà, dit la jeune fille. Nous sommes chez nous maintenant et je t'aime. Embrasse-moi et mets-y tout ton amour.
-<br>
-Le colonel la tint serrée et la tête rejetée en arrière ; il l'embrassa jusqu'à ce que le baiser n'eût plus qu'un goût de désespoir.»</p>
+            <br>
+            - Voilà, dit la jeune fille. Nous sommes chez nous maintenant et je t'aime. Embrasse-moi et mets-y tout ton amour.
+            <br>
+            Le colonel la tint serrée et la tête rejetée en arrière ; il l'embrassa jusqu'à ce que le baiser n'eût plus qu'un goût de désespoir.»</p>
     </div>
 
 </section>

@@ -61,7 +61,7 @@
   <div class="firstBook">
     <img src="public/images/img/AlaskaNight.jpg" alt="Aller_simple_pour_l_Alaska_img">
     <div class="BookName">
-      <h3>Bibliographie</h3>
+      <h3>Oeuvres de l'auteur</h3>
     </div>
     <div class="BookText">
       <p>Vivez le format de publication innovant du nouvel ouvrage de Jean Forteroche, <i>Aller simple pour l'Alaska</i>. Nathan, jeune adolescent turbulent issu du petit village d'Edwardsville dans le Kansas, commet son méfait de trop. La justice le condamne à six mois de travaux forcés dans la base militaire de Kirkland AFB, située en Alaska. Plusieurs

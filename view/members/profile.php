@@ -24,7 +24,7 @@
       ?>
       <div class="Articles">
         <h3><?= htmlspecialchars($data["title"]) ?></h3>
-        <p class="ArticleText"><?= nl2br(strip_tags($data['comment'])) ?></p>
+        <p class="ArticleText"><?= nl2br($data['comment']) ?></p>
         <div class="AccessButtons">
           <a class="btn btn-warning" href="index.php?action=moderatebyUser&amp;id=<?= $data['com_id'] ?>" role="button">Éditer</a>
           <a class="btn btn-danger" href="index.php?action=deleteCommentbyUser&amp;id=<?= $data['com_id'] ?>" role="button">Supprimer définitivement</a>
