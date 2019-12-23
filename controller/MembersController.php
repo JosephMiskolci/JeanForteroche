@@ -78,8 +78,8 @@ class MembersController
       $withReplace = 'index.php?action=connexion';
     }
 
-    $htmlinscription = getView('view/members/inscription.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors], $withAlert, $withReplace);
-    $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+    $htmlinscription = getView('view/members/inscription.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors]);
+    $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"], $withAlert, $withReplace);
     return $htmlinscriptionInTemplate;
   }
 
@@ -129,8 +129,8 @@ class MembersController
       $members->closeCursor();
     }
 
-    $htmlListPosts = getView('view/members/connexion.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors], $withAlert, $withReplace);
-    $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Connectez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+    $htmlListPosts = getView('view/members/connexion.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors]);
+    $htmlListPostsInTemplate = loadTemplateMember($htmlListPosts, "Connectez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"], $withAlert, $withReplace);
     return $htmlListPostsInTemplate;
   }
 
@@ -194,8 +194,8 @@ class MembersController
 
       }
     }
-    $htmlinscription = getView('view/members/editProfile.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors], $withAlert);
-    $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+    $htmlinscription = getView('view/members/editProfile.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors]);
+    $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"], $withAlert);
     return $htmlinscriptionInTemplate;
   }
 }

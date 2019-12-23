@@ -29,6 +29,26 @@
 </head>
 
 <body>
+ <?php
+ if (isset($withAlert)) {
+  ?>
+    <script type="text/javascript">
+      var msg = '<?php echo $withAlert; ?>';
+      alert(msg);
+    </script>
+  <?php
+  }
+
+  if (isset($withReplace)) {
+  ?>
+    <script type="text/javascript">
+      var redirect = '<?php echo $withReplace; ?>';
+      window.location.replace(redirect);
+    </script>
+  <?php
+  }
+  ?>
+  
   <header>
     <span id="home-link"></span>
     <div id="navigation-bar">
