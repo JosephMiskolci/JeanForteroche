@@ -21,7 +21,7 @@ class MembersController
     $mdpHached = password_hash(($_POST['mdp']), PASSWORD_DEFAULT);
 
     // on vérifie si le pseudo est déjà pris
-    //if (!isset($_POST($pseudo) || empty($mail) || empty($mail2) || empty($mdp) || empty($mdp2))) ect
+    if (isset($pseudo) || isset($mail) || isset($mail2) || isset($mdp) || isset($mdp2)) {
     $pseudoManager = new \JeanForteroche\Blog\Model\MembersManager();
     $pseudo2 = $pseudoManager->searchUserByPseudo($pseudo);
     $pseudoAlreadyUse = $pseudo2->rowCount();
@@ -30,6 +30,7 @@ class MembersController
     $memberManager = new \JeanForteroche\Blog\Model\MembersManager();
     $resUserByMail = $memberManager->searchUserByMail($mail);
     $mailAlreadyUse = $resUserByMail->rowCount();
+    }
 
     $errors = [
       "BAD_LOGIN" => [
@@ -92,9 +93,11 @@ class MembersController
       sleep(1);
 
       //On vérifie dans la base de données les informations
+      if (isset($_POST['formconnexion']) || isset($mail)) {
       $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
       $members = $membersManager->connectUserByMail($mail);
       $resultat = $members->fetch();
+      }
 
       $errors = [
         "BAD_PASSWD_VERIF" => [
