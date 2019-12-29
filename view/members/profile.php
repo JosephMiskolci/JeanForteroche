@@ -15,13 +15,15 @@
   </div>
 </section>
 
-<section class="TopTitle">
-  <h2>Retrouvez tous vos commentaires :</h2>
-
+<section>
+  <div class="TopTitle">
+    <h2>Retrouvez tous vos commentaires :</h2>
+  </div>
+  
   <?php
   if ($datas["comments"]->rowCount() > 0) {
     while ($data = $datas["comments"]->fetch()) {
-      ?>
+  ?>
       <div class="Articles">
         <h3><?= htmlspecialchars($data["title"]) ?></h3>
         <p class="ArticleText"><?= nl2br($data['comment']) ?></p>
@@ -32,21 +34,19 @@
         <div class="ArticleDateProfile">
           <p>Publié le <?= $data['comment_date'] ?> par <strong><?= htmlspecialchars($data['author']) ?></strong> -
             <?php
-                if ($data['validated'] === "0") { ?>
+            if ($data['validated'] === "0") { ?>
               <i>Commentaire en attente de validation</i>
             <?php } else { ?>
               <i>Commentaire validé !</i>
             <?php } ?></p>
         </div>
-
-
       </div>
       <hr>
       </hr>
     <?php
-      }
-      $datas["comments"]->closeCursor();
-    } else { ?>
+    }
+    $datas["comments"]->closeCursor();
+  } else { ?>
     <div class="Articles">
       <h3>Vous n'avez publié aucun commentaire !</h3>
     </div>

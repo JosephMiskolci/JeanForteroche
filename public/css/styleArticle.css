@@ -26,7 +26,7 @@ h3 {
   bottom: 35px;
 }
 
-.centertext{
+.centertext {
   text-align: center;
 }
 
@@ -1018,6 +1018,7 @@ footer {
     margin: 0 auto;
     float: none;
     width: 40%;
+    text-align: center;
   } 
 
   .BiographyTitle h1 {
@@ -1027,6 +1028,27 @@ footer {
 
   .comment-sending {
     width: 40%;
+  }
+
+  .BookName h3 {
+  font-size: 2rem;
+  }
+
+  .AccessButtonsUsersAdmin .btn {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    padding: 20px;
+  }
+
+  .AccessButtonsUsersAdmin {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 10px auto;
+  }
+
+  .ArticleDateAdmin {
+    margin-top: 30px;
   }
 }
 
@@ -1076,6 +1098,10 @@ footer {
   .BookText a {
     margin: 0 auto;
     font-size: 0.9rem;
+  }
+
+  .BookName h3 {
+  font-size: 1.5rem;
   }
 
   .secondBook img {
@@ -1185,7 +1211,12 @@ footer {
 
   .ArticleDateProfile {
     width: 90%;
+    text-align: center;
   }
+
+  .AccessButtonsUsersAdmin {
+    width: 100%;
+}
 
   .AccessButtons a {
     float: none;
@@ -1233,6 +1264,22 @@ footer {
     margin: 0 auto;
     width: 90%;
   }
+  .BookVisualPresentation {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .BookPicture, .BookInfos, .BookResume {
+    width: 80%;
+  }
+
+  .BookPicture img {
+    height: 350px;
+  }
+
+  .BookProfileText {
+    text-align: center;
+  }
 }
 
 /* ------------------------------ 400px ------------------------------------*/
@@ -1244,11 +1291,15 @@ footer {
   .secondLastText {
     bottom: 280px;
   }
+
+  .BookText.TwoLinesBookName {
+    bottom: 380px;
+  }
 }
   /* ------------------------------ 376px ------------------------------------*/
   @media screen and (max-width: 376px) {
     .BookText {
-      bottom: 280px;
+      bottom: 330px;
     }
 
     .secondLastText, .thirdLastText {
@@ -1258,9 +1309,6 @@ footer {
 
   /* ------------------------------ 361px ------------------------------------*/
   @media screen and (max-width: 361px) {
-    .BookText {
-      bottom: 310px;
-    }
 
     .secondLastText {
       bottom: 260px;
@@ -1300,5 +1348,17 @@ footer {
 
     .BiographyTitle {
     bottom: 150px;
-}
+    }
+
+    .BookText {
+      bottom: 350px;
+    }
+
+    .BookPicture {
+      height: 300px;
+    }
+
+    .BookPicture img {
+    height: 310px;
+    }
   }

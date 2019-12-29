@@ -20,10 +20,10 @@
 
 <section id="biography">
   <img src="public/images/img/Writer.jpg" alt="Jean_Forteroche">
-  <div class="BiographyTitle">
+  <div class="CardTitle">
     <h1>Jean Forteroche</h1>
   </div>
-  <div class="BiographyText">
+  <div class="CardText">
     <p> Jean Forteroche est d'abord journaliste avant de prendre part à la Première Guerre mondiale en tant qu'ambulancier en Italie et d'y être blessé. Son goût pour l'aventure l'amènera par la suite à être correspondant de guerre pendant la
       guerre d'Espagne et durant la Seconde Guerre mondiale. Parallèlement à son métier de journaliste, il publie des ouvrages littéraires, romans et recueils de nouvelles écrits dans un style réaliste et direct, tels que <i>In Our Time</i> en
       1985,
@@ -60,10 +60,10 @@
 <section id="MajorBooks">
   <div class="firstBook">
     <img src="public/images/img/AlaskaNight.jpg" alt="Aller_simple_pour_l_Alaska_img">
-    <div class="BookName">
+    <div class="CardTitle">
       <h3>Oeuvres de l'auteur</h3>
     </div>
-    <div class="BookText">
+    <div class="CardText">
       <p>Vivez le format de publication innovant du nouvel ouvrage de Jean Forteroche, <i>Aller simple pour l'Alaska</i>. Nathan, jeune adolescent turbulent issu du petit village d'Edwardsville dans le Kansas, commet son méfait de trop. La justice le condamne à six mois de travaux forcés dans la base militaire de Kirkland AFB, située en Alaska. Plusieurs
         évenements vont attiser la curiosité du jeune homme qui commence à remettre en question les véritables ambitions de la base... Dans son dernier ouvrage, Jean Forteroche entame le pari audacieux de découper son récit en épisodes distribués
         gratuitement sur son site internet.</p>

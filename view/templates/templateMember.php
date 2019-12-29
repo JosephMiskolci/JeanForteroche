@@ -48,7 +48,7 @@
   <?php
   }
   ?>
-  
+
   <header>
     <span id="home-link"></span>
     <div id="navigation-bar">
@@ -76,8 +76,8 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" <?php
-                                  if (isset($_SESSION['id'])) {
-                                    ?> href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
+               if (isset($_SESSION['id'])) {
+                 ?> href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
               <?php
                 echo 'Votre profil, ' . $_SESSION['pseudo'] . ' !';
               } else {

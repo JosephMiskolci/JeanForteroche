@@ -34,7 +34,7 @@ try {
         if ($_GET['action'] == 'removeModeratorUser') {           AdminController::RemoveModeratorUsers(); }
         if ($_GET['action'] == 'deleteUser') {                    AdminController::deleteUsers(); }
         if ($_GET['action'] == 'manageComments') {                AdminController::moderateComment(); }
-        if ($_GET['action'] == 'manageFlagComments') {            AdminController::moderateFlagComment(); }
+        if ($_GET['action'] == 'manageFlagComments') {            AdminController::moderateFlagComment($_GET['id']); }
         if ($_GET['action'] == 'validateComment') {               AdminController::validateComment(); }
         if ($_GET['action'] == 'moderate') {                      PostCommentsController::editComment(); }
         if ($_GET['action'] == 'moderatebyUser') {                PostCommentsController::editCommentbyUser(); }

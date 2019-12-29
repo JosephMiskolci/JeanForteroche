@@ -55,6 +55,19 @@ class CommentManager extends Manager
         return $comments;
     }
 
+    public function getAllComments()
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare('SELECT c.author, c.id AS com_id, c.comment, c.comment_date, p.title
+                                FROM comments c
+                                INNER JOIN posts p
+                                ON c.post_id = p.id
+                                WHERE c.validated = "1"
+                                ORDER BY comment_date DESC');
+        $comments->execute();
+        return $comments;
+    }
+
     public function confirmComments($comment_id)
     {
         $db = $this->dbConnect();

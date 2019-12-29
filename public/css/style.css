@@ -116,7 +116,7 @@ figure {
   height: 600px;
 }
 
-.BiographyTitle {
+.CardTitle {
   position: relative;
   bottom: 600px;
   color: white;
@@ -128,7 +128,11 @@ figure {
   border-radius: 10px;
 }
 
-.BiographyText {
+.CardTitle h1, .CardTitle h3 {
+  font-size: 2.5rem;
+}
+
+.CardText {
   position: relative;
   bottom: 350px;
   width: 100%;
@@ -140,7 +144,7 @@ figure {
   font-size: 15px;
 }
 
-.BiographyText p {
+.CardText p {
   display: block;
   text-overflow: ellipsis;
   word-wrap: break-word;
@@ -246,7 +250,7 @@ figure {
 }
 
 .BookName h3 {
-  font-size: 35px;
+  font-size: 2.5rem;
 }
 
 .BookText {
@@ -261,6 +265,7 @@ figure {
   font-size: 15px;
   max-height: 300px;
 }
+
 
 .BookText p {
   display: block;
@@ -427,7 +432,7 @@ footer {
 }
 /* ------------------------------ 768px ------------------------------------*/
 @media screen and (max-width: 768px) {
-  .BiographyText {
+  .CardText {
     bottom: 350px;
   }
 
@@ -502,11 +507,11 @@ footer {
     font-size: 18px;
   }
 
-  .BiographyText {
+  .CardText {
     bottom: 400px;
   }
 
-  .BiographyText a {
+  .CardText a {
     display: table;
     margin: 0 auto;
   }
@@ -594,7 +599,7 @@ footer {
 }
   /* ------------------------------ 321px ------------------------------------*/
   @media screen and (max-width: 321px) {
-    .BiographyText {
+    .CardText {
       bottom: 425px;
     }
   }
