@@ -3,9 +3,9 @@
     <h2>Connexion</h2>
   </section>
 
-  <?php if ($datas['numberOfErrors'] >= 1) { ?>
+  <?php if ($datas['numberOfErrors'] >= 1) {?>
     <div class="error_text"> <?php echo $datas['errortext'] ?></div> <?php
-  } ?>
+}?>
 
   <div class="forminscriptioncore">
     <h3 class="connexiontext">Connectez-vous et interagissez sur les articles de Jean Forteroche </h3>

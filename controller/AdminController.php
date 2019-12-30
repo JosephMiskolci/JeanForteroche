@@ -1,174 +1,174 @@
 <?php
-require_once('model/CommentManager.php');
-require_once('model/PostManager.php');
-require_once('model/AdminManager.php');
+require_once 'model/CommentManager.php';
+require_once 'model/PostManager.php';
+require_once 'model/AdminManager.php';
 
 class AdminController
 {
 
-  /*
+    /*
     Affiche la page avec la liste des posts dans un template
-    */
-  static function viewHomeAdmin()
-  {
+     */
+    public static function viewHomeAdmin()
+    {
 
-    $htmlListPosts = getView('view/admin/homeAdmin.php', null);
-    $htmlListPostsInTemplate = loadTemplateAdmin($htmlListPosts, "Page d'administration du blog de Jean Forteroche");
-    return $htmlListPostsInTemplate;
-  }
-
-  static function viewWritingArticle()
-  {
-
-    $htmlListPosts = getView('view/admin/publishArticle.php', null);
-    $htmlListPostsInTemplate = loadTemplateAdmin($htmlListPosts, "Écrivez votre article - Blog de Jean Forteroche");
-    return $htmlListPostsInTemplate;
-  }
-
-  static function addArticle()
-  {
-
-    if (isset($_POST['name']) and isset($_POST['mytextarea'])) {
-      $adminManager = new \JeanForteroche\Blog\Model\PostManager();
-      $adminManager->postArticle($_POST['name'], $_POST['mytextarea']);
-      header("location: index.php?action=manageArticle");
+        $htmlListPosts           = getView('view/admin/homeAdmin.php', null);
+        $htmlListPostsInTemplate = loadTemplateAdmin($htmlListPosts, "Page d'administration du blog de Jean Forteroche");
+        return $htmlListPostsInTemplate;
     }
-  }
 
-  static function editArticle()
-  {
+    public static function viewWritingArticle()
+    {
 
-    if (isset($_POST['name']) and isset($_POST['mytextarea'])) {
-      $adminManager = new \JeanForteroche\Blog\Model\PostManager();
-      $adminManager->postEditedArticle($_POST['name'], $_POST['mytextarea'], $_GET['id']);
-      header("location: index.php?action=manageArticle");
+        $htmlListPosts           = getView('view/admin/publishArticle.php', null);
+        $htmlListPostsInTemplate = loadTemplateAdmin($htmlListPosts, "Écrivez votre article - Blog de Jean Forteroche");
+        return $htmlListPostsInTemplate;
     }
-  }
 
-  static function deleteArticle()
-  {
-    
-    if (isset($_POST['send'])) {
-      $adminManager = new \JeanForteroche\Blog\Model\PostManager();
-      $adminManager->postDeleteArticle($_GET['id']);
-      header("location: index.php?action=manageArticle");
-    } else {
-      new Exception("error");
-      header("location: index.php");
+    public static function addArticle()
+    {
+
+        if (isset($_POST['name']) and isset($_POST['mytextarea'])) {
+            $adminManager = new \JeanForteroche\Blog\Model\PostManager();
+            $adminManager->postArticle($_POST['name'], $_POST['mytextarea']);
+            header("location: index.php?action=manageArticle");
+        }
     }
-  }
 
-  static function moderateComment()
-  {
+    public static function editArticle()
+    {
 
-    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $comments = $commentManager->getWaitingComments();
-    $postView = getView('view/admin/approveComments.php', ["comments" => $comments]);
+        if (isset($_POST['name']) and isset($_POST['mytextarea'])) {
+            $adminManager = new \JeanForteroche\Blog\Model\PostManager();
+            $adminManager->postEditedArticle($_POST['name'], $_POST['mytextarea'], $_GET['id']);
+            header("location: index.php?action=manageArticle");
+        }
+    }
 
-    $htmlListPostsInTemplate = loadTemplateAdmin($postView, "Modérer ou supprimer les commentaires - Blog de Jean Forteroche");
-    return $htmlListPostsInTemplate;
-  }
+    public static function deleteArticle()
+    {
 
-  static function moderateFlagComment()
-  {
+        if (isset($_POST['send'])) {
+            $adminManager = new \JeanForteroche\Blog\Model\PostManager();
+            $adminManager->postDeleteArticle($_GET['id']);
+            header("location: index.php?action=manageArticle");
+        } else {
+            new Exception("error");
+            header("location: index.php");
+        }
+    }
 
-    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $comments = $commentManager->getAllComments();
-    $flags = $commentManager->showFlagComment();
+    public static function moderateComment()
+    {
 
-    $postView = getView('view/admin/manageComments.php', ["comments" => $comments, 'flags' => $flags]);
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+        $comments       = $commentManager->getWaitingComments();
+        $postView       = getView('view/admin/approveComments.php', ["comments" => $comments]);
 
-    $htmlListPostsInTemplate = loadTemplateAdmin($postView, "Modérer ou supprimer les commentaires - Blog de Jean Forteroche");
-    return $htmlListPostsInTemplate;
-  }
+        $htmlListPostsInTemplate = loadTemplateAdmin($postView, "Modérer ou supprimer les commentaires - Blog de Jean Forteroche");
+        return $htmlListPostsInTemplate;
+    }
 
-  static function validateComment()
-  {
+    public static function moderateFlagComment()
+    {
 
-    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $commentManager->confirmComments($_GET['id']);
-    header("location: index.php?action=manageComments");
-  }
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+        $comments       = $commentManager->getAllComments();
+        $flags          = $commentManager->showFlagComment();
 
-  static function editComment()
-  {
+        $postView = getView('view/admin/manageComments.php', ["comments" => $comments, 'flags' => $flags]);
 
-    $adminManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $adminManager->postEditedComment($_GET['id'], $_POST['mytextarea']);
-    header("location: index.php?action=manageComments");
-  }
+        $htmlListPostsInTemplate = loadTemplateAdmin($postView, "Modérer ou supprimer les commentaires - Blog de Jean Forteroche");
+        return $htmlListPostsInTemplate;
+    }
 
-  static function editCommentbyUser()
-  {
+    public static function validateComment()
+    {
 
-    $adminManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $adminManager->postEditedComment($_GET['id'], $_POST['mytextarea']);
-    header("location: index.php?action=profile");
-  }
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+        $commentManager->confirmComments($_GET['id']);
+        header("location: index.php?action=manageComments");
+    }
 
-  static function deleteComment()
-  {
+    public static function editComment()
+    {
 
-    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $commentManager->supprComments($_GET['id']);
-    header("location: index.php?action=manageComments");
-  }
-  static function deleteCommentbyUser()
-  {
+        $adminManager = new \JeanForteroche\Blog\Model\CommentManager();
+        $adminManager->postEditedComment($_GET['id'], $_POST['mytextarea']);
+        header("location: index.php?action=manageComments");
+    }
 
-    $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-    $commentManager->supprComments($_GET['id']);
-    header("location: index.php?action=profile");
-  }
+    public static function editCommentbyUser()
+    {
 
-  static function adminActionsUsers()
-  {
+        $adminManager = new \JeanForteroche\Blog\Model\CommentManager();
+        $adminManager->postEditedComment($_GET['id'], $_POST['mytextarea']);
+        header("location: index.php?action=profile");
+    }
 
-    $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->getAllUsers();
-    $postView = getView('view/admin/moderateUsers.php', ["member_space" => $users]);
+    public static function deleteComment()
+    {
 
-    $htmlListPostsInTemplate = loadTemplateAdmin($postView, "Modérer ou supprimer les commentaires - Blog de Jean Forteroche");
-    return $htmlListPostsInTemplate;
-  }
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+        $commentManager->supprComments($_GET['id']);
+        header("location: index.php?action=manageComments");
+    }
+    public static function deleteCommentbyUser()
+    {
 
-  static function adminUsers()
-  {
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+        $commentManager->supprComments($_GET['id']);
+        header("location: index.php?action=profile");
+    }
 
-    $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->validAdminUsers($_GET['id']);
-    header("location: index.php?action=manageUsers");
-  }
+    public static function adminActionsUsers()
+    {
 
-  static function RemoveAdminUsers()
-  {
+        $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
+        $users        = $usersManager->getAllUsers();
+        $postView     = getView('view/admin/moderateUsers.php', ["member_space" => $users]);
 
-    $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->unvalidAdminUsers($_GET['id']);
-    header("location: index.php?action=manageUsers");
-  }
+        $htmlListPostsInTemplate = loadTemplateAdmin($postView, "Modérer ou supprimer les commentaires - Blog de Jean Forteroche");
+        return $htmlListPostsInTemplate;
+    }
 
-  static function moderatorUsers()
-  {
+    public static function adminUsers()
+    {
 
-    $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->validModeratorUsers($_GET['id']);
-    header("location: index.php?action=manageUsers");
-  }
+        $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
+        $users        = $usersManager->validAdminUsers($_GET['id']);
+        header("location: index.php?action=manageUsers");
+    }
 
-  static function RemoveModeratorUsers()
-  {
+    public static function RemoveAdminUsers()
+    {
 
-    $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->unvalidModeratorUsers($_GET['id']);
-    header("location: index.php?action=manageUsers");
-  }
+        $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
+        $users        = $usersManager->unvalidAdminUsers($_GET['id']);
+        header("location: index.php?action=manageUsers");
+    }
 
-  static function deleteUsers()
-  {
+    public static function moderatorUsers()
+    {
 
-    $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
-    $users = $usersManager->deleteUsers($_GET['id']);
-    header("location: index.php?action=manageUsers");
-  }
+        $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
+        $users        = $usersManager->validModeratorUsers($_GET['id']);
+        header("location: index.php?action=manageUsers");
+    }
+
+    public static function RemoveModeratorUsers()
+    {
+
+        $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
+        $users        = $usersManager->unvalidModeratorUsers($_GET['id']);
+        header("location: index.php?action=manageUsers");
+    }
+
+    public static function deleteUsers()
+    {
+
+        $usersManager = new \JeanForteroche\Blog\Model\AdminManager();
+        $users        = $usersManager->deleteUsers($_GET['id']);
+        header("location: index.php?action=manageUsers");
+    }
 }
