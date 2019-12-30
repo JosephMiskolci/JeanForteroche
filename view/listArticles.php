@@ -1,7 +1,7 @@
 <section id="TopPicture">
     <figure class="HeroPicture">
       <ul>
-        <li class="enabled"><img src="public/images/img/Bookshelf.jpg" alt="Image01">
+        <li class="FrontPicture"><img src="public/images/img/Bookshelf.jpg" alt="Image01">
       </ul>
     </figure>
 </section>

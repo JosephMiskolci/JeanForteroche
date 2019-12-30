@@ -1,7 +1,7 @@
 <section id="TopPicture">
     <figure class="HeroPicture">
         <ul>
-            <li class="enabled"><img src="public/images/img/Writer2.jpg" alt="">
+            <li class="FrontPicture"><img src="public/images/img/Writer2.jpg" alt="">
         </ul>
     </figure>
 </section>
@@ -54,17 +54,17 @@
         <h2>Découvrez les dernières actualitées de Jean Forteroche !</h2>
     </div>
     <?php
-while ($data = $datas["posts"]->fetch()) {
+    while ($data = $datas["posts"]->fetch()) {
     ?>
         <div class="Articles">
-            <h3><a href="index.php?action=post&amp;id=<?=$data['id']?>"><?=htmlspecialchars($data['title'])?></a></h3>
-            <p class="ArticleText"><?=nl2br(strip_tags($data['content']))?></p>
-            <p class="ArticleDate">Publié le <?=$data['creation_date_fr']?></p>
+            <h3><a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></h3>
+            <p class="ArticleText"><?= nl2br(strip_tags($data['content'])) ?></p>
+            <p class="ArticleDate">Publié le <?= $data['creation_date_fr'] ?></p>
         </div>
         <hr>
         </hr>
     <?php
-}
-$datas["posts"]->closeCursor();
-?>
+    }
+    $datas["posts"]->closeCursor();
+    ?>
 </section>
