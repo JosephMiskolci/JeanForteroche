@@ -5,17 +5,17 @@ require_once 'model/CommentManager.php';
 class CommentsController
 {
 
-    public static function viewPost($id)
+    public static function viewPost()
     {
-        if (!isset($id)) {
+        if (!isset($_GET['id'])) {
             exit('Erreur fatale. <a href="index.php">Revenir à l\'accueil</a>');
         }
 
         $postManager    = new \JeanForteroche\Blog\Model\PostManager();
         $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
-        $post     = $postManager->getPost($id);
-        $comments = $commentManager->getComments($id);
+        $post     = $postManager->getPost($_GET['id']);
+        $comments = $commentManager->getComments($_GET['id']);
         $flags    = $commentManager->showFlagComment();
 
         $postView = getView('view/postView.php', ["post" => $post, "comments" => $comments, 'flags' => $flags]);
@@ -30,6 +30,17 @@ class CommentsController
         $comments       = $commentManager->showComment($_GET['id']);
 
         $postView = getView('view/admin/editComment.php', ["comments" => $comments]);
+
+        $htmlPostInTemplate = loadTemplateAdmin($postView, "Modifiez ce commentaire ! - Blog de Jean Forteroche", ["public/css/styleArticle.css"]);
+        return $htmlPostInTemplate;
+    }
+
+    public static function editCommentValidated()
+    {
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+        $comments       = $commentManager->showComment($_GET['id']);
+
+        $postView = getView('view/admin/editCommentValidated.php', ["comments" => $comments]);
 
         $htmlPostInTemplate = loadTemplateAdmin($postView, "Modifiez ce commentaire ! - Blog de Jean Forteroche", ["public/css/styleArticle.css"]);
         return $htmlPostInTemplate;

@@ -616,10 +616,11 @@ footer {
 .circle-admin {
     float: right;
 }
-.ArticleDateAdmin{
+.ArticleDateAdmin {
     float: right;
     position: relative;
     bottom: 20px;
+    font-size: 12px;
 }
 /* ------------------------------ Member's Area ------------------------------------*/
 
@@ -848,6 +849,9 @@ footer {
     }
     .ProfileText {
         width: 40%;
+    }
+    .ProfileEdit {
+    width: 75%;
     }
     .AccessButtons {
         float: left;
@@ -1081,6 +1085,17 @@ footer {
     }
     .BookProfileText {
         text-align: center;
+    }
+    .ProfileEdit {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+    }
+    .FormEditionProfile form {
+        margin: 0 auto;
+    }
+    .CommentariesRed {
+        width: 80%;  
     }
 }
 /* ------------------------------ 400px ------------------------------------*/
