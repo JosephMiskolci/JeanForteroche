@@ -2,7 +2,7 @@
 
 namespace JeanForteroche\Blog\Model;
 
-require_once "model/Manager.php";
+require_once("model/Manager.php");
 
 class AdminManager extends Manager
 {
@@ -13,13 +13,13 @@ class AdminManager extends Manager
 
         $req_connect = $db->prepare('DELETE FROM posts WHERE id = :id');
         $req_connect->execute(array(
-            'id' => $edit_id,
+            'id' => $edit_id
         ));
     }
 
     public function getAllUsers()
     {
-        $db          = $this->dbConnect();
+        $db = $this->dbConnect();
         $getAllUsers = $db->prepare('SELECT * FROM member_space ORDER BY date_creation DESC');
         $getAllUsers->execute();
 
@@ -30,9 +30,9 @@ class AdminManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $comments         = $db->prepare('UPDATE member_space SET admin = "1" WHERE id = :id');
+        $comments = $db->prepare('UPDATE member_space SET admin = "1" WHERE id = :id');
         $confirmedComment = $comments->execute(array(
-            'id' => $comment_id,
+            'id' => $comment_id
         ));
 
         return $confirmedComment;
@@ -42,9 +42,9 @@ class AdminManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $comments         = $db->prepare('UPDATE member_space SET admin = "0" WHERE id = :id');
+        $comments = $db->prepare('UPDATE member_space SET admin = "0" WHERE id = :id');
         $confirmedComment = $comments->execute(array(
-            'id' => $comment_id,
+            'id' => $comment_id
         ));
 
         return $confirmedComment;
@@ -54,9 +54,9 @@ class AdminManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $comments         = $db->prepare('UPDATE member_space SET moderator = "1" WHERE id = :id');
+        $comments = $db->prepare('UPDATE member_space SET moderator = "1" WHERE id = :id');
         $confirmedComment = $comments->execute(array(
-            'id' => $comment_id,
+            'id' => $comment_id
         ));
 
         return $confirmedComment;
@@ -66,9 +66,9 @@ class AdminManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $comments         = $db->prepare('UPDATE member_space SET moderator = "0" WHERE id = :id');
+        $comments = $db->prepare('UPDATE member_space SET moderator = "0" WHERE id = :id');
         $confirmedComment = $comments->execute(array(
-            'id' => $comment_id,
+            'id' => $comment_id
         ));
 
         return $confirmedComment;
@@ -80,7 +80,7 @@ class AdminManager extends Manager
 
         $req_connect = $db->prepare('DELETE FROM member_space WHERE id = :id');
         $req_connect->execute(array(
-            'id' => $edit_id,
+            'id' => $edit_id
         ));
     }
 }

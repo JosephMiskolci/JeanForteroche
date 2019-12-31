@@ -1,6 +1,6 @@
 <?php
 if ($_SESSION['admin'] == "1" or $_SESSION['moderator'] == "1") {
-    ?>
+  ?>
 
   <section class="TopTitle">
     <h1>Bienvenue dans l'interface de gestion du blog de Jean Forteroche :</h1>
@@ -51,6 +51,6 @@ if ($_SESSION['admin'] == "1" or $_SESSION['moderator'] == "1") {
 
 <?php
 } else {
-    header("location: index.php?action=error");
+  header("location: index.php?action=error");
 }
 ?>

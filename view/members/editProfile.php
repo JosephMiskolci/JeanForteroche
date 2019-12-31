@@ -3,9 +3,9 @@
     <h2>Modification du mot de passe</h2>
   </section>
 
-  <?php if ($datas['numberOfErrors'] >= 1) {?>
+  <?php if ($datas['numberOfErrors'] >= 1) { ?>
     <div class="error_text"> <?php echo $datas['errortext'] ?></div> <?php
-}?>
+  } ?>
 
   <section class="ProfileEdit">
 
