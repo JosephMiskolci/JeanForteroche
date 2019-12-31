@@ -176,8 +176,8 @@ class MembersController
                     "condition" => ($_POST['newmdp1'] != $_POST['newmdp2']),
                 ],
                 "FILL_ALL"         => [
-                    "message"   => "N'oubliez pas de compléter tous les champs pour que le changement soit effectif",
-                    "condition" => (empty($_POST['newmdp1']) || empty($_POST['newmdp2'])),
+                    "message"   => "Tous les champs doivent être complétés ! Vous devez recommencer votre inscription.",
+                    "condition" => (empty($_POST['newmdp1']) || empty($_POST['newmdp1']) || empty($_POST['newmdp2']) || empty($_POST['newmdp2'])),
                 ],
             ];
 
@@ -191,13 +191,12 @@ class MembersController
             if ($numberOfErrors == 0) {
                 $membersManager = new \JeanForteroche\Blog\Model\MembersManager();
                 $members        = $membersManager->editPasswordbyUser($sessionID, $mdp1Hached);
-
+                header('index.php?action=profile&id' . $_SESSION['id']);
                 $withAlert = "Votre mot de passe à bien été modifié !";
-                $withReplace = 'index.php?action=profile&id' . $_SESSION['id'];
             }
         }
         $htmlinscription           = getView('view/members/editProfile.php', ["errortext" => $errortext, 'numberOfErrors' => $numberOfErrors]);
-        $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"], $withAlert, $withReplace);
+        $htmlinscriptionInTemplate = loadTemplateMember($htmlinscription, "Inscrivez-vous sur le blog de Jean Forteroche", ["public/css/styleArticle.css"], $withAlert);
         return $htmlinscriptionInTemplate;
     }
 }

@@ -87,10 +87,10 @@ class AdminController
 
         $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
         $commentManager->confirmComments($_GET['id']);
-        header("location: index.php?action=admin");
+        header("location: index.php?action=manageComments");
     }
 
-    public static function postCommentUnValidated()
+    public static function editComment()
     {
 
         $adminManager = new \JeanForteroche\Blog\Model\CommentManager();
@@ -98,15 +98,7 @@ class AdminController
         header("location: index.php?action=manageComments");
     }
 
-    public static function postCommentValidated()
-    {
-
-        $adminManager = new \JeanForteroche\Blog\Model\CommentManager();
-        $adminManager->postEditedComment($_GET['id'], $_POST['mytextarea']);
-        header("location: index.php?action=manageFlagComments");
-    }
-
-    public static function postCommentbyUser()
+    public static function editCommentbyUser()
     {
 
         $adminManager = new \JeanForteroche\Blog\Model\CommentManager();

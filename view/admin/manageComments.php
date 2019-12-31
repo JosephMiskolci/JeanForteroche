@@ -29,7 +29,7 @@ while ($comment = $datas["comments"]->fetch()) {
                             </p>
                             <div class="AccessButtonsUsersAdmin">
                                 <a class="btn btn-info" href="index.php?action=unflagComment&amp;id=<?=$comment['com_id']?>" role="button">Supprimer le signalement</a>
-                                <a class="btn btn-warning" href="index.php?action=moderateCommentValidated&amp;id=<?=$comment['com_id']?>" role="button">Modérer</a>
+                                <a class="btn btn-warning" href="index.php?action=moderate&amp;id=<?=$comment['com_id']?>" role="button">Modérer</a>
                                 <a class="btn btn-danger" href="index.php?action=deleteComment&amp;id=<?=$comment['com_id']?>" role="button">Supprimer définitivement</a>
                             </div>
                             <p class="ArticleDate">Publié le <?=$comment['comment_date']?> par <strong><?=htmlspecialchars($comment['author'])?></strong></p>
@@ -47,7 +47,7 @@ while ($comment = $datas["comments"]->fetch()) {
                 <?=nl2br(strip_tags($comment['comment']))?>
             </p>
             <div class="AccessButtonsUsersAdmin">
-                <a class="btn btn-warning" href="index.php?action=moderateCommentValidated&amp;id=<?=$comment['com_id']?>" role="button">Modérer</a>
+                <a class="btn btn-warning" href="index.php?action=moderate&amp;id=<?=$comment['com_id']?>" role="button">Modérer</a>
                 <a class="btn btn-danger" href="index.php?action=deleteComment&amp;id=<?=$comment['com_id']?>" role="button">Supprimer définitivement</a>
             </div>
             <p class="ArticleDate">Publié le <?=$comment['comment_date']?> par <strong><?=htmlspecialchars($comment['author'])?></strong></p>
