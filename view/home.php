@@ -1,9 +1,8 @@
-<section id="slideshow-home">
-  <span id="slideshow-link"></span>
-  <div class="carousel-container">
-    <figure class="carousel-slides">
+<section id="TopPicture">
+    <figure class="HeroPicture">
       <ul>
-        <li class="enabled"><img src="public/images/img/HeroPicture.jpg" alt="Image01">
+        <li class="FrontPicture"><img src="public/images/img/HeroPicture.jpg" alt="Image01">
+      </ul>
           <div class="PresentationText">
             <h3 class="">Découvrez le nouveau roman de Jean Forteroche</h3>
             <h2>Billet simple pour l'Alaska</h2>
@@ -15,8 +14,6 @@
       </ul>
     </figure>
 </section>
-
-<!-- Author's Biography -->
 
 <section id="biography">
   <img src="public/images/img/Writer.jpg" alt="Jean_Forteroche">
@@ -32,30 +29,26 @@
   </div>
 </section>
 
-<!-- Publications -->
-
 <section id="Publications">
   <h2 class="PublicationsTitle">Découvrez les dernières publications de Jean Forteroche :</h2>
   <?php
-  while ($data = $datas["posts"]->fetch()) {
-  ?>
+while ($data = $datas["posts"]->fetch()) {
+    ?>
     <div class="Articles">
-      <h3><a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></h3>
-      <p class="ArticleText"><?= nl2br(strip_tags($data['content'])) ?></p>
-      <p class="ArticleDate">Publié le <?= $data['creation_date_fr'] ?></p>
+      <h3><a href="index.php?action=post&amp;id=<?=$data['id']?>"><?=htmlspecialchars($data['title'])?></a></h3>
+      <p class="ArticleText"><?=nl2br(strip_tags($data['content']))?></p>
+      <p class="ArticleDate">Publié le <?=$data['creation_date_fr']?></p>
     </div>
     <hr>
     </hr>
   <?php
-                                                                  }
-                                                                  $datas["posts"]->closeCursor();
-  ?>
+}
+$datas["posts"]->closeCursor();
+?>
   <div class="PublicationButton">
     <a class="btn btn-secondary" href="index.php?action=allArticles" role="button">Découvrez l'intégralité de ses publications</a>
   </div>
 </section>
-
-<!-- Publications -->
 
 <section id="MajorBooks">
   <div class="firstBook">

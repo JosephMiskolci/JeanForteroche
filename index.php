@@ -14,18 +14,18 @@ try {
         if ($_GET['action'] == 'bookTwo') {                       HomeController::viewBookTwo();}
         if ($_GET['action'] == 'bookThree') {                     HomeController::viewBookThree();}
         if ($_GET['action'] == 'bookFour') {                      HomeController::viewBookFour();}
-        if ($_GET['action'] == 'post') {                          PostCommentsController::viewPost($_GET['id']); }
-        if ($_GET['action'] == 'addComment') {                    PostCommentsController::addComment(); }
-        if ($_GET['action'] == 'flagComment') {                   PostCommentsController::flagComment(); }
-        if ($_GET['action'] == 'unflagComment') {                 PostCommentsController::unflagComment(); }
-        if ($_GET['action'] == 'allArticles') {                   PostCommentsController::AllArticles(); }
+        if ($_GET['action'] == 'post') {                          CommentsController::viewPost(); }
+        if ($_GET['action'] == 'addComment') {                    CommentsController::addComment(); }
+        if ($_GET['action'] == 'flagComment') {                   CommentsController::flagComment(); }
+        if ($_GET['action'] == 'unflagComment') {                 CommentsController::unflagComment(); }
+        if ($_GET['action'] == 'allArticles') {                   CommentsController::AllArticles(); }
         if ($_GET['action'] == 'admin') {                         AdminController::viewHomeAdmin(); }
         if ($_GET['action'] == 'viewWritingArticle') {            AdminController::viewWritingArticle(); }
         if ($_GET['action'] == 'postArticle') {                   AdminController::addArticle(); }
-        if ($_GET['action'] == 'manageArticle') {                 PostCommentsController::AllArticlesAdmin(); }
-        if ($_GET['action'] == 'edit') {                          PostCommentsController::editPost($_GET['id']); }
+        if ($_GET['action'] == 'manageArticle') {                 CommentsController::AllArticlesAdmin(); }
+        if ($_GET['action'] == 'edit') {                          CommentsController::editPost(); }
         if ($_GET['action'] == 'editArticle') {                   AdminController::editArticle(); }
-        if ($_GET['action'] == 'delete') {                        PostCommentsController::viewDeletePost($_GET['id']); }
+        if ($_GET['action'] == 'delete') {                        CommentsController::viewDeletePost(); }
         if ($_GET['action'] == 'deleteArticle') {                 AdminController::deleteArticle();}
         if ($_GET['action'] == 'manageUsers') {                   AdminController::adminActionsUsers(); }
         if ($_GET['action'] == 'adminUser') {                     AdminController::adminUsers(); }
@@ -34,12 +34,14 @@ try {
         if ($_GET['action'] == 'removeModeratorUser') {           AdminController::RemoveModeratorUsers(); }
         if ($_GET['action'] == 'deleteUser') {                    AdminController::deleteUsers(); }
         if ($_GET['action'] == 'manageComments') {                AdminController::moderateComment(); }
-        if ($_GET['action'] == 'manageFlagComments') {            AdminController::moderateFlagComment($_GET['id']); }
+        if ($_GET['action'] == 'manageFlagComments') {            AdminController::moderateFlagComment(); }
         if ($_GET['action'] == 'validateComment') {               AdminController::validateComment(); }
-        if ($_GET['action'] == 'moderate') {                      PostCommentsController::editComment(); }
-        if ($_GET['action'] == 'moderatebyUser') {                PostCommentsController::editCommentbyUser(); }
-        if ($_GET['action'] == 'postModerateComment') {           AdminController::editComment(); }
-        if ($_GET['action'] == 'postModerateCommentbyUser') {     AdminController::editCommentbyUser(); }
+        if ($_GET['action'] == 'moderate') {                      CommentsController::editComment(); }
+        if ($_GET['action'] == 'moderateCommentValidated') {      CommentsController::editCommentValidated(); }
+        if ($_GET['action'] == 'moderatebyUser') {                CommentsController::editCommentbyUser(); }
+        if ($_GET['action'] == 'postModerateComment') {           AdminController::postCommentUnvalidated(); }
+        if ($_GET['action'] == 'postModerateCommentValidated') {  AdminController::postCommentValidated(); }
+        if ($_GET['action'] == 'postModerateCommentbyUser') {     AdminController::postCommentbyUser(); }
         if ($_GET['action'] == 'deleteComment') {                 AdminController::deleteComment(); }
         if ($_GET['action'] == 'deleteCommentbyUser') {           AdminController::deleteCommentbyUser(); }
         if ($_GET['action'] == 'inscription') {                   MembersController::viewInscription(); }
@@ -51,7 +53,6 @@ try {
         if ($_GET['action'] == 'contact') {                       HomeController::form();}
         if ($_GET['action'] == 'sendcontact') {                   HomeController::sendform();}
         if ($_GET['action'] == 'error') {                         HomeController::error(); }
-
 
     }
     else {

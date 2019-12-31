@@ -2,13 +2,13 @@
 
 namespace JeanForteroche\Blog\Model;
 
-require_once("model/Manager.php");
+require_once "model/Manager.php";
 
 class PostManager extends Manager
 {
     public function getPosts()
     {
-        $db = $this->dbConnect();
+        $db  = $this->dbConnect();
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 3');
 
         return $req;
@@ -16,17 +16,17 @@ class PostManager extends Manager
 
     public function getAllPosts()
     {
-        $db = $this->dbConnect();
+        $db  = $this->dbConnect();
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM posts ORDER BY creation_date DESC');
         return $req;
     }
 
     public function getPost($id)
     {
-        $db = $this->dbConnect();
+        $db  = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array(
-            $id
+            $id,
         ));
         $post = $req->fetch();
 
@@ -40,7 +40,7 @@ class PostManager extends Manager
         $req_connect = $db->prepare("INSERT INTO posts(title,content,creation_date) VALUES(?,?,NOW())");
         $req_connect->execute(array(
             $title,
-            $content
+            $content,
         ));
     }
 
@@ -50,9 +50,9 @@ class PostManager extends Manager
 
         $req_connect = $db->prepare('UPDATE posts SET title = :titre, content = :content WHERE id = :id');
         $req_connect->execute(array(
-            'titre' => $title,
+            'titre'   => $title,
             'content' => $content,
-            'id' => $edit_id
+            'id'      => $edit_id,
         ));
     }
 
@@ -62,7 +62,7 @@ class PostManager extends Manager
 
         $req_connect = $db->prepare('DELETE FROM posts WHERE id = :id');
         $req_connect->execute(array(
-            'id' => $edit_id
+            'id' => $edit_id,
         ));
     }
 }

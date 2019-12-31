@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title><?= $title ?></title>
+  <title><?=$title?></title>
   <meta name="description" content="Découvrez le blog de l'écrivain Jean Forteroche, auteur de son nouveau roman Billet simple pour l'Alaska, disponible en intégralité sur son site internet." />
 
   <!-- Font Awesome, CSS + Bootstrap-->
@@ -29,7 +29,6 @@
 
 <body>
   <header>
-    <span id="home-link"></span>
     <div id="navigation-bar">
       <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <a class="navbar-brand" href="index.php">Jean Forteroche</a>
@@ -50,7 +49,7 @@
     </div>
   </header>
 
-  <?= $content ?>
+  <?=$content?>
 
   <!-- Footer -->
 
@@ -59,28 +58,28 @@
     <div class="site-infos">
       <div class="footer-address">
         <p>Plan du site :</p>
-        <a href="#">Accueil</a>
+        <a href="index.php">Accueil</a>
         <br>
-        <a href="#">Auteur</a>
+        <a href="index.php?action=bibliography">Auteur</a>
         <br>
-        <a href="http://joseph-miskolci.com/pages/jeanforteroche/index.php?action=allArticles">Publications</a>
+        <a href="index.php?action=allArticles">Publications</a>
         <br>
         <a href="index.php?action=allBooks">Ouvrages</a>
         <br>
-        <a href="#">Contact</a>
+        <a href="index.php?action=contact">Contact</a>
         <br>
         <a <?php
-            if (isset($_SESSION['id'])) {
-              ?> href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
+if (isset($_SESSION['id'])) {
+    ?> href="index.php?action=profile&amp;id=<?=$_SESSION['id']?>">
         <?php
-          echo 'Votre profil, ' . $_SESSION['pseudo'] . ' !';
-        } else {
-          ?>
+echo 'Votre profil, ' . $_SESSION['pseudo'] . ' !';
+} else {
+    ?>
           href="index.php?action=connexion">
         <?php
-          echo 'Connexion';
-        }
-        ?></a>
+echo 'Connexion';
+}
+?></a>
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>

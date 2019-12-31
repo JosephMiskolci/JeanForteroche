@@ -1,7 +1,6 @@
 <?php
-if($_SESSION['admin'] == "1")
-{
-?>
+if ($_SESSION['admin'] == "1") {
+    ?>
 
 <section class="publishArticle">
   <h2>Publiez votre nouvel article :</h2>
@@ -14,9 +13,9 @@ if($_SESSION['admin'] == "1")
       <input name="send" id="send" type="submit" value="Envoyez votre article !">
     </form>
     </section>
-    
+
 <?php
-    } else {
-      header("location: index.php?action=error");
-    }
-    ?>
+} else {
+    header("location: index.php?action=error");
+}
+?>

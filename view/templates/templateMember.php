@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title><?= $title ?></title>
+  <title><?=$title?></title>
   <meta name="description" content="Découvrez le blog de l'écrivain Jean Forteroche, auteur de son nouveau roman Billet simple pour l'Alaska, disponible en intégralité sur son site internet." />
 
   <!-- Font Awesome, CSS + Bootstrap-->
@@ -12,14 +12,14 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <?php
-  if ($css_files == null) {
+if ($css_files == null) {
     echo '<link rel="stylesheet" href="public/css/style.css">';
-  } else {
+} else {
     foreach ($css_files as $css) {
-      echo '<link rel="stylesheet" href="' . $css . '">';
+        echo '<link rel="stylesheet" href="' . $css . '">';
     }
-  }
-  ?>
+}
+?>
 
   <!-- Google Fonts + Favicon -->
 
@@ -29,25 +29,25 @@
 </head>
 
 <body>
- <?php
- if (isset($withAlert)) {
-  ?>
+  <?php
+if (isset($withAlert)) {
+    ?>
     <script type="text/javascript">
       var msg = '<?php echo $withAlert; ?>';
       alert(msg);
     </script>
   <?php
-  }
+}
 
-  if (isset($withReplace)) {
-  ?>
+if (isset($withReplace)) {
+    ?>
     <script type="text/javascript">
       var redirect = '<?php echo $withReplace; ?>';
       window.location.replace(redirect);
     </script>
   <?php
-  }
-  ?>
+}
+?>
 
   <header>
     <span id="home-link"></span>
@@ -72,21 +72,21 @@
               <a class="nav-link" href="index.php?action=allBooks">Ouvrages</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="index.php?action=contact">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" <?php
-               if (isset($_SESSION['id'])) {
-                 ?> href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
+if (isset($_SESSION['id'])) {
+    ?> href="index.php?action=profile&amp;id=<?=$_SESSION['id']?>">
               <?php
-                echo 'Votre profil, ' . $_SESSION['pseudo'] . ' !';
-              } else {
-                ?>
+echo 'Votre profil, ' . $_SESSION['pseudo'] . ' !';
+} else {
+    ?>
                 href="index.php?action=connexion">
               <?php
-                echo 'Connexion';
-              }
-              ?></a>
+echo 'Connexion';
+}
+?></a>
             </li>
           </ul>
         </div>
@@ -94,7 +94,7 @@
     </div>
   </header>
 
-  <?= $content ?>
+  <?=$content?>
 
   <!-- Footer -->
 
@@ -111,29 +111,29 @@
         <br>
         <a href="index.php?action=allBooks">Ouvrages</a>
         <br>
-        <a href="#">Contact</a>
+        <a href="index.php?action=contact">Contact</a>
         <br>
         <a <?php
-            if (isset($_SESSION['id'])) {
-              ?> href="index.php?action=profile&amp;id=<?= $_SESSION['id'] ?>">
+if (isset($_SESSION['id'])) {
+    ?> href="index.php?action=profile&amp;id=<?=$_SESSION['id']?>">
         <?php
-          echo 'Votre profil, ' . $_SESSION['pseudo'] . ' !';
-        } else {
-          ?>
+echo 'Votre profil, ' . $_SESSION['pseudo'] . ' !';
+} else {
+    ?>
           href="index.php?action=connexion">
         <?php
-          echo 'Connexion';
-        }
-        ?></a>
+echo 'Connexion';
+}
+?></a>
       </div>
       <div class="footer-admin">
         <p>Administrateur :</p>
         <?php
-        if ($_SESSION['admin'] == "1" or $_SESSION['moderator'] == "1") { ?>
+if ($_SESSION['admin'] == "1" or $_SESSION['moderator'] == "1") {?>
           <a href="index.php?action=admin">Connexion Admin</a>
-        <?php } else { ?>
+        <?php } else {?>
           <i>Vous n'êtes pas autorisé à accéder à cette section du site !</i>
-        <?php } ?>
+        <?php }?>
       </div>
     </div>
     <p class="copyright">© Copyright 2019 Joseph Miskolci : Projet OpenClassRooms</p>

@@ -2,7 +2,7 @@
 
 namespace JeanForteroche\Blog\Model;
 
-require_once("model/Manager.php");
+require_once "model/Manager.php";
 
 class MembersManager extends Manager
 {
@@ -12,7 +12,7 @@ class MembersManager extends Manager
 
         $reqmail = $db->prepare("SELECT * FROM member_space WHERE mail = :mail");
         $reqmail->execute(array(
-            'mail' => $mail
+            'mail' => $mail,
         ));
         return $reqmail;
     }
@@ -23,7 +23,7 @@ class MembersManager extends Manager
 
         $reqpseudo = $db->prepare("SELECT * FROM member_space WHERE pseudo = :pseudo");
         $reqpseudo->execute(array(
-            'pseudo' => $pseudo
+            'pseudo' => $pseudo,
         ));
         return $reqpseudo;
     }
@@ -35,9 +35,9 @@ class MembersManager extends Manager
 
         $insertmbr = $db->prepare("INSERT INTO member_space (pseudo, mail, password, admin, moderator) VALUES (:pseudo, :mail, :password, 0, 0)");
         $insertmbr->execute(array(
-            'pseudo' => $pseudo,
-            'mail' => $mail,
-            'password' => $mdpHached
+            'pseudo'   => $pseudo,
+            'mail'     => $mail,
+            'password' => $mdpHached,
         ));
         return $insertmbr;
     }
@@ -48,7 +48,7 @@ class MembersManager extends Manager
 
         $reqmail = $db->prepare("SELECT * FROM member_space WHERE mail = :mail");
         $reqmail->execute(array(
-            'mail' => $mail
+            'mail' => $mail,
         ));
         return $reqmail;
     }
@@ -60,7 +60,7 @@ class MembersManager extends Manager
         if (isset($_GET['id']) and $_GET['id'] > 0) {
             $requser = $db->prepare('SELECT * FROM member_space WHERE id = :id');
             $requser->execute(array(
-                'id' => $getid
+                'id' => $getid,
             ));
         }
     }
@@ -71,7 +71,7 @@ class MembersManager extends Manager
 
         $requser = $db->prepare("SELECT * FROM member_space WHERE id = :id");
         $requser->execute(array(
-            'id' => $sessionID
+            'id' => $sessionID,
         ));
         return $requser;
     }
@@ -83,7 +83,7 @@ class MembersManager extends Manager
         $insertmdp = $db->prepare("UPDATE member_space SET password = :password WHERE id = :id");
         $insertmdp->execute(array(
             'password' => $mdp1Hached,
-            'id' => $sessionID
+            'id'       => $sessionID,
         ));
         return $insertmdp;
     }
