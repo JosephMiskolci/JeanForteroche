@@ -1,7 +1,7 @@
 <section id="TopPicture">
     <figure class="HeroPicture">
       <ul>
-        <li class="FrontPicture"><img src="public/images/img/HeroPicture.jpg" alt="Image01">
+        <li class="enabled"><img src="public/images/img/HeroPicture.jpg" alt="Image01">
       </ul>
           <div class="PresentationText">
             <h3 class="">Découvrez le nouveau roman de Jean Forteroche</h3>
